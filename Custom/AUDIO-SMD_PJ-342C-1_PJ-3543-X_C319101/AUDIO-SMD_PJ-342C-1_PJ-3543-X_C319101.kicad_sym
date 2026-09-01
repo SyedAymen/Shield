@@ -1,0 +1,200 @@
+(kicad_symbol_lib (version 20211014) (generator easyeda2kicad)
+  (symbol "AUDIO-SMD_PJ-342C-1" (pin_names (offset 1.016)) (in_bom yes) (on_board yes)
+    (property "Reference" "U" (id 0) (at 0 0 0)
+      (effects (font (size 1.27 1.27)))
+    )
+    (property "Value" "AUDIO-SMD_PJ-342C-1" (id 1) (at 0 -2.54 0)
+      (effects (font (size 1.27 1.27)))
+    )
+    (property "Footprint" "" (id 2) (at 0 0 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (property "Datasheet" "" (id 3) (at 0 0 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (symbol "AUDIO-SMD_PJ-342C-1_0_1"
+      (polyline
+        (pts
+          (xy 104.1400 -71.1200)
+          (xy 97.0280 -71.1200)
+        )
+        (stroke (width 0.2540) (type default) (color 0 0 0 0))
+        (fill (type none))
+      )
+      (polyline
+        (pts
+          (xy 97.0280 -71.1200)
+          (xy 97.0280 -76.7080)
+        )
+        (stroke (width 0.2540) (type default) (color 0 0 0 0))
+        (fill (type none))
+      )
+      (polyline
+        (pts
+          (xy 104.1400 -73.6600)
+          (xy 99.0600 -73.6600)
+        )
+        (stroke (width 0.2540) (type default) (color 0 0 0 0))
+        (fill (type none))
+      )
+      (polyline
+        (pts
+          (xy 99.0600 -73.6600)
+          (xy 98.5520 -74.6760)
+        )
+        (stroke (width 0.2540) (type default) (color 0 0 0 0))
+        (fill (type none))
+      )
+      (polyline
+        (pts
+          (xy 98.5520 -74.6760)
+          (xy 98.0440 -73.6600)
+        )
+        (stroke (width 0.2540) (type default) (color 0 0 0 0))
+        (fill (type none))
+      )
+      (polyline
+        (pts
+          (xy 104.1400 -76.2000)
+          (xy 101.6000 -76.2000)
+        )
+        (stroke (width 0.2540) (type default) (color 0 0 0 0))
+        (fill (type none))
+      )
+      (polyline
+        (pts
+          (xy 101.6000 -76.2000)
+          (xy 101.6000 -73.6600)
+        )
+        (stroke (width 0.2540) (type default) (color 0 0 0 0))
+        (fill (type none))
+      )
+      (polyline
+        (pts
+          (xy 101.6000 -73.6600)
+          (xy 101.3460 -74.9300)
+        )
+        (stroke (width 0.2540) (type default) (color 0 0 0 0))
+        (fill (type none))
+      )
+      (polyline
+        (pts
+          (xy 101.6000 -73.6600)
+          (xy 101.8540 -74.9300)
+        )
+        (stroke (width 0.2540) (type default) (color 0 0 0 0))
+        (fill (type none))
+      )
+      (polyline
+        (pts
+          (xy 104.1400 -81.2800)
+          (xy 99.3140 -81.2800)
+        )
+        (stroke (width 0.2540) (type default) (color 0 0 0 0))
+        (fill (type none))
+      )
+      (polyline
+        (pts
+          (xy 99.3140 -81.2800)
+          (xy 98.8060 -80.2640)
+        )
+        (stroke (width 0.2540) (type default) (color 0 0 0 0))
+        (fill (type none))
+      )
+      (polyline
+        (pts
+          (xy 98.8060 -80.2640)
+          (xy 98.2980 -81.2800)
+        )
+        (stroke (width 0.2540) (type default) (color 0 0 0 0))
+        (fill (type none))
+      )
+      (polyline
+        (pts
+          (xy 104.1400 -78.7400)
+          (xy 101.6000 -78.7400)
+        )
+        (stroke (width 0.2540) (type default) (color 0 0 0 0))
+        (fill (type none))
+      )
+      (polyline
+        (pts
+          (xy 101.6000 -78.7400)
+          (xy 101.6000 -81.2800)
+        )
+        (stroke (width 0.2540) (type default) (color 0 0 0 0))
+        (fill (type none))
+      )
+      (polyline
+        (pts
+          (xy 101.6000 -81.2800)
+          (xy 101.8540 -80.0100)
+        )
+        (stroke (width 0.2540) (type default) (color 0 0 0 0))
+        (fill (type none))
+      )
+      (polyline
+        (pts
+          (xy 101.6000 -81.2800)
+          (xy 101.3460 -80.0100)
+        )
+        (stroke (width 0.2540) (type default) (color 0 0 0 0))
+        (fill (type none))
+      )
+      (polyline
+        (pts
+          (xy 104.1400 -83.8200)
+          (xy 98.0440 -83.8200)
+        )
+        (stroke (width 0.2540) (type default) (color 0 0 0 0))
+        (fill (type none))
+      )
+      (polyline
+        (pts
+          (xy 98.0440 -83.8200)
+          (xy 97.5360 -82.8040)
+        )
+        (stroke (width 0.2540) (type default) (color 0 0 0 0))
+        (fill (type none))
+      )
+      (polyline
+        (pts
+          (xy 97.5360 -82.8040)
+          (xy 97.0280 -83.8200)
+        )
+        (stroke (width 0.2540) (type default) (color 0 0 0 0))
+        (fill (type none))
+      )
+      (rectangle (start 96.5200 -76.7080) (end 97.5360 -80.5180)
+        (stroke (width 0.254) (type default) (color 0 0 0 0))
+        (fill (type none))
+      )
+    )
+    (symbol "AUDIO-SMD_PJ-342C-1_1_1"
+      (pin passive line (at 109.2200 -71.1200 0) (length 2.5400)
+        (name "1" (effects (font (size 1.27 1.27))))
+        (number "1" (effects (font (size 1.27 1.27))))
+      )
+      (pin passive line (at 109.2200 -76.2000 0) (length 2.5400)
+        (name "6" (effects (font (size 1.27 1.27))))
+        (number "6" (effects (font (size 1.27 1.27))))
+      )
+      (pin passive line (at 109.2200 -73.6600 0) (length 2.5400)
+        (name "3" (effects (font (size 1.27 1.27))))
+        (number "3" (effects (font (size 1.27 1.27))))
+      )
+      (pin passive line (at 109.2200 -78.7400 0) (length 2.5400)
+        (name "5" (effects (font (size 1.27 1.27))))
+        (number "5" (effects (font (size 1.27 1.27))))
+      )
+      (pin passive line (at 109.2200 -81.2800 0) (length 2.5400)
+        (name "4" (effects (font (size 1.27 1.27))))
+        (number "4" (effects (font (size 1.27 1.27))))
+      )
+      (pin passive line (at 109.2200 -83.8200 0) (length 2.5400)
+        (name "2" (effects (font (size 1.27 1.27))))
+        (number "2" (effects (font (size 1.27 1.27))))
+      )
+    )
+  )
+)

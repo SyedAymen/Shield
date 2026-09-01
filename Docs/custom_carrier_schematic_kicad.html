@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Custom JMEDIA Carrier — Full Schematic + KiCad Guide</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500&family=Syne:wght@500;700;800&display=swap');
+:root{
+  --bg:#0b0f14;--bg2:#111820;--panel:#0f1a24;--panel2:#141f2b;
+  --border:#1c3050;--border2:#243a55;
+  --cyan:#00c8ef;--cyan2:#0099bb;--green:#00d88a;--green2:#007a4d;
+  --yellow:#f5c842;--orange:#e07a30;--red:#e04040;--purple:#9d65ff;
+  --grey:#4a5568;--white:#dce8f5;--dim:#7a8fa8;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--bg);font-family:'JetBrains Mono',monospace;color:var(--white);overflow-x:auto}
+body::before{content:'';position:fixed;inset:0;background-image:radial-gradient(circle,#1c3050 1px,transparent 1px);background-size:20px 20px;opacity:.35;pointer-events:none;z-index:0}
+.page{position:relative;z-index:1;padding:16px}
+
+/* title */
+.title-bar{border:1px solid var(--border);border-bottom:2px solid var(--cyan);background:var(--panel);padding:10px 20px;margin-bottom:14px;display:flex;justify-content:space-between;align-items:center}
+.t-main{font-family:'Syne',sans-serif;font-size:13px;font-weight:700;color:var(--cyan);letter-spacing:2px;text-transform:uppercase}
+.t-sub{font-size:10px;color:var(--dim);margin-top:3px}
+.t-meta{text-align:right;font-size:9px;color:var(--dim);line-height:1.9}
+.t-meta b{color:var(--cyan)}
+
+/* schematic area */
+.sch-wrap{background:var(--bg2);border:1px solid var(--border);overflow:auto;margin-bottom:14px}
+
+/* guide sections */
+.guide{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:14px}
+.card{background:var(--panel);border:1px solid var(--border);padding:14px 16px;border-radius:4px}
+.card h3{font-family:'Syne',sans-serif;font-size:10px;letter-spacing:1.5px;color:var(--cyan);text-transform:uppercase;margin-bottom:10px;padding-bottom:6px;border-bottom:1px solid var(--border2)}
+.card p,.card li{font-size:10.5px;line-height:1.75;color:var(--dim);margin-bottom:4px}
+.card li{list-style:none;padding-left:12px;position:relative}
+.card li::before{content:"›";position:absolute;left:0;color:var(--cyan)}
+.card code{background:#1a2a3a;color:var(--yellow);padding:1px 5px;border-radius:2px;font-size:10px}
+.warn{border-left:3px solid var(--orange);background:#1a1608;padding:8px 12px;margin:8px 0;border-radius:0 4px 4px 0}
+.warn p{color:#c8a040;font-size:10px}
+.ok{border-left:3px solid var(--green);background:#0a1a0f;padding:8px 12px;margin:8px 0;border-radius:0 4px 4px 0}
+.ok p{color:var(--green2);font-size:10px}
+.step{display:flex;gap:10px;align-items:flex-start;margin-bottom:8px}
+.step-n{width:20px;height:20px;min-width:20px;background:var(--border2);color:var(--cyan);font-size:10px;font-weight:500;border-radius:50%;display:flex;align-items:center;justify-content:center}
+.step p{font-size:10.5px;color:var(--dim);line-height:1.7}
+.layer-table{width:100%;border-collapse:collapse;margin-top:8px}
+.layer-table th,.layer-table td{font-size:10px;padding:5px 8px;text-align:left;border-bottom:1px solid var(--border)}
+.layer-table th{color:var(--cyan);font-weight:500}
+.layer-table td{color:var(--dim)}
+.pwr-lbl{display:inline-block;padding:2px 8px;border-radius:2px;font-size:9px;font-weight:500;letter-spacing:.5px}
+</style>
+</head>
+<body>
+<div class="page">
+
+<!-- Title -->
+<div class="title-bar">
+  <div>
+    <div class="t-main">Custom JMEDIA/JMISC Carrier — Full Schematic</div>
+    <div class="t-sub">J1(JMEDIA) · J2(JMISC) · J3(FPC RPi Cam) · J4(JMEDIA header) · J5(JMISC header) · U1(PCA9306) — 4-Layer FR4</div>
+  </div>
+  <div class="t-meta">Rev: <b>A</b> | Sheet: <b>1/1</b> | Scale: <b>NTS</b></div>
+</div>
+
+<!-- MAIN SCHEMATIC SVG -->
+<div class="sch-wrap">
+<svg viewBox="0 0 1560 900" xmlns="http://www.w3.org/2000/svg" style="width:100%;min-width:900px;display:block">
+<defs>
+  <marker id="a" markerWidth="7" markerHeight="5" refX="6" refY="2.5" orient="auto">
+    <polygon points="0 0,7 2.5,0 5" fill="#00c8ef"/>
+  </marker>
+  <marker id="ag" markerWidth="7" markerHeight="5" refX="6" refY="2.5" orient="auto">
+    <polygon points="0 0,7 2.5,0 5" fill="#00d88a"/>
+  </marker>
+  <marker id="ay" markerWidth="7" markerHeight="5" refX="6" refY="2.5" orient="auto">
+    <polygon points="0 0,7 2.5,0 5" fill="#f5c842"/>
+  </marker>
+  <marker id="ao" markerWidth="7" markerHeight="5" refX="6" refY="2.5" orient="auto">
+    <polygon points="0 0,7 2.5,0 5" fill="#e07a30"/>
+  </marker>
+  <marker id="agr" markerWidth="7" markerHeight="5" refX="6" refY="2.5" orient="auto">
+    <polygon points="0 0,7 2.5,0 5" fill="#4a5568"/>
+  </marker>
+  <filter id="glo"><feGaussianBlur stdDeviation="1.5" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+</defs>
+
+<!-- ══════════ BLOCK BACKGROUNDS ══════════ -->
+<!-- J1 JMEDIA -->
+<rect x="8" y="30" width="195" height="840" rx="5" fill="#061420" stroke="#1c3050" stroke-width="1"/>
+<rect x="8" y="30" width="195" height="26" rx="5" fill="#0a2040"/>
+<text x="105" y="48" text-anchor="middle" fill="#00c8ef" font-family="Syne,sans-serif" font-size="9" letter-spacing="1.5">J1 — JMEDIA</text>
+<text x="105" y="62" text-anchor="middle" fill="#4a5568" font-family="JetBrains Mono,monospace" font-size="8">FTSH-130-01-L-DV  2×30  1.27mm</text>
+
+<!-- J3 FPC (placed below J1 — bottom placement) -->
+<rect x="8" y="590" width="195" height="170" rx="5" fill="#0a1408" stroke="#e07a30" stroke-width="1"/>
+<rect x="8" y="590" width="195" height="22" rx="5" fill="#1a1008"/>
+<text x="105" y="606" text-anchor="middle" fill="#e07a30" font-family="Syne,sans-serif" font-size="9" letter-spacing="1">J3 — FPC RPi CAMERA</text>
+<text x="105" y="618" text-anchor="middle" fill="#4a5568" font-family="JetBrains Mono,monospace" font-size="7.5">SFW15R-2STE1LF  15-pin  1mm</text>
+
+<!-- J2 JMISC -->
+<rect x="1050" y="30" width="195" height="640" rx="5" fill="#061408" stroke="#1c3050" stroke-width="1"/>
+<rect x="1050" y="30" width="195" height="26" rx="5" fill="#0a2010"/>
+<text x="1147" y="48" text-anchor="middle" fill="#00d88a" font-family="Syne,sans-serif" font-size="9" letter-spacing="1.5">J2 — JMISC</text>
+<text x="1147" y="62" text-anchor="middle" fill="#4a5568" font-family="JetBrains Mono,monospace" font-size="8">FTSH-130-01-L-DV  2×30  1.27mm</text>
+
+<!-- U1 PCA9306 -->
+<rect x="400" y="480" width="200" height="200" rx="5" fill="#081a0c" stroke="#00d88a" stroke-width="1" stroke-dasharray="4,3"/>
+<text x="500" y="498" text-anchor="middle" fill="#00d88a" font-family="Syne,sans-serif" font-size="8.5" letter-spacing="1">U1 — PCA9306DCTR</text>
+<text x="500" y="510" text-anchor="middle" fill="#4a5568" font-family="JetBrains Mono,monospace" font-size="7.5">I²C Level Translator  SSOP-8</text>
+
+<!-- J4 JMEDIA header 2x20 -->
+<rect x="350" y="120" width="180" height="300" rx="5" fill="#0f1520" stroke="#1c3050" stroke-width="1"/>
+<text x="440" y="140" text-anchor="middle" fill="#dce8f5" font-family="Syne,sans-serif" font-size="8.5" letter-spacing="1">J4 — JMEDIA 2×20</text>
+<text x="440" y="153" text-anchor="middle" fill="#4a5568" font-family="JetBrains Mono,monospace" font-size="7">2.54mm header output</text>
+
+<!-- J5 JMISC header 2x20 -->
+<rect x="760" y="120" width="180" height="540" rx="5" fill="#0f1520" stroke="#1c3050" stroke-width="1"/>
+<text x="850" y="140" text-anchor="middle" fill="#dce8f5" font-family="Syne,sans-serif" font-size="8.5" letter-spacing="1">J5 — JMISC 2×20</text>
+<text x="850" y="153" text-anchor="middle" fill="#4a5568" font-family="JetBrains Mono,monospace" font-size="7">2.54mm header output</text>
+
+<!-- ══════════ J1 JMEDIA PIN ROWS ══════════ -->
+<g font-family="JetBrains Mono,monospace" font-size="8.5">
+  <!-- GND pins -->
+  <rect x="15" y="78" width="178" height="16" rx="2" fill="#1a2535" stroke="#243a55" stroke-width=".4"/>
+  <text x="26" y="90" fill="#4a5568">1,2</text><text x="60" y="90" fill="#4a5568">GND</text>
+  <line x1="193" y1="86" x2="210" y2="86" stroke="#4a5568" stroke-width="1.5"/>
+
+  <!-- MIPI DSI (NC) -->
+  <rect x="15" y="98" width="178" height="16" rx="2" fill="#111820" stroke="#1c3050" stroke-width=".4"/>
+  <text x="26" y="110" fill="#2a3a4a">3–6</text><text x="60" y="110" fill="#2a3a4a">MIPI DSI (NC)</text>
+
+  <rect x="15" y="118" width="178" height="16" rx="2" fill="#1a2535" stroke="#243a55" stroke-width=".4"/>
+  <text x="26" y="130" fill="#4a5568">7–8</text><text x="60" y="130" fill="#4a5568">GND</text>
+
+  <rect x="15" y="138" width="178" height="16" rx="2" fill="#111820" stroke="#1c3050" stroke-width=".4"/>
+  <text x="26" y="150" fill="#2a3a4a">9–10</text><text x="60" y="150" fill="#2a3a4a">MIPI DSI (NC)</text>
+
+  <rect x="15" y="158" width="178" height="16" rx="2" fill="#1a2535" stroke="#243a55" stroke-width=".4"/>
+  <text x="26" y="170" fill="#4a5568">11</text><text x="60" y="170" fill="#4a5568">GND</text>
+
+  <!-- CAM_MCLK0 GPIO_20 → J4 + J3 -->
+  <rect x="15" y="178" width="178" height="16" rx="2" fill="#1a1a08" stroke="#e07a30" stroke-width=".5"/>
+  <text x="26" y="190" fill="#e07a30">16</text><text x="55" y="190" fill="#e07a30">SOC_CAM_MCLK0</text>
+  <line x1="193" y1="186" x2="230" y2="186" stroke="#e07a30" stroke-width="1.5" marker-end="url(#ao)"/>
+
+  <!-- CAM_MCLK1 → J4 only -->
+  <rect x="15" y="198" width="178" height="16" rx="2" fill="#1a1a08" stroke="#e07a30" stroke-width=".4"/>
+  <text x="26" y="210" fill="#4a5568">18</text><text x="55" y="210" fill="#4a5568">SOC_CAM_MCLK1</text>
+  <line x1="193" y1="206" x2="230" y2="206" stroke="#e07a30" stroke-width="1.5" stroke-dasharray="3,2" marker-end="url(#ao)"/>
+
+  <!-- CSI0 Lane 0 — MIPI pair -->
+  <rect x="15" y="228" width="178" height="16" rx="2" fill="#0d1e30" stroke="#00c8ef" stroke-width=".7"/>
+  <text x="26" y="240" fill="#00c8ef">21</text><text x="55" y="240" fill="#00c8ef">CSI0_C0_LN0_M</text>
+  <line x1="193" y1="236" x2="340" y2="236" stroke="#00c8ef" stroke-width="2" filter="url(#glo)" marker-end="url(#a)"/>
+
+  <rect x="15" y="248" width="178" height="16" rx="2" fill="#0d1e30" stroke="#00c8ef" stroke-width=".7"/>
+  <text x="26" y="260" fill="#00c8ef">23</text><text x="55" y="260" fill="#00c8ef">CSI0_B0_LN0_P</text>
+  <line x1="193" y1="256" x2="340" y2="256" stroke="#00c8ef" stroke-width="2" filter="url(#glo)" marker-end="url(#a)"/>
+
+  <!-- GND -->
+  <rect x="15" y="268" width="178" height="16" rx="2" fill="#1a2535" stroke="#243a55" stroke-width=".4"/>
+  <text x="26" y="280" fill="#4a5568">25</text><text x="55" y="280" fill="#4a5568">GND</text>
+
+  <!-- CSI0 Lane 1 -->
+  <rect x="15" y="288" width="178" height="16" rx="2" fill="#0d1e30" stroke="#00c8ef" stroke-width=".7"/>
+  <text x="26" y="300" fill="#00c8ef">27</text><text x="55" y="300" fill="#00c8ef">CSI0_B1_LN1_M</text>
+  <line x1="193" y1="296" x2="340" y2="296" stroke="#00c8ef" stroke-width="2" filter="url(#glo)" marker-end="url(#a)"/>
+
+  <rect x="15" y="308" width="178" height="16" rx="2" fill="#0d1e30" stroke="#00c8ef" stroke-width=".7"/>
+  <text x="26" y="320" fill="#00c8ef">29</text><text x="55" y="320" fill="#00c8ef">CSI0_A1_LN1_P</text>
+  <line x1="193" y1="316" x2="340" y2="316" stroke="#00c8ef" stroke-width="2" filter="url(#glo)" marker-end="url(#a)"/>
+
+  <!-- GND -->
+  <rect x="15" y="328" width="178" height="16" rx="2" fill="#1a2535" stroke="#243a55" stroke-width=".4"/>
+  <text x="26" y="340" fill="#4a5568">31</text><text x="55" y="340" fill="#4a5568">GND</text>
+
+  <!-- CSI0 Clock -->
+  <rect x="15" y="348" width="178" height="16" rx="2" fill="#0d1830" stroke="#7799ff" stroke-width=".7"/>
+  <text x="26" y="360" fill="#7799ff">33</text><text x="55" y="360" fill="#7799ff">CSI0_A0_CLK_M</text>
+  <line x1="193" y1="356" x2="340" y2="356" stroke="#7799ff" stroke-width="2" marker-end="url(#a)"/>
+
+  <rect x="15" y="368" width="178" height="16" rx="2" fill="#0d1830" stroke="#7799ff" stroke-width=".7"/>
+  <text x="26" y="380" fill="#7799ff">35</text><text x="55" y="380" fill="#7799ff">CSI0_NC_CLK_P</text>
+  <line x1="193" y1="376" x2="340" y2="376" stroke="#7799ff" stroke-width="2" marker-end="url(#a)"/>
+
+  <!-- NC CSI1/L2/L3 -->
+  <rect x="15" y="388" width="178" height="32" rx="2" fill="#0e1520" stroke="#1c3050" stroke-width=".4"/>
+  <text x="26" y="400" fill="#2a3a4a">39–</text><text x="55" y="400" fill="#2a3a4a">CSI1/L2/L3 — NC</text>
+  <text x="26" y="414" fill="#2a3a4a">54</text><text x="55" y="414" fill="#2a3a4a">(leave floating)</text>
+
+  <!-- CCI I2C SCL -->
+  <rect x="15" y="424" width="178" height="16" rx="2" fill="#0d1f15" stroke="#00d88a" stroke-width=".7"/>
+  <text x="26" y="436" fill="#00d88a">51</text><text x="55" y="436" fill="#00d88a">CCI_I2C_SCL0</text>
+  <line x1="193" y1="432" x2="230" y2="432" stroke="#00d88a" stroke-width="2" filter="url(#glo)"/>
+
+  <!-- CCI I2C SDA -->
+  <rect x="15" y="444" width="178" height="16" rx="2" fill="#0d1f15" stroke="#00d88a" stroke-width=".7"/>
+  <text x="26" y="456" fill="#00d88a">53</text><text x="55" y="456" fill="#00d88a">CCI_I2C_SDA0</text>
+  <line x1="193" y1="452" x2="230" y2="452" stroke="#00d88a" stroke-width="2" filter="url(#glo)"/>
+
+  <!-- VIN & 3V3 -->
+  <rect x="15" y="464" width="178" height="16" rx="2" fill="#1a1808" stroke="#f5c842" stroke-width=".7"/>
+  <text x="26" y="476" fill="#f5c842">57</text><text x="55" y="476" fill="#f5c842">VIN (7–24V)</text>
+  <line x1="193" y1="472" x2="230" y2="472" stroke="#f5c842" stroke-width="1.5" marker-end="url(#ay)"/>
+
+  <rect x="15" y="484" width="178" height="16" rx="2" fill="#1a1808" stroke="#f5c842" stroke-width=".7"/>
+  <text x="26" y="496" fill="#f5c842">58/60</text><text x="55" y="496" fill="#f5c842">+3V3 OUT</text>
+  <line x1="193" y1="492" x2="230" y2="492" stroke="#f5c842" stroke-width="1.5" marker-end="url(#ay)"/>
+
+  <!-- GND final -->
+  <rect x="15" y="504" width="178" height="16" rx="2" fill="#1a2535" stroke="#243a55" stroke-width=".4"/>
+  <text x="26" y="516" fill="#4a5568">GND</text>
+  <text x="55" y="516" fill="#4a5568">all GND pins</text>
+</g>
+
+<!-- ══════════ MIPI TRACES — straight down to J3 ══════════ -->
+<!-- These go: J1 pins → nets at x=210~340 → vertical down to FPC -->
+<!-- No 90° turns, no vias — the core benefit of bottom placement -->
+<text x="270" y="222" text-anchor="middle" fill="#4a5568" font-family="JetBrains Mono,monospace" font-size="8">100Ω diff</text>
+<text x="270" y="233" text-anchor="middle" fill="#4a5568" font-family="JetBrains Mono,monospace" font-size="8">no vias</text>
+
+<!-- Lane 0 pair to FPC — straight vertical segments through net nodes, turn to FPC at bottom -->
+<polyline points="340,236 340,600 140,600 140,614" fill="none" stroke="#00c8ef" stroke-width="2" filter="url(#glo)" marker-end="url(#a)"/>
+<polyline points="340,256 340,610 155,610 155,614" fill="none" stroke="#00c8ef" stroke-width="2" filter="url(#glo)" marker-end="url(#a)"/>
+
+<!-- Lane 1 pair -->
+<polyline points="340,296 340,300 350,300 350,620 140,620 140,633" fill="none" stroke="#00c8ef" stroke-width="2" filter="url(#glo)" marker-end="url(#a)"/>
+<polyline points="340,316 340,320 360,320 360,630 155,630 155,633" fill="none" stroke="#00c8ef" stroke-width="2" filter="url(#glo)" marker-end="url(#a)"/>
+
+<!-- CLK pair -->
+<polyline points="340,356 340,360 370,360 370,640 140,640 140,652" fill="none" stroke="#7799ff" stroke-width="2" marker-end="url(#a)"/>
+<polyline points="340,376 340,380 380,380 380,650 155,650 155,652" fill="none" stroke="#7799ff" stroke-width="2" marker-end="url(#a)"/>
+
+<!-- Length-match bracket -->
+<line x1="328" y1="236" x2="328" y2="376" stroke="#1c3050" stroke-width="1.5"/>
+<line x1="328" y1="236" x2="334" y2="236" stroke="#1c3050" stroke-width="1.5"/>
+<line x1="328" y1="376" x2="334" y2="376" stroke="#1c3050" stroke-width="1.5"/>
+<text x="318" y="310" fill="#e04040" font-family="JetBrains Mono,monospace" font-size="7" transform="rotate(-90,318,310)">LENGTH MATCH ±2mm</text>
+
+<!-- ══════════ NET JUNCTION DOTS ══════════ -->
+<circle cx="340" cy="236" r="3.5" fill="#00c8ef"/>
+<circle cx="340" cy="256" r="3.5" fill="#00c8ef"/>
+<circle cx="340" cy="296" r="3.5" fill="#00c8ef"/>
+<circle cx="340" cy="316" r="3.5" fill="#00c8ef"/>
+<circle cx="340" cy="356" r="3.5" fill="#7799ff"/>
+<circle cx="340" cy="376" r="3.5" fill="#7799ff"/>
+
+<!-- ══════════ J3 FPC PINS ══════════ -->
+<g font-family="JetBrains Mono,monospace" font-size="8.5">
+  <rect x="15" y="614" width="178" height="16" rx="2" fill="#1a2535" stroke="#243a55" stroke-width=".4"/>
+  <text x="26" y="626" fill="#4a5568">1</text><text x="55" y="626" fill="#4a5568">GND</text>
+
+  <rect x="15" y="633" width="178" height="16" rx="2" fill="#0d1e30" stroke="#00c8ef" stroke-width=".7"/>
+  <text x="26" y="645" fill="#00c8ef">2</text><text x="55" y="645" fill="#00c8ef">CAM_D0_N ←</text>
+
+  <rect x="15" y="652" width="178" height="16" rx="2" fill="#0d1e30" stroke="#00c8ef" stroke-width=".7"/>
+  <text x="26" y="664" fill="#00c8ef">3</text><text x="55" y="664" fill="#00c8ef">CAM_D0_P ←</text>
+
+  <rect x="15" y="671" width="178" height="16" rx="2" fill="#1a2535" stroke="#243a55" stroke-width=".4"/>
+  <text x="26" y="683" fill="#4a5568">4</text><text x="55" y="683" fill="#4a5568">GND</text>
+
+  <rect x="15" y="690" width="178" height="16" rx="2" fill="#0d1e30" stroke="#00c8ef" stroke-width=".7"/>
+  <text x="26" y="702" fill="#00c8ef">5</text><text x="55" y="702" fill="#00c8ef">CAM_D1_N ←</text>
+
+  <rect x="15" y="709" width="178" height="16" rx="2" fill="#0d1e30" stroke="#00c8ef" stroke-width=".7"/>
+  <text x="26" y="721" fill="#00c8ef">6</text><text x="55" y="721" fill="#00c8ef">CAM_D1_P ←</text>
+
+  <rect x="15" y="728" width="178" height="16" rx="2" fill="#1a2535" stroke="#243a55" stroke-width=".4"/>
+  <text x="26" y="740" fill="#4a5568">7</text><text x="55" y="740" fill="#4a5568">GND</text>
+
+  <rect x="15" y="747" width="178" height="16" rx="2" fill="#0d1830" stroke="#7799ff" stroke-width=".7"/>
+  <text x="26" y="759" fill="#7799ff">8</text><text x="55" y="759" fill="#7799ff">CAM_CLK_N ←</text>
+
+  <rect x="15" y="766" width="178" height="16" rx="2" fill="#0d1830" stroke="#7799ff" stroke-width=".7"/>
+  <text x="26" y="778" fill="#7799ff">9</text><text x="55" y="778" fill="#7799ff">CAM_CLK_P ←</text>
+
+  <rect x="15" y="785" width="178" height="16" rx="2" fill="#1a2535" stroke="#243a55" stroke-width=".4"/>
+  <text x="26" y="797" fill="#4a5568">10</text><text x="55" y="797" fill="#4a5568">GND</text>
+
+  <rect x="15" y="804" width="178" height="16" rx="2" fill="#1a1a08" stroke="#e07a30" stroke-width=".5"/>
+  <text x="26" y="816" fill="#e07a30">12</text><text x="55" y="816" fill="#e07a30">CAM_IO0 ←</text>
+
+  <rect x="15" y="823" width="178" height="16" rx="2" fill="#1a2535" stroke="#243a55" stroke-width=".4"/>
+  <text x="26" y="835" fill="#4a5568">13</text><text x="55" y="835" fill="#4a5568">GND</text>
+
+  <rect x="15" y="842" width="178" height="16" rx="2" fill="#0d1f15" stroke="#00d88a" stroke-width=".7"/>
+  <text x="26" y="854" fill="#00d88a">14</text><text x="55" y="854" fill="#00d88a">CAM_SDA ↔</text>
+
+  <rect x="15" y="861" width="178" height="16" rx="2" fill="#0d1f15" stroke="#00d88a" stroke-width=".7"/>
+  <text x="26" y="873" fill="#00d88a">15</text><text x="55" y="873" fill="#00d88a">CAM_SCL ↔</text>
+</g>
+
+<!-- ══════════ I2C ROUTING: J1→U1→J3 ══════════ -->
+<!-- SCL: J1 pin51 → left, down → U1 SCL1 -->
+<polyline points="230,432 230,530 400,530" fill="none" stroke="#00d88a" stroke-width="2" filter="url(#glo)" marker-end="url(#ag)"/>
+<!-- SDA: J1 pin53 → similar path → U1 SDA1 -->
+<polyline points="230,452 238,452 238,550 400,550" fill="none" stroke="#00d88a" stroke-width="2" filter="url(#glo)" marker-end="url(#ag)"/>
+<!-- Labels -->
+<text x="290" y="520" fill="#00d88a" font-family="JetBrains Mono,monospace" font-size="7.5">SCL0 1.8V</text>
+<text x="290" y="560" fill="#00d88a" font-family="JetBrains Mono,monospace" font-size="7.5">SDA0 1.8V</text>
+
+<!-- U1 left pins (1.8V) -->
+<g font-family="JetBrains Mono,monospace" font-size="8">
+  <line x1="358" y1="525" x2="400" y2="525" stroke="#4a5568" stroke-width="1.5"/><text x="354" y="529" text-anchor="end" fill="#4a5568">GND</text>
+  <line x1="358" y1="540" x2="400" y2="540" stroke="#f5c842" stroke-width="1.5"/><text x="354" y="544" text-anchor="end" fill="#f5c842">VREF1 1.8V</text>
+  <line x1="358" y1="555" x2="400" y2="555" stroke="#00d88a" stroke-width="2"/><text x="354" y="559" text-anchor="end" fill="#00d88a">SCL1</text>
+  <line x1="358" y1="570" x2="400" y2="570" stroke="#00d88a" stroke-width="2"/><text x="354" y="574" text-anchor="end" fill="#00d88a">SDA1</text>
+</g>
+
+<!-- U1 IC body -->
+<rect x="400" y="495" width="200" height="165" rx="3" fill="#0d1f10" stroke="#00d88a" stroke-width="1.5"/>
+<!-- notch -->
+<path d="M495 495 Q500 490 505 495" fill="none" stroke="#00d88a" stroke-width="1"/>
+<text x="500" y="535" text-anchor="middle" fill="#00d88a" font-family="Syne,sans-serif" font-size="10" letter-spacing="1">PCA9306</text>
+<text x="500" y="550" text-anchor="middle" fill="#4a5568" font-family="JetBrains Mono,monospace" font-size="8">SSOP-8</text>
+<!-- voltage domain divider -->
+<line x1="500" y1="495" x2="500" y2="660" stroke="#1c3050" stroke-width="1" stroke-dasharray="3,3"/>
+<text x="462" y="580" fill="#1c3050" font-family="JetBrains Mono,monospace" font-size="7">1.8V</text>
+<text x="512" y="580" fill="#1c3050" font-family="JetBrains Mono,monospace" font-size="7">3.3V</text>
+
+<!-- U1 right pins (3.3V) -->
+<g font-family="JetBrains Mono,monospace" font-size="8">
+  <line x1="600" y1="510" x2="640" y2="510" stroke="#f5c842" stroke-width="1.5"/><text x="644" y="514" fill="#f5c842">EN → VREF2</text>
+  <line x1="600" y1="525" x2="640" y2="525" stroke="#f5c842" stroke-width="1.5"/><text x="644" y="529" fill="#f5c842">VREF2 3.3V</text>
+  <line x1="600" y1="540" x2="640" y2="540" stroke="#00d88a" stroke-width="2"/><text x="644" y="544" fill="#00d88a">SCL2</text>
+  <line x1="600" y1="555" x2="640" y2="555" stroke="#00d88a" stroke-width="2"/><text x="644" y="559" fill="#00d88a">SDA2</text>
+</g>
+
+<!-- U1 SCL2/SDA2 → J3 FPC pins 15/14 -->
+<polyline points="640,540 720,540 720,862 203,862" fill="none" stroke="#00d88a" stroke-width="2" filter="url(#glo)" marker-end="url(#ag)"/>
+<polyline points="640,555 728,555 728,852 203,852" fill="none" stroke="#00d88a" stroke-width="2" filter="url(#glo)" marker-end="url(#ag)"/>
+<text x="690" y="535" fill="#00d88a" font-family="JetBrains Mono,monospace" font-size="7.5">3.3V I2C →FPC</text>
+
+<!-- Pull-up resistors R1,R2 (3.3V side) -->
+<rect x="650" y="585" width="20" height="10" rx="2" fill="#1a1a08" stroke="#f5c842" stroke-width=".7"/>
+<text x="660" y="594" text-anchor="middle" fill="#f5c842" font-family="JetBrains Mono,monospace" font-size="7">R1</text>
+<rect x="650" y="601" width="20" height="10" rx="2" fill="#1a1a08" stroke="#f5c842" stroke-width=".7"/>
+<text x="660" y="610" text-anchor="middle" fill="#f5c842" font-family="JetBrains Mono,monospace" font-size="7">R2</text>
+<text x="675" y="594" fill="#4a5568" font-family="JetBrains Mono,monospace" font-size="7">10kΩ → 3V3</text>
+<text x="675" y="610" fill="#4a5568" font-family="JetBrains Mono,monospace" font-size="7">10kΩ → 3V3</text>
+
+<!-- Pull-up resistors R3,R4 (1.8V side) -->
+<rect x="318" y="505" width="20" height="10" rx="2" fill="#0a1a0f" stroke="#00d88a" stroke-width=".7"/>
+<text x="328" y="514" text-anchor="middle" fill="#00d88a" font-family="JetBrains Mono,monospace" font-size="7">R3</text>
+<rect x="318" y="521" width="20" height="10" rx="2" fill="#0a1a0f" stroke="#00d88a" stroke-width=".7"/>
+<text x="328" y="530" text-anchor="middle" fill="#00d88a" font-family="JetBrains Mono,monospace" font-size="7">R4</text>
+<text x="315" y="514" text-anchor="end" fill="#4a5568" font-family="JetBrains Mono,monospace" font-size="7">4.7kΩ</text>
+<text x="315" y="530" text-anchor="end" fill="#4a5568" font-family="JetBrains Mono,monospace" font-size="7">4.7kΩ</text>
+
+<!-- Decoupling caps -->
+<rect x="410" y="460" width="16" height="10" rx="1" fill="#0d1820" stroke="#00c8ef" stroke-width=".7"/>
+<text x="418" y="469" text-anchor="middle" fill="#00c8ef" font-family="JetBrains Mono,monospace" font-size="6.5">C1</text>
+<line x1="418" y1="460" x2="418" y2="447" stroke="#f5c842" stroke-width="1"/>
+<line x1="418" y1="470" x2="418" y2="480" stroke="#4a5568" stroke-width="1"/>
+<text x="435" y="470" fill="#4a5568" font-family="JetBrains Mono,monospace" font-size="7">100nF</text>
+
+<rect x="455" y="460" width="16" height="10" rx="1" fill="#0d1820" stroke="#00c8ef" stroke-width=".7"/>
+<text x="463" y="469" text-anchor="middle" fill="#00c8ef" font-family="JetBrains Mono,monospace" font-size="6.5">C2</text>
+<line x1="463" y1="460" x2="463" y2="447" stroke="#f5c842" stroke-width="1"/>
+<line x1="463" y1="470" x2="463" y2="480" stroke="#4a5568" stroke-width="1"/>
+<text x="479" y="470" fill="#4a5568" font-family="JetBrains Mono,monospace" font-size="7">100nF</text>
+
+<!-- ══════════ Power routing ══════════ -->
+<!-- +3V3 from J1 → VREF2 U1 + power flag -->
+<polyline points="230,492 230,600 640,600 640,525" fill="none" stroke="#f5c842" stroke-width="1.5" stroke-dasharray="5,2" marker-end="url(#ay)"/>
+<text x="430" y="610" fill="#f5c842" font-family="JetBrains Mono,monospace" font-size="7.5">+3V3 (JMEDIA pin 58/60)</text>
+<!-- +1V8 from JMISC → VREF1 U1 -->
+<text x="200" y="445" fill="#f5c842" font-family="JetBrains Mono,monospace" font-size="7.5">+1V8 (JMISC p57) → VREF1</text>
+
+<!-- GND symbols -->
+<g font-family="JetBrains Mono,monospace">
+  <line x1="500" y1="660" x2="500" y2="670" stroke="#4a5568" stroke-width="1.5"/>
+  <line x1="490" y1="670" x2="510" y2="670" stroke="#4a5568" stroke-width="2"/>
+  <line x1="494" y1="676" x2="506" y2="676" stroke="#4a5568" stroke-width="1.5"/>
+  <line x1="497" y1="682" x2="503" y2="682" stroke="#4a5568" stroke-width="1"/>
+  <text x="500" y="694" text-anchor="middle" fill="#4a5568" font-size="8">GND</text>
+</g>
+
+<!-- ══════════ J4 JMEDIA HEADER ══════════ -->
+<g font-family="JetBrains Mono,monospace" font-size="8">
+  <!-- Power/GPIO entries from J1 routing wires above -->
+  <text x="440" y="175" text-anchor="middle" fill="#7a8fa8" font-size="8.5">GPIO_20 / MCLK0</text>
+  <text x="440" y="190" text-anchor="middle" fill="#4a5568">GPIO_21 / MCLK1</text>
+  <text x="440" y="205" text-anchor="middle" fill="#00d88a">CCI_I2C_SCL0</text>
+  <text x="440" y="220" text-anchor="middle" fill="#00d88a">CCI_I2C_SDA0</text>
+  <text x="440" y="235" text-anchor="middle" fill="#00d88a">CCI_I2C_SCL1</text>
+  <text x="440" y="250" text-anchor="middle" fill="#00d88a">CCI_I2C_SDA1</text>
+  <text x="440" y="265" text-anchor="middle" fill="#f5c842">+3V3 OUT</text>
+  <text x="440" y="280" text-anchor="middle" fill="#f5c842">VIN (7–24V)</text>
+  <text x="440" y="295" text-anchor="middle" fill="#f5c842">+5V USB</text>
+  <text x="440" y="310" text-anchor="middle" fill="#4a5568">GND</text>
+  <text x="440" y="330" text-anchor="middle" fill="#7a8fa8" font-size="7">(matches ASX00085 J14)</text>
+</g>
+<!-- wire from J1 GPIO pins to J4 -->
+<polyline points="230,186 350,186 350,200 350,186" fill="none" stroke="#e07a30" stroke-width="1.5" marker-end="url(#ao)"/>
+<polyline points="230,206 344,206 344,210" fill="none" stroke="#e07a30" stroke-width="1.5" stroke-dasharray="3,2" marker-end="url(#ao)"/>
+
+<!-- ══════════ J2 JMISC PINS ══════════ -->
+<g font-family="JetBrains Mono,monospace" font-size="8">
+  <rect x="1057" y="78" width="178" height="16" rx="2" fill="#0d1e30" stroke="#1c3050" stroke-width=".5"/>
+  <text x="1068" y="90" fill="#7a8fa8">1–25</text><text x="1105" y="90" fill="#7a8fa8">MCU GPIO (PSSI/Trace)</text>
+  <line x1="1057" y1="86" x2="1040" y2="86" stroke="#7a8fa8" stroke-width="1.5" marker-end="url(#agr)"/>
+
+  <rect x="1057" y="98" width="178" height="16" rx="2" fill="#1a2535" stroke="#243a55" stroke-width=".4"/>
+  <text x="1068" y="110" fill="#4a5568">26,27</text><text x="1110" y="110" fill="#4a5568">GND</text>
+
+  <rect x="1057" y="118" width="178" height="16" rx="2" fill="#1a1208" stroke="#9d65ff" stroke-width=".5"/>
+  <text x="1068" y="130" fill="#9d65ff">28–34</text><text x="1110" y="130" fill="#9d65ff">Audio (EAR/MIC/LINE)</text>
+  <line x1="1057" y1="126" x2="1040" y2="126" stroke="#9d65ff" stroke-width="1.5" marker-end="url(#agr)"/>
+
+  <rect x="1057" y="138" width="178" height="16" rx="2" fill="#1a1208" stroke="#9d65ff" stroke-width=".5"/>
+  <text x="1068" y="150" fill="#9d65ff">36–42</text><text x="1110" y="150" fill="#9d65ff">HPH/HS_DET</text>
+
+  <rect x="1057" y="158" width="178" height="16" rx="2" fill="#0d1e30" stroke="#1c3050" stroke-width=".5"/>
+  <text x="1068" y="170" fill="#7a8fa8">37–52</text><text x="1110" y="170" fill="#7a8fa8">MPU SoC GPIOs</text>
+
+  <rect x="1057" y="178" width="178" height="16" rx="2" fill="#1a1808" stroke="#f5c842" stroke-width=".7"/>
+  <text x="1068" y="190" fill="#f5c842">53,55</text><text x="1110" y="190" fill="#f5c842">+3V3 OUT</text>
+
+  <rect x="1057" y="198" width="178" height="16" rx="2" fill="#1a1808" stroke="#f5c842" stroke-width=".7"/>
+  <text x="1068" y="210" fill="#f5c842">54,56</text><text x="1110" y="210" fill="#f5c842">+5V USB</text>
+
+  <rect x="1057" y="218" width="178" height="16" rx="2" fill="#0a1a0f" stroke="#00d88a" stroke-width=".7"/>
+  <text x="1068" y="230" fill="#00d88a">57</text><text x="1110" y="230" fill="#00d88a">+1V8 OUT → VREF1</text>
+  <line x1="1057" y1="226" x2="1040" y2="226" stroke="#00d88a" stroke-width="2" marker-end="url(#ag)"/>
+
+  <rect x="1057" y="238" width="178" height="16" rx="2" fill="#1a2535" stroke="#243a55" stroke-width=".4"/>
+  <text x="1068" y="250" fill="#4a5568">58</text><text x="1110" y="250" fill="#4a5568">GND</text>
+
+  <rect x="1057" y="258" width="178" height="16" rx="2" fill="#1a1808" stroke="#f5c842" stroke-width=".7"/>
+  <text x="1068" y="270" fill="#f5c842">59</text><text x="1110" y="270" fill="#f5c842">VCOIN</text>
+
+  <rect x="1057" y="278" width="178" height="16" rx="2" fill="#1a1808" stroke="#f5c842" stroke-width=".7"/>
+  <text x="1068" y="290" fill="#f5c842">60</text><text x="1110" y="290" fill="#f5c842">VBAT (+3.8V)</text>
+</g>
+
+<!-- J2 → J5 routing arrows -->
+<polyline points="1040,86 960,86 960,175 940,175" fill="none" stroke="#7a8fa8" stroke-width="1.5" marker-end="url(#agr)"/>
+<polyline points="1040,126 965,126 965,280 940,280" fill="none" stroke="#9d65ff" stroke-width="1.5" marker-end="url(#agr)"/>
+
+<!-- J5 JMISC header content -->
+<g font-family="JetBrains Mono,monospace" font-size="8">
+  <text x="850" y="175" text-anchor="middle" fill="#7a8fa8">MCU_PSSI_D0..7</text>
+  <text x="850" y="193" text-anchor="middle" fill="#7a8fa8">MCU_I2C4_SCL/SDA</text>
+  <text x="850" y="211" text-anchor="middle" fill="#7a8fa8">MCU_OPAMP1</text>
+  <text x="850" y="229" text-anchor="middle" fill="#7a8fa8">SOC_GPIO (SE0)</text>
+  <text x="850" y="247" text-anchor="middle" fill="#9d65ff">Audio: Mic/HP/Line</text>
+  <text x="850" y="265" text-anchor="middle" fill="#9d65ff">HPH_L/R/REF</text>
+  <text x="850" y="283" text-anchor="middle" fill="#f5c842">+3V3 / +5V / +1V8</text>
+  <text x="850" y="301" text-anchor="middle" fill="#f5c842">VBAT / VCOIN</text>
+  <text x="850" y="319" text-anchor="middle" fill="#4a5568">GND</text>
+  <text x="850" y="345" text-anchor="middle" fill="#7a8fa8" font-size="7">(matches ASX00085 J15)</text>
+</g>
+
+<!-- +1V8 from JMISC → U1 VREF1 (via long wire) -->
+<polyline points="1040,226 980,226 980,440 244,440 244,540 358,540" fill="none" stroke="#00d88a" stroke-width="1.5" stroke-dasharray="5,2" marker-end="url(#ag)"/>
+<text x="620" y="435" fill="#00d88a" font-family="JetBrains Mono,monospace" font-size="7.5">+1V8 (JMISC p57) → U1 VREF1</text>
+
+<!-- ══════════ VIA MARKERS ══════════ -->
+<!-- Vias are only used for the long +1V8 and +3V3 power runs,
+     not for MIPI pairs (which go direct, no vias) -->
+<!-- Via symbol: circle with X -->
+<g fill="none" stroke="#f5c842" stroke-width="1.5">
+  <circle cx="980" cy="440" r="6"/>
+  <line x1="976" y1="436" x2="984" y2="444"/>
+  <line x1="984" y1="436" x2="976" y2="444"/>
+</g>
+<text x="990" y="435" fill="#f5c842" font-family="JetBrains Mono,monospace" font-size="7">VIA L1→L4</text>
+<text x="990" y="445" fill="#4a5568" font-family="JetBrains Mono,monospace" font-size="7">power via OK</text>
+
+<!-- Via for +3V3 power run -->
+<g fill="none" stroke="#f5c842" stroke-width="1.5">
+  <circle cx="720" cy="620" r="6"/>
+  <line x1="716" y1="616" x2="724" y2="624"/>
+  <line x1="724" y1="616" x2="716" y2="624"/>
+</g>
+<text x="730" y="615" fill="#f5c842" font-family="JetBrains Mono,monospace" font-size="7">VIA L1→L3 (PWR)</text>
+<text x="730" y="625" fill="#4a5568" font-family="JetBrains Mono,monospace" font-size="7">power plane</text>
+
+<!-- ══════════ LAYER ANNOTATION ══════════ -->
+<rect x="1250" y="400" width="290" height="220" rx="4" fill="#0f1520" stroke="#1c3050" stroke-width="1"/>
+<text x="1395" y="420" text-anchor="middle" fill="#00c8ef" font-family="Syne,sans-serif" font-size="9" letter-spacing="1.5">4-LAYER STACKUP</text>
+<g font-family="JetBrains Mono,monospace" font-size="9">
+  <rect x="1260" y="430" width="270" height="18" rx="2" fill="#0d1e30" stroke="#00c8ef" stroke-width=".5"/>
+  <text x="1268" y="443" fill="#00c8ef">L1 (F.Cu)</text><text x="1380" y="443" fill="#4a5568">Signal — MIPI, I2C, GPIO</text>
+  <rect x="1260" y="452" width="270" height="18" rx="2" fill="#1a2535" stroke="#4a5568" stroke-width=".5"/>
+  <text x="1268" y="465" fill="#4a5568">L2 (In1.Cu)</text><text x="1380" y="465" fill="#4a5568">GND PLANE (solid)</text>
+  <rect x="1260" y="474" width="270" height="18" rx="2" fill="#1a1808" stroke="#f5c842" stroke-width=".5"/>
+  <text x="1268" y="487" fill="#f5c842">L3 (In2.Cu)</text><text x="1380" y="487" fill="#4a5568">PWR PLANE (3V3/1V8)</text>
+  <rect x="1260" y="496" width="270" height="18" rx="2" fill="#0d1e30" stroke="#1c3050" stroke-width=".5"/>
+  <text x="1268" y="509" fill="#7a8fa8">L4 (B.Cu)</text><text x="1380" y="509" fill="#4a5568">Signal — optional overflow</text>
+</g>
+<text x="1268" y="540" fill="#4a5568" font-family="JetBrains Mono,monospace" font-size="7.5">MIPI pairs: L1 only, no layer change</text>
+<text x="1268" y="555" fill="#4a5568" font-family="JetBrains Mono,monospace" font-size="7.5">Ref plane: L2 GND directly below L1</text>
+<text x="1268" y="570" fill="#4a5568" font-family="JetBrains Mono,monospace" font-size="7.5">Vias: power only (no signal vias on MIPI)</text>
+<text x="1268" y="585" fill="#f5c842" font-family="JetBrains Mono,monospace" font-size="7.5">3V3 zone: fill pour L3, zone origin J1 p58</text>
+<text x="1268" y="600" fill="#00d88a" font-family="JetBrains Mono,monospace" font-size="7.5">1V8 zone: fill pour L3, zone origin J2 p57</text>
+
+<!-- ══════════ LEGEND ══════════ -->
+<rect x="1250" y="640" width="290" height="200" rx="4" fill="#0f1520" stroke="#1c3050" stroke-width="1"/>
+<text x="1395" y="660" text-anchor="middle" fill="#00c8ef" font-family="Syne,sans-serif" font-size="9" letter-spacing="1.5">LEGEND</text>
+<g font-family="JetBrains Mono,monospace" font-size="9">
+  <line x1="1260" y1="678" x2="1295" y2="678" stroke="#00c8ef" stroke-width="2" filter="url(#glo)"/>
+  <text x="1302" y="682" fill="#7a8fa8">MIPI CSI-2 diff pair (no via)</text>
+  <line x1="1260" y1="698" x2="1295" y2="698" stroke="#7799ff" stroke-width="2"/>
+  <text x="1302" y="702" fill="#7a8fa8">MIPI clock lane</text>
+  <line x1="1260" y1="718" x2="1295" y2="718" stroke="#00d88a" stroke-width="2" filter="url(#glo)"/>
+  <text x="1302" y="722" fill="#7a8fa8">I2C (1.8V / 3.3V via PCA9306)</text>
+  <line x1="1260" y1="738" x2="1295" y2="738" stroke="#f5c842" stroke-width="1.5" stroke-dasharray="5,2"/>
+  <text x="1302" y="742" fill="#7a8fa8">Power rail (may use plane)</text>
+  <line x1="1260" y1="758" x2="1295" y2="758" stroke="#e07a30" stroke-width="1.5"/>
+  <text x="1302" y="762" fill="#7a8fa8">GPIO / MCLK</text>
+  <line x1="1260" y1="778" x2="1295" y2="778" stroke="#7a8fa8" stroke-width="1.5" stroke-dasharray="4,2"/>
+  <text x="1302" y="782" fill="#7a8fa8">JMISC general signals</text>
+  <circle cx="1277" cy="800" r="6" fill="none" stroke="#f5c842" stroke-width="1.5"/>
+  <line x1="1273" y1="796" x2="1281" y2="804" stroke="#f5c842" stroke-width="1.5"/>
+  <line x1="1281" y1="796" x2="1273" y2="804" stroke="#f5c842" stroke-width="1.5"/>
+  <text x="1302" y="804" fill="#7a8fa8">Via (power routes only)</text>
+</g>
+
+<!-- border -->
+<rect x="4" y="4" width="1552" height="892" rx="4" fill="none" stroke="#1c3050" stroke-width="1.5"/>
+</svg>
+</div>
+
+<!-- KICAD GUIDE -->
+<div class="guide">
+
+<div class="card">
+  <h3>4-layer board setup in KiCad</h3>
+  <div class="step"><div class="step-n">1</div><div class="step p">Open <code>Board Setup</code> → <code>Board Stackup</code>. Click <code>Add Layer</code> twice to get 4 copper layers. Name them: <code>F.Cu</code>, <code>In1.Cu</code>, <code>In2.Cu</code>, <code>B.Cu</code>.</div></div>
+  <div class="step"><div class="step-n">2</div><div class="step p">Set dielectric thickness to <code>0.2mm</code> between L1–L2 and L3–L4 (signal pairs need thin dielectric for 100Ω target). Core between L2–L3 can be <code>1.0mm</code>.</div></div>
+  <div class="step"><div class="step-n">3</div><div class="step p">In <code>Design Rules → Impedance</code>, set differential impedance rule: <code>100 Ω</code>, trace width <code>0.15mm</code>, gap <code>0.15mm</code>, layer <code>F.Cu</code>, ref layer <code>In1.Cu</code> (GND). Adjust W/S if your fab stackup differs.</div></div>
+  <div class="step"><div class="step-n">4</div><div class="step p">Enable <code>Interactive Router Settings → Use Net Tie Constraint</code>. Set DRC rule for MIPI nets: <code>length_matching 2mm</code>.</div></div>
+
+  <table class="layer-table">
+    <tr><th>Layer</th><th>Name</th><th>Purpose</th></tr>
+    <tr><td>L1</td><td>F.Cu</td><td>All signal routing: MIPI pairs, I2C, GPIO</td></tr>
+    <tr><td>L2</td><td>In1.Cu</td><td>Solid GND plane — reference for MIPI impedance</td></tr>
+    <tr><td>L3</td><td>In2.Cu</td><td>Power plane: +3V3 fill + +1V8 fill (split zones)</td></tr>
+    <tr><td>L4</td><td>B.Cu</td><td>Additional signal or component placement</td></tr>
+  </table>
+</div>
+
+<div class="card">
+  <h3>Power plane on Layer 3 (In2.Cu) in KiCad</h3>
+  <div class="step"><div class="step-n">1</div><div class="step p">In PCB editor, select layer <code>In2.Cu</code> in the layer selector (bottom toolbar).</div></div>
+  <div class="step"><div class="step-n">2</div><div class="step p">Use <code>Place → Add Rule Area</code> (or press <code>Ctrl+Shift+Z</code>). Draw a zone covering the +3V3 region (roughly the J1 side of the board). In the zone properties dialog: Net = <code>+3V3</code>, Fill = <code>Solid</code>, Layer = <code>In2.Cu</code>.</div></div>
+  <div class="step"><div class="step-n">3</div><div class="step p">Repeat for +1V8: draw a second zone, Net = <code>+1V8</code>, on the J2 / U1 side. The two zones must have a <code>0.5mm</code> clearance gap between them — KiCad enforces this automatically.</div></div>
+  <div class="step"><div class="step-n">4</div><div class="step p">Press <code>B</code> to fill all zones. Use <code>Inspect → Net Inspector</code> to verify +3V3 and +1V8 are filled correctly on In2.Cu.</div></div>
+
+  <div class="warn"><p>Never route MIPI pairs on In2.Cu or B.Cu. MIPI traces must be on L1 (F.Cu) with the solid GND plane on L2 directly underneath as the unbroken reference. Any gap in the L2 GND under MIPI traces destroys impedance control.</p></div>
+</div>
+
+<div class="card">
+  <h3>Labelling power pins in KiCad (PWR_FLAG)</h3>
+  <div class="step"><div class="step-n">1</div><div class="step p">In the schematic editor, press <code>P</code> to add a power symbol. Search for <code>PWR_FLAG</code>. Place one on every power net that connects to a connector pin but has no driver (e.g. +3V3, +1V8, VIN). This tells KiCad's ERC the net is intentionally sourced externally.</div></div>
+  <div class="step"><div class="step-n">2</div><div class="step p">For named power rails, add a global label. Press <code>P</code>, search the net name (e.g. <code>+3V3</code>). Pins connected to this symbol are automatically shorted in the netlist — no wire needed across sheets.</div></div>
+  <div class="step"><div class="step-n">3</div><div class="step p">Assign net names on the PCB side: open <code>Edit → Net Classes</code>. Create class <code>POWER</code> with min width <code>0.3mm</code>, clearance <code>0.2mm</code>. Assign +3V3, +1V8, VIN, GND to this class.</div></div>
+  <div class="step"><div class="step-n">4</div><div class="step p">For connector pins, use the symbol's pin properties to set type to <code>Power Input</code> for GND/VCC pins and <code>Power Output</code> for regulated outputs (JMEDIA +3V3 OUT). This makes ERC errors meaningful.</div></div>
+
+  <div class="ok"><p>Tip: add a <code>PWR_FLAG</code> at J1 pin 58 (+3V3), J2 pin 57 (+1V8), and J1 pin 57 (VIN). Without these, KiCad ERC flags "Pin unconnected" on all power nets even when they are connected to a connector.</p></div>
+</div>
+
+<div class="card">
+  <h3>Via rules — where vias are and are NOT allowed</h3>
+  <p>Based on the schematic above:</p>
+  <br>
+  <li><b style="color:#e04040">NO vias</b> on MIPI CSI-2 differential pairs (L0−/L0+, L1−/L1+, CLK−/CLK+). These run on L1 end-to-end from J1 to J3. A via introduces a stub and destroys impedance at multi-Gbps MIPI speeds.</li><br>
+  <li><b style="color:#e04040">NO vias</b> on I2C signal traces (SCL0, SDA0, SCL2, SDA2). Keep these short and on L1.</li><br>
+  <li><b style="color:#f5c842">Vias OK</b> on +3V3 and +1V8 power nets — use 0.4mm drill / 0.8mm annular ring. The power planes on L3 can be accessed via stitching vias.</li><br>
+  <li><b style="color:#f5c842">Vias OK</b> on GPIO, MCLK, JMISC breakout signals — these are slow (LVTTL, I2C speed) and a via is fine.</li><br>
+  <li>GND stitching vias: place every 3–5mm alongside MIPI traces to reinforce the L2 GND reference. Use 0.3mm drill.</li>
+</div>
+
+</div>
+</div>
+</body>
+</html>

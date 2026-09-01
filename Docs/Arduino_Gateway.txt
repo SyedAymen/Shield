@@ -1,0 +1,25 @@
+##LTE module available in india 
+
+1. Walter - A certified ESP32-S3 module with LTE-M, NB-IoT, and GNSS for prototyping and production
+
+https://www.fabtolab.com/walter-certified-esp32-s3-module-lte-m-nb-iot-gnss-prototyping-production
+
+2. https://quartzcomponents.com/products/sima7670e-2g-4g-gsm-breakout-board?_pos=3&_sid=3f727317b&_ss=r
+
+
+##Ethernet
+
+1. https://quartzcomponents.com/products/w5500-tcp-ip-spi-to-lan-ethernet-interface-module-spi-to-ethernet-converter?_pos=1&_sid=1559c49b0&_ss=r
+
+2. https://quartzcomponents.com/products/mini-enc28j60-ethernet-lan-network-module?_pos=2&_sid=1559c49b0&_ss=r
+
+
+##GPS
+
+1. https://quartzcomponents.com/products/neo6mv2-gps-module-with-flight-controller?_pos=1&_sid=6cb66123d&_ss=r
+
+
+##LoRa
+
+1. https://quartzcomponents.com/products/433mhz-lora-sx1278-long-range-rf-wireless-module?_pos=10&_sid=7922febaf&_ss=r
+	

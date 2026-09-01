@@ -1,0 +1,171 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 820" font-family="Helvetica, Arial, sans-serif">
+
+  <rect x="0" y="0" width="1080" height="820" fill="#fafaf8"/>
+
+  <text x="540" y="34" text-anchor="middle" font-size="22" font-weight="700" fill="#1a1a1a">UNO Q Custom Shield — Top-Down Layout (rev 2)</text>
+  <text x="540" y="56" text-anchor="middle" font-size="13" fill="#666">Bottom-side shield, viewed from below looking up at the main board's underside connectors</text>
+
+  <!-- Board outline -->
+  <rect x="100" y="90" width="880" height="600" rx="10" fill="#ffffff" stroke="#222" stroke-width="2.5"/>
+  <text x="540" y="80" text-anchor="middle" font-size="12" fill="#888">↑ shield edge nearest main-board JMEDIA/JMISC/JSPI connectors</text>
+
+  <!-- Mating connectors to main board -->
+  <rect x="150" y="100" width="170" height="26" fill="#e8e8e8" stroke="#444" stroke-width="1.5" stroke-dasharray="4,3"/>
+  <text x="235" y="118" text-anchor="middle" font-size="12" font-weight="600">JMEDIA (mates up)</text>
+
+  <rect x="340" y="100" width="170" height="26" fill="#e8e8e8" stroke="#444" stroke-width="1.5" stroke-dasharray="4,3"/>
+  <text x="425" y="118" text-anchor="middle" font-size="12" font-weight="600">JMISC (mates up)</text>
+
+  <rect x="700" y="100" width="150" height="26" fill="#e8e8e8" stroke="#444" stroke-width="1.5" stroke-dasharray="4,3"/>
+  <text x="775" y="118" text-anchor="middle" font-size="12" font-weight="600">JSPI tab (harness)</text>
+
+  <!-- ===================== ZONE 1: Camera + DSI (left) — vertical edge connectors ===================== -->
+  <rect x="115" y="148" width="230" height="500" rx="6" fill="#eaf3fb" stroke="#2b6cb0" stroke-width="1.5"/>
+  <text x="230" y="170" text-anchor="middle" font-size="13" font-weight="700" fill="#1a4971">CAMERA + DISPLAY</text>
+
+  <!-- vertical 22-pin FPC connector, camera -->
+  <rect x="122" y="195" width="22" height="190" fill="#fff" stroke="#2b6cb0" stroke-width="1.5"/>
+  <text x="133" y="295" text-anchor="middle" font-size="9" fill="#2b6cb0" transform="rotate(-90 133,295)">22-pin FPC edge connector</text>
+
+  <rect x="160" y="195" width="170" height="90" fill="#fff" stroke="#2b6cb0" stroke-width="1.2"/>
+  <text x="245" y="218" text-anchor="middle" font-size="11" font-weight="600">RPi Camera FPC</text>
+  <text x="245" y="234" text-anchor="middle" font-size="10" fill="#555">CSI0 + CCI_I2C0</text>
+  <text x="245" y="249" text-anchor="middle" font-size="10" fill="#555">22-pin, vertical on left edge</text>
+  <text x="245" y="264" text-anchor="middle" font-size="9" fill="#777">(orientation/pinout unchanged)</text>
+
+  <!-- vertical 22-pin FPC connector, display -->
+  <rect x="122" y="400" width="22" height="190" fill="#fff" stroke="#2b6cb0" stroke-width="1.5"/>
+  <text x="133" y="500" text-anchor="middle" font-size="9" fill="#2b6cb0" transform="rotate(-90 133,500)">22-pin FPC edge connector</text>
+
+  <rect x="160" y="400" width="170" height="90" fill="#fff" stroke="#2b6cb0" stroke-width="1.2"/>
+  <text x="245" y="423" text-anchor="middle" font-size="11" font-weight="600">DSI Display FPC</text>
+  <text x="245" y="439" text-anchor="middle" font-size="10" fill="#555">MIPI_DSI0</text>
+  <text x="245" y="454" text-anchor="middle" font-size="10" fill="#555">22-pin, vertical on left edge</text>
+  <text x="245" y="469" text-anchor="middle" font-size="9" fill="#777">(orientation/pinout unchanged)</text>
+
+  <rect x="160" y="300" width="170" height="50" fill="#fff" stroke="#2b6cb0" stroke-width="1.2" stroke-dasharray="3,3"/>
+  <text x="245" y="320" text-anchor="middle" font-size="10" font-weight="600">CCI1 (free bus)</text>
+  <text x="245" y="335" text-anchor="middle" font-size="9" fill="#555">→ DSI touch/IO (TBD verify)</text>
+
+  <rect x="160" y="500" width="170" height="45" fill="#fff" stroke="#2b6cb0" stroke-width="1.2"/>
+  <text x="245" y="520" text-anchor="middle" font-size="10" font-weight="600">TCA9406DCUR</text>
+  <text x="245" y="534" text-anchor="middle" font-size="9" fill="#555">CCI level translator</text>
+
+  <!-- ===================== ZONE 2: JMISC passthrough (center) ===================== -->
+  <rect x="360" y="148" width="200" height="500" rx="6" fill="#f3f0fa" stroke="#6b46c1" stroke-width="1.5"/>
+  <text x="460" y="170" text-anchor="middle" font-size="13" font-weight="700" fill="#44267a">JMISC / CONTROL I/O</text>
+
+  <rect x="380" y="195" width="160" height="60" fill="#fff" stroke="#6b46c1" stroke-width="1.2"/>
+  <text x="460" y="218" text-anchor="middle" font-size="10" font-weight="600">JMISC passthrough</text>
+  <text x="460" y="233" text-anchor="middle" font-size="9" fill="#555">SE0 I2C (37/39)</text>
+  <text x="460" y="246" text-anchor="middle" font-size="9" fill="#555">free GPIO 41/43/45/47</text>
+
+  <rect x="380" y="270" width="160" height="55" fill="#fff" stroke="#6b46c1" stroke-width="1.2" stroke-dasharray="3,3"/>
+  <text x="460" y="292" text-anchor="middle" font-size="10" font-weight="600">Continuity check</text>
+  <text x="460" y="307" text-anchor="middle" font-size="9" fill="#555">37↔41 / 39↔43 (TBD)</text>
+
+  <rect x="380" y="340" width="160" height="55" fill="#fff" stroke="#c53030" stroke-width="1.2"/>
+  <text x="460" y="362" text-anchor="middle" font-size="10" font-weight="600" fill="#c53030">D0/D1 = OFF LIMITS</text>
+  <text x="460" y="377" text-anchor="middle" font-size="9" fill="#555">arduino-router lock</text>
+
+  <rect x="380" y="410" width="160" height="65" fill="#fff" stroke="#6b46c1" stroke-width="1.2"/>
+  <text x="460" y="432" text-anchor="middle" font-size="10" font-weight="600">All control via I2C</text>
+  <text x="460" y="447" text-anchor="middle" font-size="9" fill="#555">TCA9555 expander only</text>
+  <text x="460" y="461" text-anchor="middle" font-size="9" fill="#555">no JDIGITAL harness needed</text>
+
+  <!-- ===================== Right side: LoRa (top) / Hub (middle) / LTE (bottom), stacked ===================== -->
+
+  <!-- LoRa - top right -->
+  <rect x="575" y="148" width="290" height="160" rx="6" fill="#fdf3e7" stroke="#c05621" stroke-width="1.5"/>
+  <text x="720" y="168" text-anchor="middle" font-size="13" font-weight="700" fill="#7c3a0e">LoRa — Elecrow LR1302 (top right)</text>
+
+  <rect x="590" y="185" width="125" height="55" fill="#fff" stroke="#c05621" stroke-width="1.2"/>
+  <text x="652" y="206" text-anchor="middle" font-size="10" font-weight="600">LR1302 module</text>
+  <text x="652" y="220" text-anchor="middle" font-size="9" fill="#555">SPI via JSPI harness</text>
+  <text x="652" y="233" text-anchor="middle" font-size="9" fill="#555">MISO/MOSI/SCK</text>
+
+  <rect x="725" y="185" width="125" height="55" fill="#fff" stroke="#c05621" stroke-width="1.2"/>
+  <text x="787" y="206" text-anchor="middle" font-size="10" font-weight="600">TCA9555RGER</text>
+  <text x="787" y="220" text-anchor="middle" font-size="9" fill="#555">RESET / IRQ-BUSY</text>
+  <text x="787" y="233" text-anchor="middle" font-size="9" fill="#555">I2C GPIO expander</text>
+
+  <rect x="590" y="248" width="260" height="40" fill="#fff" stroke="#c05621" stroke-width="1.2" stroke-dasharray="3,3"/>
+  <text x="720" y="268" text-anchor="middle" font-size="10" font-weight="600">Antenna keepout — TBD</text>
+  <text x="720" y="281" text-anchor="middle" font-size="9" fill="#555">pending LR1302 antenna datasheet</text>
+
+  <!-- only harness in the design: LoRa -> JSPI -->
+  <path d="M 652,185 L 652,150 L 775,150 L 775,126" stroke="#c05621" stroke-width="2" stroke-dasharray="6,4" fill="none"/>
+  <text x="700" y="142" font-size="9" fill="#c05621">harness loop (only one needed): LoRa → JSPI</text>
+
+  <!-- USB Hub - middle right -->
+  <rect x="575" y="320" width="290" height="150" rx="6" fill="#fdeef0" stroke="#a3275c" stroke-width="1.5"/>
+  <text x="720" y="340" text-anchor="middle" font-size="13" font-weight="700" fill="#6b1638">CUSTOM USB HUB (middle right)</text>
+
+  <rect x="590" y="355" width="125" height="50" fill="#fff" stroke="#a3275c" stroke-width="1.2"/>
+  <text x="652" y="375" text-anchor="middle" font-size="10" font-weight="600">VL817 hub IC</text>
+  <text x="652" y="389" text-anchor="middle" font-size="9" fill="#555">data-only, no PD</text>
+  <text x="652" y="400" text-anchor="middle" font-size="9" fill="#555">passthrough (unverified)</text>
+
+  <rect x="725" y="355" width="125" height="50" fill="#fff" stroke="#c53030" stroke-width="1.2" stroke-dasharray="3,3"/>
+  <text x="787" y="375" text-anchor="middle" font-size="10" font-weight="600" fill="#c53030">Power-sink IC — TBD</text>
+  <text x="787" y="389" text-anchor="middle" font-size="9" fill="#555">5V/3A PD-sink</text>
+  <text x="787" y="400" text-anchor="middle" font-size="9" fill="#555">signaling</text>
+
+  <rect x="590" y="415" width="260" height="40" fill="#fff" stroke="#a3275c" stroke-width="1.2"/>
+  <text x="720" y="433" text-anchor="middle" font-size="10" font-weight="600">USBLC6-2SC6 ESD (×3 ports)</text>
+  <text x="720" y="447" text-anchor="middle" font-size="9" fill="#555">internal trace → LTE USB_DP/DN/VBUS</text>
+
+  <!-- LTE - bottom right -->
+  <rect x="575" y="490" width="290" height="158" rx="6" fill="#e9f7ef" stroke="#1f7a3d" stroke-width="1.5"/>
+  <text x="720" y="510" text-anchor="middle" font-size="13" font-weight="700" fill="#155226">LTE — SIMCom A7672S (bottom right)</text>
+
+  <rect x="590" y="525" width="125" height="50" fill="#fff" stroke="#1f7a3d" stroke-width="1.2"/>
+  <text x="652" y="544" text-anchor="middle" font-size="10" font-weight="600">A7672S module</text>
+  <text x="652" y="558" text-anchor="middle" font-size="9" fill="#555">USB ECM + AT</text>
+  <text x="652" y="569" text-anchor="middle" font-size="8" fill="#777">(via hub internal trace)</text>
+
+  <rect x="725" y="525" width="125" height="50" fill="#fff" stroke="#1f7a3d" stroke-width="1.2"/>
+  <text x="787" y="544" text-anchor="middle" font-size="10" font-weight="600">TCA9555 (shared)</text>
+  <text x="787" y="558" text-anchor="middle" font-size="9" fill="#555">PWRKEY/RESET/STATUS</text>
+
+  <rect x="590" y="585" width="125" height="48" fill="#fff" stroke="#c53030" stroke-width="1.2" stroke-dasharray="3,3"/>
+  <text x="652" y="604" text-anchor="middle" font-size="10" font-weight="600" fill="#c53030">VBAT supply — GAP</text>
+  <text x="652" y="618" text-anchor="middle" font-size="9" fill="#555">3.4–4.2V, multi-amp</text>
+
+  <rect x="725" y="585" width="125" height="48" fill="#fff" stroke="#c53030" stroke-width="1.2" stroke-dasharray="3,3"/>
+  <text x="787" y="604" text-anchor="middle" font-size="10" font-weight="600" fill="#c53030">SIM holder — GAP</text>
+  <text x="787" y="618" text-anchor="middle" font-size="9" fill="#555">VSIM/CLK/DATA/RST</text>
+
+  <!-- ===================== Far right edge: 3 external ports, stacked vertically ===================== -->
+  <rect x="880" y="148" width="95" height="500" rx="6" fill="#f7f3f9" stroke="#a3275c" stroke-width="1.2"/>
+  <text x="927" y="168" text-anchor="middle" font-size="10" font-weight="700" fill="#6b1638">EXT. PORTS</text>
+  <text x="927" y="180" text-anchor="middle" font-size="8" fill="#888">(right edge, vertical)</text>
+
+  <rect x="893" y="320" width="70" height="55" fill="#fff" stroke="#a3275c" stroke-width="1.4"/>
+  <text x="928" y="343" text-anchor="middle" font-size="10" font-weight="600">USB-A 1</text>
+  <line x1="880" y1="347" x2="893" y2="347" stroke="#a3275c" stroke-width="2"/>
+
+  <rect x="893" y="385" width="70" height="55" fill="#fff" stroke="#a3275c" stroke-width="1.4"/>
+  <text x="928" y="408" text-anchor="middle" font-size="10" font-weight="600">USB-A 2</text>
+  <line x1="880" y1="412" x2="893" y2="412" stroke="#a3275c" stroke-width="2"/>
+
+  <rect x="893" y="450" width="70" height="55" fill="#fff" stroke="#a3275c" stroke-width="1.4"/>
+  <text x="928" y="473" text-anchor="middle" font-size="10" font-weight="600">USB-C</text>
+  <line x1="880" y1="477" x2="893" y2="477" stroke="#a3275c" stroke-width="2"/>
+
+  <text x="927" y="525" text-anchor="middle" font-size="8" fill="#888">main UNO Q USB-C</text>
+  <text x="927" y="537" text-anchor="middle" font-size="8" fill="#888">stays on main board,</text>
+  <text x="927" y="549" text-anchor="middle" font-size="8" fill="#888">untouched</text>
+
+  <!-- trace from hub to port stack -->
+  <path d="M 850,432 L 880,347" stroke="#a3275c" stroke-width="1.2" stroke-dasharray="4,2" fill="none"/>
+  <path d="M 850,432 L 880,412" stroke="#a3275c" stroke-width="1.2" stroke-dasharray="4,2" fill="none"/>
+  <path d="M 850,432 L 880,477" stroke="#a3275c" stroke-width="1.2" stroke-dasharray="4,2" fill="none"/>
+
+  <!-- Legend -->
+  <rect x="115" y="668" width="850" height="0" fill="none"/>
+  <text x="115" y="668" font-size="10" fill="#333">Legend: solid border = placed/confirmed · dashed red = unresolved gap (Sec. 5) · dashed grey/orange line = harness/FFC loop (only LoRa→JSPI remains)</text>
+  <text x="115" y="684" font-size="10" fill="#333">Right side now reads top→bottom: LoRa → USB Hub → LTE, with the 3 external ports stacked vertically on the board's right edge.</text>
+  <text x="115" y="700" font-size="10" fill="#333">Conceptual floorplan only — not yet dimensioned for trace length, impedance, or antenna keepout.</text>
+
+</svg>

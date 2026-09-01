@@ -1,0 +1,914 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RPi Camera → Uno Q JMEDIA Schematic</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Orbitron:wght@400;700;900&family=IBM+Plex+Mono:wght@300;400;500;600&display=swap');
+
+  :root {
+    --bg:        #0a0e14;
+    --bg2:       #0f1520;
+    --grid:      #1a2535;
+    --panel:     #111827;
+    --border:    #1e3a5f;
+    --cyan:      #00d4ff;
+    --cyan-dim:  #0099bb;
+    --green:     #00e5a0;
+    --green-dim: #009966;
+    --yellow:    #ffd700;
+    --orange:    #ff8c42;
+    --red:       #ff4d6d;
+    --purple:    #9d65ff;
+    --white:     #e8f0fe;
+    --grey:      #4a5568;
+    --wire:      #00d4ff;
+    --wire-i2c:  #00e5a0;
+    --wire-pwr:  #ffd700;
+    --wire-gnd:  #4a5568;
+    --wire-gpio: #ff8c42;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--bg);
+    font-family: 'IBM Plex Mono', monospace;
+    color: var(--white);
+    min-height: 100vh;
+    overflow-x: auto;
+  }
+
+  /* ── dot-grid background ── */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: radial-gradient(circle, #1e3a5f 1px, transparent 1px);
+    background-size: 24px 24px;
+    opacity: 0.4;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .page {
+    position: relative;
+    z-index: 1;
+    padding: 20px;
+    max-width: 1600px;
+    margin: 0 auto;
+  }
+
+  /* ── title bar ── */
+  .title-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border: 1px solid var(--border);
+    border-bottom: 2px solid var(--cyan);
+    background: var(--panel);
+    padding: 12px 24px;
+    margin-bottom: 20px;
+    position: relative;
+  }
+  .title-bar::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, var(--cyan), var(--green), var(--cyan));
+  }
+  .title-main {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--cyan);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+  }
+  .title-sub {
+    font-size: 11px;
+    color: var(--grey);
+    letter-spacing: 1px;
+    margin-top: 4px;
+  }
+  .title-meta {
+    text-align: right;
+    font-size: 10px;
+    color: var(--grey);
+    line-height: 1.8;
+  }
+  .title-meta span { color: var(--cyan); }
+
+  /* ── schematic canvas ── */
+  .schematic {
+    width: 100%;
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    position: relative;
+  }
+
+  /* ── legend ── */
+  .legend {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    padding: 12px 20px;
+    border: 1px solid var(--border);
+    border-top: none;
+    background: var(--panel);
+    margin-bottom: 12px;
+  }
+  .legend-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 11px;
+    color: var(--white);
+  }
+  .legend-line {
+    width: 30px;
+    height: 2px;
+  }
+  .legend-box {
+    width: 14px;
+    height: 14px;
+    border: 1px solid;
+  }
+
+  /* ── notes panel ── */
+  .notes {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 12px;
+    margin-top: 12px;
+  }
+  .note-card {
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-left: 3px solid;
+    padding: 12px 14px;
+    font-size: 11px;
+    line-height: 1.7;
+  }
+  .note-card.warn { border-left-color: var(--yellow); }
+  .note-card.info { border-left-color: var(--cyan); }
+  .note-card.ok   { border-left-color: var(--green); }
+  .note-card h4 {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 9px;
+    letter-spacing: 1.5px;
+    margin-bottom: 6px;
+  }
+  .note-card.warn h4 { color: var(--yellow); }
+  .note-card.info h4 { color: var(--cyan); }
+  .note-card.ok h4   { color: var(--green); }
+  .note-card p { color: #8899aa; }
+  .note-card p b { color: var(--white); }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- Title bar -->
+  <div class="title-bar">
+    <div>
+      <div class="title-main">RPi Camera → Daughter Board → Arduino Uno Q</div>
+      <div class="title-sub">JMEDIA (B2) Interface Schematic — MIPI CSI-2 + CCI I²C + Level Shifting</div>
+    </div>
+    <div class="title-meta">
+      <div>Sheet: <span>1 / 1</span></div>
+      <div>Rev: <span>A</span></div>
+      <div>Scale: <span>NTS</span></div>
+    </div>
+  </div>
+
+  <!-- Main SVG Schematic -->
+  <div class="schematic">
+  <svg viewBox="0 0 1560 820" xmlns="http://www.w3.org/2000/svg" style="width:100%;display:block;">
+    <defs>
+      <!-- Arrow markers -->
+      <marker id="arr-cyan" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+        <polygon points="0 0, 8 3, 0 6" fill="#00d4ff"/>
+      </marker>
+      <marker id="arr-green" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+        <polygon points="0 0, 8 3, 0 6" fill="#00e5a0"/>
+      </marker>
+      <marker id="arr-yellow" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+        <polygon points="0 0, 8 3, 0 6" fill="#ffd700"/>
+      </marker>
+      <marker id="arr-orange" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+        <polygon points="0 0, 8 3, 0 6" fill="#ff8c42"/>
+      </marker>
+      <marker id="arr-grey" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+        <polygon points="0 0, 8 3, 0 6" fill="#4a5568"/>
+      </marker>
+      <marker id="arr-both-cyan" markerWidth="8" markerHeight="6" refX="1" refY="3" orient="auto-start-reverse">
+        <polygon points="0 3, 8 0, 8 6" fill="#00e5a0"/>
+      </marker>
+      <!-- glow filter -->
+      <filter id="glow-cyan" x="-50%" y="-50%" width="200%" height="200%">
+        <feGaussianBlur in="SourceGraphic" stdDeviation="2" result="blur"/>
+        <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+      </filter>
+      <filter id="glow-green" x="-50%" y="-50%" width="200%" height="200%">
+        <feGaussianBlur in="SourceGraphic" stdDeviation="1.5" result="blur"/>
+        <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+      </filter>
+      <!-- dot junction -->
+      <circle id="junc" r="4" fill="#00d4ff"/>
+    </defs>
+
+    <!-- ═══════════════════════════════════════════════════════════════════ -->
+    <!-- BACKGROUND PANELS                                                   -->
+    <!-- ═══════════════════════════════════════════════════════════════════ -->
+
+    <!-- RPi Camera block bg -->
+    <rect x="10" y="30" width="220" height="760" rx="6" fill="#0c1a2e" stroke="#1e3a5f" stroke-width="1.5"/>
+    <rect x="10" y="30" width="220" height="28" rx="6" fill="#0f2744"/>
+    <text x="120" y="50" text-anchor="middle" fill="#00d4ff" font-family="Orbitron,sans-serif" font-size="9" letter-spacing="1.5">RPi CAMERA MODULE</text>
+    <text x="120" y="64" text-anchor="middle" fill="#4a5568" font-family="IBM Plex Mono,monospace" font-size="8">15-pin FPC  •  1mm pitch</text>
+
+    <!-- Daughter board bg -->
+    <rect x="590" y="30" width="580" height="760" rx="6" fill="#0a1a15" stroke="#1e3a5f" stroke-width="1.5"/>
+    <rect x="590" y="30" width="580" height="28" rx="6" fill="#0f2820"/>
+    <text x="880" y="50" text-anchor="middle" fill="#00e5a0" font-family="Orbitron,sans-serif" font-size="9" letter-spacing="1.5">DAUGHTER BOARD (PCB)</text>
+    <text x="880" y="64" text-anchor="middle" fill="#4a5568" font-family="IBM Plex Mono,monospace" font-size="8">RPi Camera Interface Section</text>
+
+    <!-- Arduino Uno Q bg -->
+    <rect x="1230" y="30" width="320" height="760" rx="6" fill="#0c1020" stroke="#1e3a5f" stroke-width="1.5"/>
+    <rect x="1230" y="30" width="320" height="28" rx="6" fill="#141030"/>
+    <text x="1390" y="50" text-anchor="middle" fill="#9d65ff" font-family="Orbitron,sans-serif" font-size="9" letter-spacing="1.5">ARDUINO UNO Q</text>
+    <text x="1390" y="64" text-anchor="middle" fill="#4a5568" font-family="IBM Plex Mono,monospace" font-size="8">JMEDIA (B2) Connector</text>
+
+    <!-- PCA9306 sub-panel -->
+    <rect x="740" y="370" width="260" height="240" rx="4" fill="#0d1f15" stroke="#00e5a0" stroke-width="1" stroke-dasharray="4,3"/>
+    <text x="870" y="390" text-anchor="middle" fill="#00e5a0" font-family="Orbitron,sans-serif" font-size="8" letter-spacing="1">PCA9306DCTR</text>
+    <text x="870" y="402" text-anchor="middle" fill="#4a5568" font-family="IBM Plex Mono,monospace" font-size="7.5">I²C Level Translator  •  SSOP-8</text>
+
+    <!-- FPC connector sub-panel -->
+    <rect x="600" y="70" width="160" height="280" rx="4" fill="#0d1820" stroke="#00d4ff" stroke-width="1"/>
+    <text x="680" y="88" text-anchor="middle" fill="#00d4ff" font-family="Orbitron,sans-serif" font-size="8" letter-spacing="1">J3</text>
+    <text x="680" y="100" text-anchor="middle" fill="#4a5568" font-family="IBM Plex Mono,monospace" font-size="7.5">SFW15R-2STE1LF</text>
+    <text x="680" y="112" text-anchor="middle" fill="#4a5568" font-family="IBM Plex Mono,monospace" font-size="7">FPC 15-pin 1mm</text>
+
+    <!-- JMEDIA connector sub-panel -->
+    <rect x="1240" y="70" width="300" height="480" rx="4" fill="#130d28" stroke="#9d65ff" stroke-width="1"/>
+    <text x="1390" y="88" text-anchor="middle" fill="#9d65ff" font-family="Orbitron,sans-serif" font-size="8" letter-spacing="1">J1  —  JMEDIA MATE</text>
+    <text x="1390" y="100" text-anchor="middle" fill="#4a5568" font-family="IBM Plex Mono,monospace" font-size="7.5">FTSH-130-01-L-DV  •  2×30  •  1.27mm</text>
+
+    <!-- ═══════════════════════════════════════════════════════════════════ -->
+    <!-- RPi CAMERA PINS                                                     -->
+    <!-- ═══════════════════════════════════════════════════════════════════ -->
+
+    <!-- Pin definitions: [pin#, label, y, color] -->
+    <!-- We draw pin boxes + labels inside the camera block -->
+
+    <!-- Helper: camera pin rows -->
+    <!-- GND pins -->
+    <g font-family="IBM Plex Mono,monospace" font-size="9">
+
+      <!-- Pin 1 GND -->
+      <rect x="20" y="80" width="190" height="20" rx="2" fill="#1a2535" stroke="#2a3a4a" stroke-width="0.5"/>
+      <text x="36" y="94" fill="#4a5568">1</text>
+      <text x="60" y="94" fill="#6a7a8a">GND</text>
+      <line x1="210" y1="90" x2="235" y2="90" stroke="#4a5568" stroke-width="1.5"/>
+
+      <!-- Pin 2 D0- -->
+      <rect x="20" y="106" width="190" height="20" rx="2" fill="#0d1e30" stroke="#00d4ff" stroke-width="0.5"/>
+      <text x="36" y="120" fill="#4a5568">2</text>
+      <text x="60" y="120" fill="#00d4ff">CAM_D0_N</text>
+      <line x1="210" y1="116" x2="235" y2="116" stroke="#00d4ff" stroke-width="1.5" filter="url(#glow-cyan)"/>
+
+      <!-- Pin 3 D0+ -->
+      <rect x="20" y="130" width="190" height="20" rx="2" fill="#0d1e30" stroke="#00d4ff" stroke-width="0.5"/>
+      <text x="36" y="144" fill="#4a5568">3</text>
+      <text x="60" y="144" fill="#00d4ff">CAM_D0_P</text>
+      <line x1="210" y1="140" x2="235" y2="140" stroke="#00d4ff" stroke-width="1.5" filter="url(#glow-cyan)"/>
+
+      <!-- Pin 4 GND -->
+      <rect x="20" y="154" width="190" height="20" rx="2" fill="#1a2535" stroke="#2a3a4a" stroke-width="0.5"/>
+      <text x="36" y="168" fill="#4a5568">4</text>
+      <text x="60" y="168" fill="#6a7a8a">GND</text>
+      <line x1="210" y1="164" x2="235" y2="164" stroke="#4a5568" stroke-width="1.5"/>
+
+      <!-- Pin 5 D1- -->
+      <rect x="20" y="178" width="190" height="20" rx="2" fill="#0d1e30" stroke="#00d4ff" stroke-width="0.5"/>
+      <text x="36" y="192" fill="#4a5568">5</text>
+      <text x="60" y="192" fill="#00d4ff">CAM_D1_N</text>
+      <line x1="210" y1="188" x2="235" y2="188" stroke="#00d4ff" stroke-width="1.5" filter="url(#glow-cyan)"/>
+
+      <!-- Pin 6 D1+ -->
+      <rect x="20" y="202" width="190" height="20" rx="2" fill="#0d1e30" stroke="#00d4ff" stroke-width="0.5"/>
+      <text x="36" y="216" fill="#4a5568">6</text>
+      <text x="60" y="216" fill="#00d4ff">CAM_D1_P</text>
+      <line x1="210" y1="212" x2="235" y2="212" stroke="#00d4ff" stroke-width="1.5" filter="url(#glow-cyan)"/>
+
+      <!-- Pin 7 GND -->
+      <rect x="20" y="226" width="190" height="20" rx="2" fill="#1a2535" stroke="#2a3a4a" stroke-width="0.5"/>
+      <text x="36" y="240" fill="#4a5568">7</text>
+      <text x="60" y="240" fill="#6a7a8a">GND</text>
+      <line x1="210" y1="236" x2="235" y2="236" stroke="#4a5568" stroke-width="1.5"/>
+
+      <!-- Pin 8 CLK- -->
+      <rect x="20" y="250" width="190" height="20" rx="2" fill="#0d1a3a" stroke="#7799ff" stroke-width="0.5"/>
+      <text x="36" y="264" fill="#4a5568">8</text>
+      <text x="60" y="264" fill="#7799ff">CAM_CLK_N</text>
+      <line x1="210" y1="260" x2="235" y2="260" stroke="#7799ff" stroke-width="1.5"/>
+
+      <!-- Pin 9 CLK+ -->
+      <rect x="20" y="274" width="190" height="20" rx="2" fill="#0d1a3a" stroke="#7799ff" stroke-width="0.5"/>
+      <text x="36" y="288" fill="#4a5568">9</text>
+      <text x="60" y="288" fill="#7799ff">CAM_CLK_P</text>
+      <line x1="210" y1="284" x2="235" y2="284" stroke="#7799ff" stroke-width="1.5"/>
+
+      <!-- Pin 10 GND -->
+      <rect x="20" y="298" width="190" height="20" rx="2" fill="#1a2535" stroke="#2a3a4a" stroke-width="0.5"/>
+      <text x="36" y="312" fill="#4a5568">10</text>
+      <text x="60" y="312" fill="#6a7a8a">GND</text>
+      <line x1="210" y1="308" x2="235" y2="308" stroke="#4a5568" stroke-width="1.5"/>
+
+      <!-- Pin 11 IO1 -->
+      <rect x="20" y="322" width="190" height="20" rx="2" fill="#1a1a10" stroke="#ff8c42" stroke-width="0.5"/>
+      <text x="36" y="336" fill="#4a5568">11</text>
+      <text x="60" y="336" fill="#ff8c42">CAM_IO1</text>
+      <line x1="210" y1="332" x2="235" y2="332" stroke="#ff8c42" stroke-width="1.5"/>
+
+      <!-- Pin 12 IO0 -->
+      <rect x="20" y="346" width="190" height="20" rx="2" fill="#1a1a10" stroke="#ff8c42" stroke-width="0.5"/>
+      <text x="36" y="360" fill="#4a5568">12</text>
+      <text x="60" y="360" fill="#ff8c42">CAM_IO0</text>
+      <line x1="210" y1="356" x2="235" y2="356" stroke="#ff8c42" stroke-width="1.5"/>
+
+      <!-- Pin 13 GND -->
+      <rect x="20" y="370" width="190" height="20" rx="2" fill="#1a2535" stroke="#2a3a4a" stroke-width="0.5"/>
+      <text x="36" y="384" fill="#4a5568">13</text>
+      <text x="60" y="384" fill="#6a7a8a">GND</text>
+      <line x1="210" y1="380" x2="235" y2="380" stroke="#4a5568" stroke-width="1.5"/>
+
+      <!-- Pin 14 SDA -->
+      <rect x="20" y="394" width="190" height="20" rx="2" fill="#0d1f15" stroke="#00e5a0" stroke-width="0.8"/>
+      <text x="36" y="408" fill="#4a5568">14</text>
+      <text x="60" y="408" fill="#00e5a0">CAM_SDA</text>
+      <line x1="210" y1="404" x2="235" y2="404" stroke="#00e5a0" stroke-width="1.5" filter="url(#glow-green)"/>
+
+      <!-- Pin 15 SCL -->
+      <rect x="20" y="418" width="190" height="20" rx="2" fill="#0d1f15" stroke="#00e5a0" stroke-width="0.8"/>
+      <text x="36" y="432" fill="#4a5568">15</text>
+      <text x="60" y="432" fill="#00e5a0">CAM_SCL</text>
+      <line x1="210" y1="428" x2="235" y2="428" stroke="#00e5a0" stroke-width="1.5" filter="url(#glow-green)"/>
+
+    </g>
+
+    <!-- ═══════════════════════════════════════════════════════════════════ -->
+    <!-- FPC CONNECTOR J3 (inside daughter board)                           -->
+    <!-- ═══════════════════════════════════════════════════════════════════ -->
+
+    <g font-family="IBM Plex Mono,monospace" font-size="8.5">
+
+      <!-- J3 left side (camera side) pins -->
+      <line x1="600" y1="120" x2="605" y2="120" stroke="#4a5568" stroke-width="1.5"/>
+      <text x="618" y="124" fill="#6a7a8a">1  GND</text>
+
+      <line x1="600" y1="140" x2="605" y2="140" stroke="#00d4ff" stroke-width="1.5"/>
+      <text x="618" y="144" fill="#00d4ff">2  D0−</text>
+
+      <line x1="600" y1="158" x2="605" y2="158" stroke="#00d4ff" stroke-width="1.5"/>
+      <text x="618" y="162" fill="#00d4ff">3  D0+</text>
+
+      <line x1="600" y1="176" x2="605" y2="176" stroke="#4a5568" stroke-width="1.5"/>
+      <text x="618" y="180" fill="#6a7a8a">4  GND</text>
+
+      <line x1="600" y1="194" x2="605" y2="194" stroke="#00d4ff" stroke-width="1.5"/>
+      <text x="618" y="198" fill="#00d4ff">5  D1−</text>
+
+      <line x1="600" y1="212" x2="605" y2="212" stroke="#00d4ff" stroke-width="1.5"/>
+      <text x="618" y="216" fill="#00d4ff">6  D1+</text>
+
+      <line x1="600" y1="230" x2="605" y2="230" stroke="#4a5568" stroke-width="1.5"/>
+      <text x="618" y="234" fill="#6a7a8a">7  GND</text>
+
+      <line x1="600" y1="248" x2="605" y2="248" stroke="#7799ff" stroke-width="1.5"/>
+      <text x="618" y="252" fill="#7799ff">8  CLK−</text>
+
+      <line x1="600" y1="266" x2="605" y2="266" stroke="#7799ff" stroke-width="1.5"/>
+      <text x="618" y="270" fill="#7799ff">9  CLK+</text>
+
+      <line x1="600" y1="284" x2="605" y2="284" stroke="#4a5568" stroke-width="1.5"/>
+      <text x="618" y="288" fill="#6a7a8a">10 GND</text>
+
+      <line x1="600" y1="302" x2="605" y2="302" stroke="#ff8c42" stroke-width="1.5"/>
+      <text x="618" y="306" fill="#ff8c42">11 IO1</text>
+
+      <line x1="600" y1="320" x2="605" y2="320" stroke="#ff8c42" stroke-width="1.5"/>
+      <text x="618" y="324" fill="#ff8c42">12 IO0</text>
+
+      <line x1="600" y1="338" x2="605" y2="338" stroke="#4a5568" stroke-width="1.5"/>
+      <text x="618" y="342" fill="#6a7a8a">13 GND</text>
+
+      <line x1="600" y1="356" x2="605" y2="356" stroke="#00e5a0" stroke-width="1.5"/>
+      <text x="618" y="360" fill="#00e5a0">14 SDA</text>
+
+      <line x1="600" y1="374" x2="605" y2="374" stroke="#00e5a0" stroke-width="1.5"/>
+      <text x="618" y="378" fill="#00e5a0">15 SCL</text>
+
+    </g>
+
+    <!-- J3 right side outputs to net lines -->
+    <g font-family="IBM Plex Mono,monospace" font-size="8">
+
+      <!-- GND net line from pin1 -->
+      <line x1="760" y1="120" x2="755" y2="120" stroke="#4a5568" stroke-width="1.5"/>
+      <text x="762" y="124" fill="#4a5568">GND</text>
+
+      <!-- D0- right -->
+      <line x1="760" y1="140" x2="755" y2="140" stroke="#00d4ff" stroke-width="2"/>
+      <!-- D0+ right -->
+      <line x1="760" y1="158" x2="755" y2="158" stroke="#00d4ff" stroke-width="2"/>
+      <!-- GND -->
+      <line x1="760" y1="176" x2="755" y2="176" stroke="#4a5568" stroke-width="1.5"/>
+      <!-- D1- right -->
+      <line x1="760" y1="194" x2="755" y2="194" stroke="#00d4ff" stroke-width="2"/>
+      <!-- D1+ right -->
+      <line x1="760" y1="212" x2="755" y2="212" stroke="#00d4ff" stroke-width="2"/>
+      <!-- GND -->
+      <line x1="760" y1="230" x2="755" y2="230" stroke="#4a5568" stroke-width="1.5"/>
+      <!-- CLK- right -->
+      <line x1="760" y1="248" x2="755" y2="248" stroke="#7799ff" stroke-width="2"/>
+      <!-- CLK+ right -->
+      <line x1="760" y1="266" x2="755" y2="266" stroke="#7799ff" stroke-width="2"/>
+      <!-- GND -->
+      <line x1="760" y1="284" x2="755" y2="284" stroke="#4a5568" stroke-width="1.5"/>
+      <!-- IO1 -->
+      <line x1="760" y1="302" x2="755" y2="302" stroke="#ff8c42" stroke-width="1.5"/>
+      <!-- IO0 -->
+      <line x1="760" y1="320" x2="755" y2="320" stroke="#ff8c42" stroke-width="1.5"/>
+      <!-- GND -->
+      <line x1="760" y1="338" x2="755" y2="338" stroke="#4a5568" stroke-width="1.5"/>
+      <!-- SDA → PCA9306 -->
+      <line x1="760" y1="356" x2="755" y2="356" stroke="#00e5a0" stroke-width="2"/>
+      <!-- SCL → PCA9306 -->
+      <line x1="760" y1="374" x2="755" y2="374" stroke="#00e5a0" stroke-width="2"/>
+    </g>
+
+    <!-- ═══════════════════════════════════════════════════════════════════ -->
+    <!-- WIRES: Camera → J3                                                  -->
+    <!-- ═══════════════════════════════════════════════════════════════════ -->
+
+    <!-- GND p1 -->
+    <line x1="235" y1="90" x2="600" y2="120" stroke="#4a5568" stroke-width="1.5"/>
+    <!-- D0- p2 -->
+    <line x1="235" y1="116" x2="600" y2="140" stroke="#00d4ff" stroke-width="2" filter="url(#glow-cyan)"/>
+    <!-- D0+ p3 -->
+    <line x1="235" y1="140" x2="600" y2="158" stroke="#00d4ff" stroke-width="2" filter="url(#glow-cyan)"/>
+    <!-- GND p4 -->
+    <line x1="235" y1="164" x2="600" y2="176" stroke="#4a5568" stroke-width="1.5"/>
+    <!-- D1- p5 -->
+    <line x1="235" y1="188" x2="600" y2="194" stroke="#00d4ff" stroke-width="2" filter="url(#glow-cyan)"/>
+    <!-- D1+ p6 -->
+    <line x1="235" y1="212" x2="600" y2="212" stroke="#00d4ff" stroke-width="2" filter="url(#glow-cyan)"/>
+    <!-- GND p7 -->
+    <line x1="235" y1="236" x2="600" y2="230" stroke="#4a5568" stroke-width="1.5"/>
+    <!-- CLK- p8 -->
+    <line x1="235" y1="260" x2="600" y2="248" stroke="#7799ff" stroke-width="2"/>
+    <!-- CLK+ p9 -->
+    <line x1="235" y1="284" x2="600" y2="266" stroke="#7799ff" stroke-width="2"/>
+    <!-- GND p10 -->
+    <line x1="235" y1="308" x2="600" y2="284" stroke="#4a5568" stroke-width="1.5"/>
+    <!-- IO1 p11 -->
+    <line x1="235" y1="332" x2="600" y2="302" stroke="#ff8c42" stroke-width="1.5"/>
+    <!-- IO0 p12 -->
+    <line x1="235" y1="356" x2="600" y2="320" stroke="#ff8c42" stroke-width="1.5"/>
+    <!-- GND p13 -->
+    <line x1="235" y1="380" x2="600" y2="338" stroke="#4a5568" stroke-width="1.5"/>
+    <!-- SDA p14 -->
+    <line x1="235" y1="404" x2="600" y2="356" stroke="#00e5a0" stroke-width="2" filter="url(#glow-green)"/>
+    <!-- SCL p15 -->
+    <line x1="235" y1="428" x2="600" y2="374" stroke="#00e5a0" stroke-width="2" filter="url(#glow-green)"/>
+
+    <!-- ═══════════════════════════════════════════════════════════════════ -->
+    <!-- MIPI NET LABELS inside daughter board (direct to JMEDIA connector) -->
+    <!-- Signals bypass PCA9306 — route directly right to J1                -->
+    <!-- ═══════════════════════════════════════════════════════════════════ -->
+
+    <g font-family="IBM Plex Mono,monospace" font-size="8">
+
+    <!-- MIPI net buses: vertical collect bar -->
+    <line x1="800" y1="120" x2="800" y2="340" stroke="#1e3a5f" stroke-width="1" stroke-dasharray="2,2"/>
+
+    <!-- GND -->
+    <line x1="760" y1="120" x2="830" y2="120" stroke="#4a5568" stroke-width="1.5"/>
+    <!-- D0- direct -->
+    <line x1="760" y1="140" x2="1240" y2="170" stroke="#00d4ff" stroke-width="2" filter="url(#glow-cyan)" marker-end="url(#arr-cyan)"/>
+    <!-- D0+ direct -->
+    <line x1="760" y1="158" x2="1240" y2="192" stroke="#00d4ff" stroke-width="2" filter="url(#glow-cyan)" marker-end="url(#arr-cyan)"/>
+    <!-- GND -->
+    <line x1="760" y1="176" x2="830" y2="176" stroke="#4a5568" stroke-width="1.5"/>
+    <!-- D1- direct -->
+    <line x1="760" y1="194" x2="1240" y2="214" stroke="#00d4ff" stroke-width="2" filter="url(#glow-cyan)" marker-end="url(#arr-cyan)"/>
+    <!-- D1+ direct -->
+    <line x1="760" y1="212" x2="1240" y2="236" stroke="#00d4ff" stroke-width="2" filter="url(#glow-cyan)" marker-end="url(#arr-cyan)"/>
+    <!-- GND -->
+    <line x1="760" y1="230" x2="830" y2="230" stroke="#4a5568" stroke-width="1.5"/>
+    <!-- CLK- direct -->
+    <line x1="760" y1="248" x2="1240" y2="258" stroke="#7799ff" stroke-width="2" marker-end="url(#arr-cyan)"/>
+    <!-- CLK+ direct -->
+    <line x1="760" y1="266" x2="1240" y2="280" stroke="#7799ff" stroke-width="2" marker-end="url(#arr-cyan)"/>
+    <!-- GND -->
+    <line x1="760" y1="284" x2="830" y2="284" stroke="#4a5568" stroke-width="1.5"/>
+    <!-- IO1 GPIO line -->
+    <polyline points="760,302 820,302 820,340 1240,340" stroke="#ff8c42" stroke-width="1.5" fill="none" marker-end="url(#arr-orange)"/>
+    <!-- IO0 GPIO line -->
+    <polyline points="760,320 820,320 820,360 1240,360" stroke="#ff8c42" stroke-width="1.5" fill="none" marker-end="url(#arr-orange)"/>
+
+    <!-- MIPI net labels on the long horizontal wires -->
+    <text x="980" y="136" fill="#00d4ff" font-size="8">CSI0_C0_LN0_M</text>
+    <text x="980" y="154" fill="#00d4ff" font-size="8">CSI0_B0_LN0_P</text>
+    <text x="980" y="209" fill="#00d4ff" font-size="8">CSI0_B1_LN1_M</text>
+    <text x="980" y="231" fill="#00d4ff" font-size="8">CSI0_A1_LN1_P</text>
+    <text x="980" y="250" fill="#7799ff" font-size="8">CSI0_A0_CLK_M</text>
+    <text x="980" y="272" fill="#7799ff" font-size="8">CSI0_NC_CLK_P</text>
+
+    <!-- Pair brackets -->
+    <text x="792" y="152" fill="#00d4ff" font-size="10" font-family="monospace">}</text>
+    <text x="778" y="152" fill="#4a5568" font-size="7">Lane 0</text>
+    <text x="792" y="215" fill="#00d4ff" font-size="10" font-family="monospace">}</text>
+    <text x="778" y="215" fill="#4a5568" font-size="7">Lane 1</text>
+    <text x="792" y="260" fill="#7799ff" font-size="10" font-family="monospace">}</text>
+    <text x="778" y="260" fill="#4a5568" font-size="7">Clock</text>
+
+    </g>
+
+    <!-- GND bus collector inside daughter board -->
+    <g font-family="IBM Plex Mono,monospace" font-size="8">
+      <!-- GND bus bar -->
+      <line x1="830" y1="100" x2="830" y2="350" stroke="#2a3a4a" stroke-width="2"/>
+      <line x1="830" y1="120" x2="850" y2="120" stroke="#4a5568" stroke-width="1.5"/>
+      <line x1="830" y1="176" x2="850" y2="176" stroke="#4a5568" stroke-width="1.5"/>
+      <line x1="830" y1="230" x2="850" y2="230" stroke="#4a5568" stroke-width="1.5"/>
+      <line x1="830" y1="284" x2="850" y2="284" stroke="#4a5568" stroke-width="1.5"/>
+      <!-- GND symbol -->
+      <line x1="830" y1="350" x2="860" y2="350" stroke="#4a5568" stroke-width="2"/>
+      <line x1="834" y1="356" x2="856" y2="356" stroke="#4a5568" stroke-width="1.5"/>
+      <line x1="838" y1="362" x2="852" y2="362" stroke="#4a5568" stroke-width="1"/>
+      <text x="845" y="375" text-anchor="middle" fill="#4a5568" font-size="8">GND</text>
+      <!-- also GND → JMEDIA arrow -->
+      <line x1="860" y1="350" x2="1240" y2="380" stroke="#4a5568" stroke-width="1.5" stroke-dasharray="5,3" marker-end="url(#arr-grey)"/>
+      <text x="1020" y="374" fill="#4a5568" font-size="7.5">GND (pins 1,2,7,8…)</text>
+    </g>
+
+    <!-- ═══════════════════════════════════════════════════════════════════ -->
+    <!-- PCA9306 LEVEL SHIFTER                                              -->
+    <!-- ═══════════════════════════════════════════════════════════════════ -->
+
+    <!-- IC body -->
+    <rect x="820" y="420" width="100" height="150" rx="3" fill="#0f2020" stroke="#00e5a0" stroke-width="1.5"/>
+    <!-- Notch -->
+    <path d="M 865 420 Q 870 415 875 420" fill="none" stroke="#00e5a0" stroke-width="1"/>
+    <text x="870" y="460" text-anchor="middle" fill="#00e5a0" font-family="Orbitron,sans-serif" font-size="7.5" letter-spacing="0.5">PCA</text>
+    <text x="870" y="472" text-anchor="middle" fill="#00e5a0" font-family="Orbitron,sans-serif" font-size="7.5" letter-spacing="0.5">9306</text>
+
+    <!-- Left pins (1.8V side) -->
+    <g font-family="IBM Plex Mono,monospace" font-size="8">
+      <!-- Pin 1 GND -->
+      <line x1="780" y1="430" x2="820" y2="430" stroke="#4a5568" stroke-width="1.5"/>
+      <text x="776" y="433" text-anchor="end" fill="#4a5568">GND</text>
+      <!-- Pin 2 VREF1 -->
+      <line x1="780" y1="448" x2="820" y2="448" stroke="#ffd700" stroke-width="1.5"/>
+      <text x="776" y="451" text-anchor="end" fill="#ffd700">VREF1</text>
+      <!-- Pin 3 SCL1 -->
+      <line x1="780" y1="466" x2="820" y2="466" stroke="#00e5a0" stroke-width="2"/>
+      <text x="776" y="469" text-anchor="end" fill="#00e5a0">SCL1</text>
+      <!-- Pin 4 SDA1 -->
+      <line x1="780" y1="484" x2="820" y2="484" stroke="#00e5a0" stroke-width="2"/>
+      <text x="776" y="487" text-anchor="end" fill="#00e5a0">SDA1</text>
+    </g>
+
+    <!-- Right pins (3.3V side) -->
+    <g font-family="IBM Plex Mono,monospace" font-size="8">
+      <!-- Pin 8 EN -->
+      <line x1="920" y1="430" x2="960" y2="430" stroke="#ffd700" stroke-width="1.5"/>
+      <text x="963" y="433" fill="#ffd700">EN → VREF2</text>
+      <!-- Pin 7 VREF2 -->
+      <line x1="920" y1="448" x2="960" y2="448" stroke="#ffd700" stroke-width="1.5"/>
+      <text x="963" y="451" fill="#ffd700">VREF2 (3.3V)</text>
+      <!-- Pin 6 SCL2 -->
+      <line x1="920" y1="466" x2="960" y2="466" stroke="#00e5a0" stroke-width="2"/>
+      <text x="963" y="469" fill="#00e5a0">SCL2</text>
+      <!-- Pin 5 SDA2 -->
+      <line x1="920" y1="484" x2="960" y2="484" stroke="#00e5a0" stroke-width="2"/>
+      <text x="963" y="487" fill="#00e5a0">SDA2</text>
+    </g>
+
+    <!-- PCA9306 VREF1 = 1.8V from JMEDIA -->
+    <polyline points="780,448 740,448 740,670 1330,670" stroke="#ffd700" stroke-width="1.5" fill="none" stroke-dasharray="6,3" marker-end="url(#arr-yellow)"/>
+    <text x="860" y="665" fill="#ffd700" font-family="IBM Plex Mono,monospace" font-size="7.5">+1.8V from JMEDIA pin 57 (VIN) / use 3V3 if available</text>
+
+    <!-- PCA9306 VREF2 = 3.3V from JMEDIA -->
+    <polyline points="960,448 1100,448 1100,690 1330,690" stroke="#ffd700" stroke-width="1.5" fill="none" marker-end="url(#arr-yellow)"/>
+    <text x="1010" y="680" fill="#ffd700" font-family="IBM Plex Mono,monospace" font-size="7.5">+3.3V from JMEDIA pin 58/60</text>
+
+    <!-- Pull-up resistors: 1.8V side -->
+    <!-- R3 SCL -->
+    <rect x="740" y="455" width="26" height="10" rx="2" fill="#1a2010" stroke="#ffd700" stroke-width="0.8"/>
+    <text x="753" y="464" text-anchor="middle" fill="#ffd700" font-family="IBM Plex Mono,monospace" font-size="7">R4</text>
+    <line x1="740" y1="460" x2="730" y2="460" stroke="#ffd700" stroke-width="1"/>
+    <line x1="766" y1="460" x2="780" y2="466" stroke="#00e5a0" stroke-width="1.5"/>
+    <!-- R4 SDA -->
+    <rect x="740" y="473" width="26" height="10" rx="2" fill="#1a2010" stroke="#ffd700" stroke-width="0.8"/>
+    <text x="753" y="482" text-anchor="middle" fill="#ffd700" font-family="IBM Plex Mono,monospace" font-size="7">R3</text>
+    <line x1="740" y1="478" x2="730" y2="478" stroke="#ffd700" stroke-width="1"/>
+    <line x1="766" y1="478" x2="780" y2="484" stroke="#00e5a0" stroke-width="1.5"/>
+    <text x="700" y="468" fill="#4a5568" font-family="IBM Plex Mono,monospace" font-size="7">4.7kΩ</text>
+    <text x="700" y="480" fill="#4a5568" font-family="IBM Plex Mono,monospace" font-size="7">4.7kΩ</text>
+
+    <!-- Pull-up resistors: 3.3V side -->
+    <!-- R1 SCL2 -->
+    <rect x="975" y="455" width="26" height="10" rx="2" fill="#1a2010" stroke="#ffd700" stroke-width="0.8"/>
+    <text x="988" y="464" text-anchor="middle" fill="#ffd700" font-family="IBM Plex Mono,monospace" font-size="7">R1</text>
+    <line x1="975" y1="460" x2="960" y2="466" stroke="#00e5a0" stroke-width="1.5"/>
+    <line x1="1001" y1="460" x2="1020" y2="460" stroke="#ffd700" stroke-width="1"/>
+    <!-- R2 SDA2 -->
+    <rect x="975" y="473" width="26" height="10" rx="2" fill="#1a2010" stroke="#ffd700" stroke-width="0.8"/>
+    <text x="988" y="482" text-anchor="middle" fill="#ffd700" font-family="IBM Plex Mono,monospace" font-size="7">R2</text>
+    <line x1="975" y1="478" x2="960" y2="484" stroke="#00e5a0" stroke-width="1.5"/>
+    <line x1="1001" y1="478" x2="1020" y2="478" stroke="#ffd700" stroke-width="1"/>
+    <text x="1028" y="468" fill="#4a5568" font-family="IBM Plex Mono,monospace" font-size="7">10kΩ</text>
+    <text x="1028" y="480" fill="#4a5568" font-family="IBM Plex Mono,monospace" font-size="7">10kΩ</text>
+
+    <!-- Decoupling caps -->
+    <!-- C1 on VREF1 -->
+    <rect x="745" y="508" width="18" height="10" rx="1" fill="#101a28" stroke="#00d4ff" stroke-width="0.8"/>
+    <text x="754" y="517" text-anchor="middle" fill="#00d4ff" font-family="IBM Plex Mono,monospace" font-size="6.5">C1</text>
+    <line x1="754" y1="508" x2="754" y2="490" stroke="#ffd700" stroke-width="1"/>
+    <line x1="754" y1="518" x2="754" y2="530" stroke="#4a5568" stroke-width="1"/>
+    <line x1="748" y1="530" x2="760" y2="530" stroke="#4a5568" stroke-width="1.5"/>
+    <text x="770" y="522" fill="#4a5568" font-family="IBM Plex Mono,monospace" font-size="7">100nF</text>
+
+    <!-- C2 on VREF2 -->
+    <rect x="1035" y="508" width="18" height="10" rx="1" fill="#101a28" stroke="#00d4ff" stroke-width="0.8"/>
+    <text x="1044" y="517" text-anchor="middle" fill="#00d4ff" font-family="IBM Plex Mono,monospace" font-size="6.5">C2</text>
+    <line x1="1044" y1="508" x2="1044" y2="490" stroke="#ffd700" stroke-width="1"/>
+    <line x1="1044" y1="518" x2="1044" y2="530" stroke="#4a5568" stroke-width="1"/>
+    <line x1="1038" y1="530" x2="1050" y2="530" stroke="#4a5568" stroke-width="1.5"/>
+    <text x="1055" y="522" fill="#4a5568" font-family="IBM Plex Mono,monospace" font-size="7">100nF</text>
+
+    <!-- C3 bulk on 3V3 -->
+    <rect x="1070" y="508" width="18" height="10" rx="1" fill="#101a28" stroke="#ffd700" stroke-width="0.8"/>
+    <text x="1079" y="517" text-anchor="middle" fill="#ffd700" font-family="IBM Plex Mono,monospace" font-size="6.5">C3</text>
+    <line x1="1079" y1="508" x2="1079" y2="490" stroke="#ffd700" stroke-width="1"/>
+    <line x1="1079" y1="518" x2="1079" y2="530" stroke="#4a5568" stroke-width="1"/>
+    <line x1="1073" y1="530" x2="1085" y2="530" stroke="#4a5568" stroke-width="1.5"/>
+    <text x="1090" y="522" fill="#4a5568" font-family="IBM Plex Mono,monospace" font-size="7">10µF</text>
+
+    <!-- I2C wires from J3 → PCA9306 left side (1.8V) -->
+    <!-- SDA: J3 right pin 14 → PCA SCL1 -->
+    <polyline points="760,356 780,356 780,484" stroke="#00e5a0" stroke-width="2" fill="none" filter="url(#glow-green)"/>
+    <!-- SCL: J3 right pin 15 → PCA SDA1 -->
+    <polyline points="760,374 770,374 770,466" stroke="#00e5a0" stroke-width="2" fill="none" filter="url(#glow-green)"/>
+    <!-- Labels -->
+    <text x="765" y="420" fill="#00e5a0" font-family="IBM Plex Mono,monospace" font-size="7.5">SDA 3.3V→1.8V</text>
+    <text x="765" y="432" fill="#00e5a0" font-family="IBM Plex Mono,monospace" font-size="7.5">SCL  via PCA9306</text>
+
+    <!-- I2C wires from PCA9306 right side (1.8V) → JMEDIA -->
+    <polyline points="960,466 1100,466 1100,420 1240,420" stroke="#00e5a0" stroke-width="2" fill="none" filter="url(#glow-green)" marker-end="url(#arr-green)"/>
+    <polyline points="960,484 1110,484 1110,440 1240,440" stroke="#00e5a0" stroke-width="2" fill="none" filter="url(#glow-green)" marker-end="url(#arr-green)"/>
+    <text x="1050" y="410" fill="#00e5a0" font-family="IBM Plex Mono,monospace" font-size="7.5">CCI_I2C_SCL0 (p51)</text>
+    <text x="1050" y="455" fill="#00e5a0" font-family="IBM Plex Mono,monospace" font-size="7.5">CCI_I2C_SDA0 (p53)</text>
+
+    <!-- ═══════════════════════════════════════════════════════════════════ -->
+    <!-- JMEDIA CONNECTOR J1 PINS                                           -->
+    <!-- ═══════════════════════════════════════════════════════════════════ -->
+
+    <g font-family="IBM Plex Mono,monospace" font-size="8.5">
+
+      <!-- GND (1,2) -->
+      <rect x="1245" y="110" width="280" height="18" rx="2" fill="#1a2535" stroke="#2a3a4a" stroke-width="0.5"/>
+      <text x="1530" y="123" text-anchor="end" fill="#4a5568">1,2  GND</text>
+
+      <!-- CSI0 D0- (p21) -->
+      <rect x="1245" y="132" width="280" height="18" rx="2" fill="#0d1e30" stroke="#00d4ff" stroke-width="0.8"/>
+      <text x="1530" y="145" text-anchor="end" fill="#00d4ff">21  CSI0_C0_LN0_M</text>
+
+      <!-- CSI0 D0+ (p23) -->
+      <rect x="1245" y="154" width="280" height="18" rx="2" fill="#0d1e30" stroke="#00d4ff" stroke-width="0.8"/>
+      <text x="1530" y="167" text-anchor="end" fill="#00d4ff">23  CSI0_B0_LN0_P</text>
+
+      <!-- CSI0 D1- (p27) -->
+      <rect x="1245" y="176" width="280" height="18" rx="2" fill="#0d1e30" stroke="#00d4ff" stroke-width="0.8"/>
+      <text x="1530" y="189" text-anchor="end" fill="#00d4ff">27  CSI0_B1_LN1_M</text>
+
+      <!-- CSI0 D1+ (p29) -->
+      <rect x="1245" y="198" width="280" height="18" rx="2" fill="#0d1e30" stroke="#00d4ff" stroke-width="0.8"/>
+      <text x="1530" y="211" text-anchor="end" fill="#00d4ff">29  CSI0_A1_LN1_P</text>
+
+      <!-- CLK- (p33) -->
+      <rect x="1245" y="220" width="280" height="18" rx="2" fill="#0d1a3a" stroke="#7799ff" stroke-width="0.8"/>
+      <text x="1530" y="233" text-anchor="end" fill="#7799ff">33  CSI0_A0_CLK_M</text>
+
+      <!-- CLK+ (p35) -->
+      <rect x="1245" y="242" width="280" height="18" rx="2" fill="#0d1a3a" stroke="#7799ff" stroke-width="0.8"/>
+      <text x="1530" y="255" text-anchor="end" fill="#7799ff">35  CSI0_NC_CLK_P</text>
+
+      <!-- IO1 GPIO (p18) -->
+      <rect x="1245" y="286" width="280" height="18" rx="2" fill="#1a1a10" stroke="#ff8c42" stroke-width="0.8"/>
+      <text x="1530" y="299" text-anchor="end" fill="#ff8c42">18  SOC_CAM_MCLK1</text>
+
+      <!-- IO0 GPIO (p16) -->
+      <rect x="1245" y="308" width="280" height="18" rx="2" fill="#1a1a10" stroke="#ff8c42" stroke-width="0.8"/>
+      <text x="1530" y="321" text-anchor="end" fill="#ff8c42">16  SOC_CAM_MCLK0</text>
+
+      <!-- GND bus -->
+      <rect x="1245" y="330" width="280" height="18" rx="2" fill="#1a2535" stroke="#2a3a4a" stroke-width="0.5"/>
+      <text x="1530" y="343" text-anchor="end" fill="#4a5568">37,49…  GND</text>
+
+      <!-- SCL (p51) -->
+      <rect x="1245" y="352" width="280" height="18" rx="2" fill="#0d1f15" stroke="#00e5a0" stroke-width="0.8"/>
+      <text x="1530" y="365" text-anchor="end" fill="#00e5a0">51  CCI_I2C_SCL0</text>
+
+      <!-- SDA (p53) -->
+      <rect x="1245" y="374" width="280" height="18" rx="2" fill="#0d1f15" stroke="#00e5a0" stroke-width="0.8"/>
+      <text x="1530" y="387" text-anchor="end" fill="#00e5a0">53  CCI_I2C_SDA0</text>
+
+      <!-- +3V3 OUT (p58/60) -->
+      <rect x="1245" y="396" width="280" height="18" rx="2" fill="#1a1808" stroke="#ffd700" stroke-width="0.8"/>
+      <text x="1530" y="409" text-anchor="end" fill="#ffd700">58/60  +3V3 OUT</text>
+
+      <!-- VIN (p57/59) -->
+      <rect x="1245" y="418" width="280" height="18" rx="2" fill="#1a1808" stroke="#ffd700" stroke-width="0.8"/>
+      <text x="1530" y="431" text-anchor="end" fill="#ffd700">57/59  VIN (7–24V)</text>
+
+      <!-- +1V8 (from JMISC) -->
+      <rect x="1245" y="440" width="280" height="18" rx="2" fill="#1a1808" stroke="#ff8c42" stroke-width="0.8"/>
+      <text x="1530" y="453" text-anchor="end" fill="#ff8c42">JMISC p57  +1V8 IN</text>
+
+      <!-- NC pins -->
+      <rect x="1245" y="464" width="280" height="28" rx="2" fill="#111820" stroke="#1e2a3a" stroke-width="0.5"/>
+      <text x="1530" y="475" text-anchor="end" fill="#2a3a4a">39,41,45,47  CSI0 L2/L3</text>
+      <text x="1530" y="487" text-anchor="end" fill="#2a3a4a">(NC — reserved, do not connect)</text>
+
+    </g>
+
+    <!-- JMEDIA pin stub lines -->
+    <line x1="1240" y1="119" x2="1245" y2="119" stroke="#4a5568" stroke-width="1.5"/>
+    <line x1="1240" y1="141" x2="1245" y2="141" stroke="#00d4ff" stroke-width="2"/>
+    <line x1="1240" y1="163" x2="1245" y2="163" stroke="#00d4ff" stroke-width="2"/>
+    <line x1="1240" y1="185" x2="1245" y2="185" stroke="#00d4ff" stroke-width="2"/>
+    <line x1="1240" y1="207" x2="1245" y2="207" stroke="#00d4ff" stroke-width="2"/>
+    <line x1="1240" y1="229" x2="1245" y2="229" stroke="#7799ff" stroke-width="2"/>
+    <line x1="1240" y1="251" x2="1245" y2="251" stroke="#7799ff" stroke-width="2"/>
+    <line x1="1240" y1="339" x2="1245" y2="339" stroke="#4a5568" stroke-width="1.5"/>
+    <line x1="1240" y1="361" x2="1245" y2="361" stroke="#00e5a0" stroke-width="2"/>
+    <line x1="1240" y1="383" x2="1245" y2="383" stroke="#00e5a0" stroke-width="2"/>
+    <line x1="1240" y1="405" x2="1245" y2="405" stroke="#ffd700" stroke-width="2"/>
+
+    <!-- ═══════════════════════════════════════════════════════════════════ -->
+    <!-- Power rail annotations                                             -->
+    <!-- ═══════════════════════════════════════════════════════════════════ -->
+
+    <!-- +3V3 power flag -->
+    <g font-family="IBM Plex Mono,monospace">
+      <polyline points="1330,620 1330,600 1350,590 1370,600 1370,620" fill="#1a1808" stroke="#ffd700" stroke-width="1"/>
+      <text x="1350" y="612" text-anchor="middle" fill="#ffd700" font-size="8">+3V3</text>
+      <line x1="1350" y1="620" x2="1350" y2="640" stroke="#ffd700" stroke-width="1.5"/>
+      <text x="1350" y="655" text-anchor="middle" fill="#4a5568" font-size="7">JMEDIA p58</text>
+    </g>
+
+    <!-- +1V8 power flag -->
+    <g font-family="IBM Plex Mono,monospace">
+      <polyline points="1420,620 1420,600 1440,590 1460,600 1460,620" fill="#1a1505" stroke="#ff8c42" stroke-width="1"/>
+      <text x="1440" y="612" text-anchor="middle" fill="#ff8c42" font-size="8">+1V8</text>
+      <line x1="1440" y1="620" x2="1440" y2="640" stroke="#ff8c42" stroke-width="1.5"/>
+      <text x="1440" y="655" text-anchor="middle" fill="#4a5568" font-size="7">JMISC p57</text>
+    </g>
+
+    <!-- GND symbol at JMEDIA -->
+    <g font-family="IBM Plex Mono,monospace">
+      <line x1="1330" y1="720" x2="1370" y2="720" stroke="#4a5568" stroke-width="2"/>
+      <line x1="1335" y1="727" x2="1365" y2="727" stroke="#4a5568" stroke-width="1.5"/>
+      <line x1="1340" y1="734" x2="1360" y2="734" stroke="#4a5568" stroke-width="1"/>
+      <text x="1350" y="748" text-anchor="middle" fill="#4a5568" font-size="8">GND</text>
+      <line x1="1350" y1="710" x2="1350" y2="720" stroke="#4a5568" stroke-width="1.5"/>
+    </g>
+
+    <!-- ═══════════════════════════════════════════════════════════════════ -->
+    <!-- VOLTAGE DOMAIN DIVIDER LINE                                        -->
+    <!-- ═══════════════════════════════════════════════════════════════════ -->
+    <line x1="870" y1="385" x2="870" y2="610" stroke="#1e3a5f" stroke-width="1" stroke-dasharray="3,4"/>
+    <text x="840" y="540" fill="#1e3a5f" font-family="IBM Plex Mono,monospace" font-size="8" transform="rotate(-90,840,540)">3.3V domain</text>
+    <text x="900" y="540" fill="#1e3a5f" font-family="IBM Plex Mono,monospace" font-size="8" transform="rotate(-90,900,540)">1.8V domain</text>
+
+    <!-- voltage labels near PCA9306 -->
+    <rect x="750" y="555" width="55" height="14" rx="2" fill="#0d1808" stroke="#00e5a0" stroke-width="0.5"/>
+    <text x="777" y="566" text-anchor="middle" fill="#00e5a0" font-family="IBM Plex Mono,monospace" font-size="7.5">1.8V I/O</text>
+    <rect x="880" y="555" width="55" height="14" rx="2" fill="#1a1808" stroke="#ffd700" stroke-width="0.5"/>
+    <text x="907" y="566" text-anchor="middle" fill="#ffd700" font-family="IBM Plex Mono,monospace" font-size="7.5">3.3V I/O</text>
+
+    <!-- ═══════════════════════════════════════════════════════════════════ -->
+    <!-- IMPEDANCE ANNOTATIONS on MIPI lanes                                -->
+    <!-- ═══════════════════════════════════════════════════════════════════ -->
+    <g font-family="IBM Plex Mono,monospace" font-size="7.5" fill="#4a5568">
+      <text x="990" y="166">100Ω diff</text>
+      <text x="990" y="222">100Ω diff</text>
+      <text x="990" y="278">100Ω diff</text>
+    </g>
+
+    <!-- ═══════════════════════════════════════════════════════════════════ -->
+    <!-- EQUAL-LENGTH ANNOTATION BRACKET                                    -->
+    <!-- ═══════════════════════════════════════════════════════════════════ -->
+    <line x1="935" y1="140" x2="935" y2="300" stroke="#1e3a5f" stroke-width="1.5"/>
+    <line x1="935" y1="140" x2="940" y2="140" stroke="#1e3a5f" stroke-width="1.5"/>
+    <line x1="935" y1="300" x2="940" y2="300" stroke="#1e3a5f" stroke-width="1.5"/>
+    <text x="957" y="225" fill="#ff4d6d" font-family="IBM Plex Mono,monospace" font-size="7" transform="rotate(-90,950,225)">LENGTH MATCH ±2mm</text>
+
+    <!-- ═══════════════════════════════════════════════════════════════════ -->
+    <!-- BORDER & REVISION BOX                                              -->
+    <!-- ═══════════════════════════════════════════════════════════════════ -->
+    <rect x="5" y="5" width="1550" height="810" rx="4" fill="none" stroke="#1e3a5f" stroke-width="1.5"/>
+    <!-- Corner marks -->
+    <path d="M 5,25 L 5,5 L 25,5" fill="none" stroke="#00d4ff" stroke-width="1"/>
+    <path d="M 1530,5 L 1555,5 L 1555,25" fill="none" stroke="#00d4ff" stroke-width="1"/>
+    <path d="M 5,790 L 5,815 L 25,815" fill="none" stroke="#00d4ff" stroke-width="1"/>
+    <path d="M 1530,815 L 1555,815 L 1555,790" fill="none" stroke="#00d4ff" stroke-width="1"/>
+
+    <!-- Revision box bottom-left -->
+    <rect x="10" y="760" width="240" height="46" fill="#0f1520" stroke="#1e3a5f" stroke-width="1"/>
+    <text x="20" y="774" fill="#4a5568" font-family="IBM Plex Mono,monospace" font-size="7.5">Drawn:  Daughter Board Design</text>
+    <text x="20" y="787" fill="#4a5568" font-family="IBM Plex Mono,monospace" font-size="7.5">Sheet:  1 of 1</text>
+    <text x="20" y="800" fill="#00d4ff" font-family="IBM Plex Mono,monospace" font-size="7.5">Rev A  —  RPi Cam MIPI CSI-2 Interface</text>
+
+  </svg>
+  </div>
+
+  <!-- Legend -->
+  <div class="legend">
+    <div class="legend-item">
+      <div class="legend-line" style="background:#00d4ff; box-shadow:0 0 4px #00d4ff;"></div>
+      MIPI CSI-2 Data / 100Ω Diff Pairs
+    </div>
+    <div class="legend-item">
+      <div class="legend-line" style="background:#7799ff;"></div>
+      MIPI Clock Lane
+    </div>
+    <div class="legend-item">
+      <div class="legend-line" style="background:#00e5a0; box-shadow:0 0 4px #00e5a0;"></div>
+      CCI I²C (via PCA9306 level-shifter)
+    </div>
+    <div class="legend-item">
+      <div class="legend-line" style="background:#ffd700;"></div>
+      Power Rails (3.3V / 1.8V)
+    </div>
+    <div class="legend-item">
+      <div class="legend-line" style="background:#ff8c42;"></div>
+      GPIO / Clock Enable (CAM_IO0 / MCLK)
+    </div>
+    <div class="legend-item">
+      <div class="legend-line" style="background:#4a5568; border-top: 1px dashed #4a5568;"></div>
+      Ground
+    </div>
+    <div class="legend-item">
+      <div class="legend-box" style="border-color:#00e5a0; background:#0d1f15;"></div>
+      PCA9306 Level Shifter
+    </div>
+    <div class="legend-item">
+      <div class="legend-box" style="border-color:#9d65ff; background:#130d28;"></div>
+      JMEDIA Connector (J1)
+    </div>
+    <div class="legend-item">
+      <div class="legend-box" style="border-color:#00d4ff; background:#0d1820;"></div>
+      FPC Connector (J3)
+    </div>
+  </div>
+
+  <!-- Notes -->
+  <div class="notes">
+    <div class="note-card warn">
+      <h4>⚠ VOLTAGE DOMAINS</h4>
+      <p>All JMEDIA signals are <b>1.8V</b>. RPi camera I²C (SDA/SCL) is <b>3.3V</b>. The <b>PCA9306</b> is mandatory — direct connection will damage the QRB2210 SoC. MIPI differential lanes are self-biased and connect directly.</p>
+    </div>
+    <div class="note-card warn">
+      <h4>⚠ MIPI LAYOUT RULES</h4>
+      <p>Route Lane 0, Lane 1, and Clock pairs with <b>100Ω differential impedance</b>. Match all pair lengths to <b>±2mm</b>. No stubs, no vias, no width changes. Keep MIPI traces away from switching supplies.</p>
+    </div>
+    <div class="note-card info">
+      <h4>ℹ POWER SOURCES</h4>
+      <p><b>+3V3</b>: JMEDIA pin 58 or 60 (OUT). <b>+1V8</b>: JMISC pin 57 (OUT). <b>VIN</b> (pins 57/59 on JMEDIA) is raw 7–24V — do NOT use for logic. Always add 100nF decoupling per IC supply pin.</p>
+    </div>
+    <div class="note-card info">
+      <h4>ℹ PULL-UP RESISTORS</h4>
+      <p><b>3.3V side</b> (R1, R2): 10kΩ to +3V3. <b>1.8V side</b> (R3, R4): 4.7kΩ to +1V8. Check if camera module already has 3.3V pull-ups — if so, R1/R2 are optional to avoid double-termination.</p>
+    </div>
+    <div class="note-card ok">
+      <h4>✓ CONNECTOR PART NUMBERS</h4>
+      <p><b>J1/J2</b>: Samtec FTSH-130-01-L-DV (male, 2×30, 1.27mm) — mates with Uno Q FLE-130. <b>J3</b>: Amphenol SFW15R-2STE1LF (15-pin FPC, 1mm). <b>U1</b>: TI PCA9306DCTR (SSOP-8).</p>
+    </div>
+    <div class="note-card ok">
+      <h4>✓ KICAD LIBRARY SOURCES</h4>
+      <p><b>FTSH-130</b>: Ultra Librarian (ultralibrarian.com). <b>SFW15R</b>: SnapEDA (snapeda.com). <b>PCA9306</b>: KiCad built-in — Interface_Voltage_Level_Translator:PCA9306. Resistors/caps: KiCad Device library.</p>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>

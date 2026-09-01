@@ -1,0 +1,123 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 720" font-family="Helvetica, Arial, sans-serif">
+
+  <rect x="0" y="0" width="1000" height="720" fill="#0a0e14"/>
+
+  <text x="500" y="28" text-anchor="middle" font-size="18" font-weight="700" fill="#e8e8e8">Custom Shield — Board Layout (rev 7)</text>
+  <text x="500" y="46" text-anchor="middle" font-size="11" fill="#7fb3d5">Row 1: Camera+Display → JMEDIA → JMISC → LoRa · Row 2: USB Hub → LTE</text>
+
+  <g transform="translate(50,80)">
+
+    <!-- Overall outline -->
+    <rect x="-15" y="-15" width="900" height="610" rx="14" fill="#0d1420" stroke="#888" stroke-width="2"/>
+
+    <!-- mounting holes -->
+    <circle cx="10" cy="10" r="8" fill="none" stroke="#ff9f43" stroke-width="1.4" stroke-dasharray="3,2"/>
+    <circle cx="875" cy="10" r="8" fill="none" stroke="#ff9f43" stroke-width="1.4" stroke-dasharray="3,2"/>
+    <circle cx="10" cy="585" r="8" fill="none" stroke="#ff9f43" stroke-width="1.4" stroke-dasharray="3,2"/>
+    <circle cx="875" cy="585" r="8" fill="none" stroke="#ff9f43" stroke-width="1.4" stroke-dasharray="3,2"/>
+
+    <!-- ============ ROW 1 ============ -->
+
+    <!-- Camera+Display zone -->
+    <rect x="0" y="0" width="220" height="300" rx="6" fill="#eaf3fb" stroke="#2b6cb0" stroke-width="1.5"/>
+    <text x="110" y="18" text-anchor="middle" font-size="10" font-weight="700" fill="#1a4971">CAMERA + DISPLAY</text>
+    <text x="110" y="32" text-anchor="middle" font-size="8" fill="#1a4971">beside JMEDIA — straight-line routing</text>
+
+    <rect x="15" y="44" width="22" height="160" fill="#fff" stroke="#2b6cb0" stroke-width="1.4"/>
+    <text x="26" y="124" text-anchor="middle" font-size="7" fill="#2b6cb0" transform="rotate(-90 26,124)">Camera FPC 22p</text>
+
+    <rect x="107" y="44" width="22" height="160" fill="#fff" stroke="#2b6cb0" stroke-width="1.4"/>
+    <text x="118" y="124" text-anchor="middle" font-size="7" fill="#2b6cb0" transform="rotate(-90 118,124)">Display FPC 22p</text>
+
+    <rect x="45" y="220" width="150" height="36" fill="#fff" stroke="#2b6cb0" stroke-width="1.1"/>
+    <text x="120" y="241" text-anchor="middle" font-size="7">TCA9406 level translator</text>
+
+    <!-- ===== UNO Q MATING ZONE — JMEDIA left, JMISC right ===== -->
+    <rect x="245" y="0" width="343" height="267" fill="#0d2818" stroke="#2ee6a8" stroke-width="2.5"/>
+    <text x="416" y="16" text-anchor="middle" font-size="9" font-weight="700" fill="#2ee6a8">UNO Q MATING ZONE — 68.58×53.34mm (confirmed)</text>
+
+    <!-- JMEDIA left edge (now first) -->
+    <rect x="251" y="32" width="12" height="200" fill="#3a2a0a" stroke="#ffcc66" stroke-width="1.5"/>
+    <text x="257" y="135" text-anchor="middle" font-size="7" fill="#ffcc66" transform="rotate(-90 257,135)">JMEDIA</text>
+
+    <!-- JMISC right edge (now second) -->
+    <rect x="577" y="32" width="12" height="200" fill="#3a2a0a" stroke="#ffcc66" stroke-width="1.5"/>
+    <text x="583" y="135" text-anchor="middle" font-size="7" fill="#ffcc66" transform="rotate(-90 583,135)">JMISC</text>
+
+    <rect x="275" y="32" width="290" height="200" fill="none" stroke="#6b46c1" stroke-width="1.2" stroke-dasharray="3,2"/>
+    <text x="420" y="135" text-anchor="middle" font-size="8" fill="#6b46c1">CONTROL I/O — PE7/PE8, SOC_GPIO 37-51, audio jacks, small headers</text>
+
+    <!-- LoRa zone -->
+    <rect x="613" y="0" width="200" height="300" rx="6" fill="#fdf3e7" stroke="#c05621" stroke-width="1.5"/>
+    <text x="713" y="18" text-anchor="middle" font-size="10" font-weight="700" fill="#7c3a0e">LoRa ZONE</text>
+    <text x="713" y="32" text-anchor="middle" font-size="8" fill="#7c3a0e">beside JMISC — short RESET routing</text>
+
+    <rect x="627" y="44" width="172" height="200" fill="none" stroke="#c05621" stroke-width="1.3" stroke-dasharray="4,2"/>
+    <text x="713" y="148" text-anchor="middle" font-size="8" fill="#c05621">LR1302 mPCIe card</text>
+    <text x="713" y="160" text-anchor="middle" font-size="8" fill="#c05621">(vertical, 30×50.95mm)</text>
+
+    <rect x="627" y="252" width="80" height="36" fill="#fff" stroke="#c05621" stroke-width="1.1"/>
+    <text x="667" y="273" text-anchor="middle" font-size="7">TCA9555 (RESET)</text>
+
+    <rect x="713" y="252" width="86" height="36" fill="#fff" stroke="#c05621" stroke-width="1.1"/>
+    <text x="756" y="273" text-anchor="middle" font-size="7">AMS1117-3.3</text>
+
+    <!-- ============ ROW 2 ============ -->
+
+    <!-- USB Hub zone -->
+    <rect x="0" y="325" width="568" height="250" rx="6" fill="#fdeef0" stroke="#a3275c" stroke-width="1.5"/>
+    <text x="284" y="343" text-anchor="middle" font-size="10" font-weight="700" fill="#6b1638">USB HUB ZONE</text>
+
+    <rect x="16" y="360" width="90" height="34" fill="#fff" stroke="#a3275c" stroke-width="1.1"/>
+    <text x="61" y="380" text-anchor="middle" font-size="7" font-weight="600">USB5744</text>
+
+    <rect x="112" y="360" width="90" height="34" fill="#fff" stroke="#a3275c" stroke-width="1.1"/>
+    <text x="157" y="380" text-anchor="middle" font-size="7">25MHz crystal</text>
+
+    <rect x="208" y="360" width="100" height="34" fill="#fff" stroke="#a3275c" stroke-width="1.1"/>
+    <text x="258" y="376" text-anchor="middle" font-size="7">HD3SS3220</text>
+    <text x="258" y="388" text-anchor="middle" font-size="6" fill="#555">Type-C mux+CC</text>
+
+    <rect x="314" y="360" width="80" height="34" fill="#fff" stroke="#a3275c" stroke-width="1.1"/>
+    <text x="354" y="380" text-anchor="middle" font-size="7">AMS1117-3.3</text>
+
+    <rect x="400" y="360" width="80" height="34" fill="#fff" stroke="#a3275c" stroke-width="1.1"/>
+    <text x="440" y="380" text-anchor="middle" font-size="7">1.2V LDO</text>
+
+    <rect x="486" y="360" width="66" height="34" fill="#fff" stroke="#a3275c" stroke-width="1.1"/>
+    <text x="519" y="376" text-anchor="middle" font-size="6">RBIAS+reset</text>
+    <text x="519" y="386" text-anchor="middle" font-size="6">SPI ROM</text>
+
+    <rect x="16" y="402" width="536" height="22" fill="#fff" stroke="#a3275c" stroke-width="1.1"/>
+    <text x="284" y="417" text-anchor="middle" font-size="7">SS-rated ESD array ×3 ports · internal trace → LTE</text>
+
+    <!-- 3 ports facing outward bottom edge -->
+    <rect x="16" y="500" width="160" height="60" fill="#fff" stroke="#a3275c" stroke-width="1.7"/>
+    <text x="96" y="534" text-anchor="middle" font-size="8" font-weight="600">USB-A 1</text>
+
+    <rect x="190" y="500" width="160" height="60" fill="#fff" stroke="#a3275c" stroke-width="1.7"/>
+    <text x="270" y="534" text-anchor="middle" font-size="8" font-weight="600">USB-A 2</text>
+
+    <rect x="364" y="500" width="160" height="60" fill="#fff" stroke="#a3275c" stroke-width="1.7"/>
+    <text x="444" y="534" text-anchor="middle" font-size="8" font-weight="600">USB-C</text>
+
+    <text x="284" y="580" text-anchor="middle" font-size="9" fill="#a3275c">↓ ports face outward through the bottom board edge ↓</text>
+
+    <!-- LTE zone, row 2 right -->
+    <rect x="593" y="325" width="252" height="250" rx="6" fill="#e9f7ef" stroke="#1f7a3d" stroke-width="1.5"/>
+    <text x="719" y="343" text-anchor="middle" font-size="10" font-weight="700" fill="#155226">LTE ZONE</text>
+
+    <rect x="608" y="362" width="222" height="170" fill="none" stroke="#1f7a3d" stroke-width="1.3" stroke-dasharray="4,2"/>
+    <text x="719" y="442" text-anchor="middle" font-size="8" fill="#1f7a3d">A7670C / SIM7600G-H mPCIe</text>
+    <text x="719" y="456" text-anchor="middle" font-size="8" fill="#1f7a3d">(30×50.95mm, onboard SIM)</text>
+
+    <text x="719" y="555" text-anchor="middle" font-size="7" fill="#1f7a3d">W_DISABLE# pulled high · PERST# via MCU GPIO · internal trace to Hub for USB</text>
+
+  </g>
+
+  <!-- Legend -->
+  <text x="60" y="650" font-size="11" fill="#2ee6a8">Solid green: confirmed UNO Q mating zone dimensions</text>
+  <text x="60" y="668" font-size="11" fill="#999">JMEDIA now left / JMISC now right within the mating zone — Camera+Display sits against JMEDIA, LoRa sits against JMISC, per your latest order.</text>
+  <text x="60" y="686" font-size="11" fill="#999">Row 2 is now a clean two-zone strip: USB Hub (ports facing down) on the left, LTE on the right, spanning roughly under row 1's width.</text>
+
+</svg>
