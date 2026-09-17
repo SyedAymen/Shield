@@ -1,0 +1,1570 @@
+** Drc report for Shield.kicad_pcb **
+** Created on 2026-09-17T23:26:33+0530 **
+** Report includes: Errors, Exclusions **
+
+** Found 204 DRC violations **
+[shorting_items]: Items shorting two nets (nets /MCU_PE8_LED and )
+    Local override; error
+    @(3927.56 mils, 3063.39 mils): Pad 14 [/MCU_PE8_LED] of J2 on F.Cu
+    @(3927.56 mils, 3063.39 mils): Track [<no net>] on F.Cu, length 120.08 mils
+[shorting_items]: Items shorting two nets (nets  and unconnected-(J5-Pad12))
+    Local override; error
+    @(4648.43 mils, 3061.81 mils): Track [<no net>] on B.Cu, length 66.81 mils
+    @(4695.67 mils, 3014.57 mils): PTH pad 12 [unconnected-(J5-Pad12)] of J5
+[malformed_courtyard]: Footprint has malformed courtyard (not a closed shape)
+    Local override; error
+    @(4557.87 mils, 5612.80 mils): Footprint U9
+[malformed_courtyard]: Footprint has malformed courtyard (not a closed shape)
+    Local override; error
+    @(4557.87 mils, 5612.80 mils): Footprint U9
+[malformed_courtyard]: Footprint has malformed courtyard (not a closed shape)
+    Local override; error
+    @(2408.66 mils, 5467.91 mils): Footprint U7
+[malformed_courtyard]: Footprint has malformed courtyard (not a closed shape)
+    Local override; error
+    @(2408.66 mils, 5467.91 mils): Footprint U7
+[malformed_courtyard]: Footprint has malformed courtyard (not a closed shape)
+    Local override; error
+    @(3270.47 mils, 5438.78 mils): Footprint U8
+[malformed_courtyard]: Footprint has malformed courtyard (not a closed shape)
+    Local override; error
+    @(3270.47 mils, 5438.78 mils): Footprint U8
+[copper_edge_clearance]: Board edge clearance violation (board setup constraints edge clearance 19.69 mils; actual 17.70 mils)
+    Rule: board setup constraints edge; error
+    @(7476.21 mils, 4330.68 mils): Segment of J16 on Edge.Cuts
+    @(7366.14 mils, 4287.40 mils): Pad 1 [/MIC2_INP] of J16 on F.Cu
+[copper_edge_clearance]: Board edge clearance violation (board setup constraints edge clearance 19.69 mils; actual 9.85 mils)
+    Rule: board setup constraints edge; error
+    @(7417.32 mils, 4606.30 mils): Segment of J16 on Edge.Cuts
+    @(7365.75 mils, 4669.29 mils): Pad 2 [/HPH_REF] of J16 on F.Cu
+[copper_edge_clearance]: Board edge clearance violation (board setup constraints edge clearance 19.69 mils; actual 9.88 mils)
+    Rule: board setup constraints edge; error
+    @(7417.31 mils, 4350.38 mils): Segment of J16 on Edge.Cuts
+    @(7265.75 mils, 4287.40 mils): Pad 3 [/HPH_R] of J16 on F.Cu
+[copper_edge_clearance]: Board edge clearance violation (board setup constraints edge clearance 19.69 mils; actual 9.58 mils)
+    Rule: board setup constraints edge; error
+    @(7004.05 mils, 4606.56 mils): Segment of J16 on Edge.Cuts
+    @(7102.36 mils, 4669.29 mils): Pad 4 [/HPH_L] of J16 on F.Cu
+[copper_edge_clearance]: Board edge clearance violation (board setup constraints edge clearance 19.69 mils; actual 9.58 mils)
+    Rule: board setup constraints edge; error
+    @(7004.05 mils, 4350.57 mils): Segment of J16 on Edge.Cuts
+    @(7023.62 mils, 4669.29 mils): Pad 5 [unconnected-(J16-Pad5)] of J16 on F.Cu
+[copper_edge_clearance]: Board edge clearance violation (board setup constraints edge clearance 19.69 mils; actual 11.93 mils)
+    Rule: board setup constraints edge; error
+    @(7204.70 mils, 4317.91 mils): Segment of J16 on Edge.Cuts
+    @(7064.96 mils, 4287.40 mils): Pad 6 [unconnected-(J16-Pad6)] of J16 on F.Cu
+[invalid_outline]: Board has malformed outline (not a closed shape)
+    Local override; error
+    @(7553.61 mils, 4378.36 mils): Segment of J16 on Edge.Cuts
+[invalid_outline]: Board has malformed outline (not a closed shape)
+    Local override; error
+    @(7476.12 mils, 4574.68 mils): Segment of J16 on Edge.Cuts
+[invalid_outline]: Board has malformed outline (self-intersecting)
+    Local override; error
+    @(7110.36 mils, 4317.91 mils): Segment of J16 on Edge.Cuts
+    @(7204.70 mils, 4317.91 mils): Segment of J16 on Edge.Cuts
+[invalid_outline]: Board has malformed outline (self-intersecting)
+    Local override; error
+    @(7476.12 mils, 4625.98 mils): Segment of J16 on Edge.Cuts
+    @(7476.12 mils, 4574.68 mils): Segment of J16 on Edge.Cuts
+[unresolved_variable]: Unresolved text variable
+    Local override; error
+    @(2718.90 mils, 5811.42 mils): PCB text '${REFERENCE}' on F.Fab
+[solder_mask_bridge]: Rear solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(4648.43 mils, 3061.81 mils): Track [<no net>] on B.Cu, length 66.81 mils
+    @(4695.67 mils, 3014.57 mils): PTH pad 12 [unconnected-(J5-Pad12)] of J5
+[solder_mask_bridge]: Front solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(5050.79 mils, 2708.27 mils): Pad 1 [unconnected-(J6-~{WAKE}-Pad1)] of J6 on F.Cu
+    @(5050.79 mils, 2739.76 mils): Pad 3 [unconnected-(J6-COEX1-Pad3)] of J6 on F.Cu
+[solder_mask_bridge]: Front solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(5373.62 mils, 2724.02 mils): Pad 2 [/3V3-VBUS-2] of J6 on F.Cu
+    @(5373.62 mils, 2755.51 mils): Pad 4 [GND] of J6 on F.Cu
+[solder_mask_bridge]: Front solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(5050.79 mils, 2739.76 mils): Pad 3 [unconnected-(J6-COEX1-Pad3)] of J6 on F.Cu
+    @(5050.79 mils, 2771.26 mils): Pad 5 [unconnected-(J6-COEX2-Pad5)] of J6 on F.Cu
+[solder_mask_bridge]: Front solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(5373.62 mils, 2755.51 mils): Pad 4 [GND] of J6 on F.Cu
+    @(5373.62 mils, 2787.01 mils): Pad 6 [unconnected-(J6-+1V5-Pad6)] of J6 on F.Cu
+[solder_mask_bridge]: Front solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(5050.79 mils, 2771.26 mils): Pad 5 [unconnected-(J6-COEX2-Pad5)] of J6 on F.Cu
+    @(5050.79 mils, 2802.76 mils): Pad 7 [unconnected-(J6-~{CLKREQ}-Pad7)] of J6 on F.Cu
+[solder_mask_bridge]: Front solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(5373.62 mils, 2787.01 mils): Pad 6 [unconnected-(J6-+1V5-Pad6)] of J6 on F.Cu
+    @(5373.62 mils, 2818.50 mils): Pad 8 [unconnected-(J6-UIM_PWR-Pad8)] of J6 on F.Cu
+[solder_mask_bridge]: Front solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(5050.79 mils, 2802.76 mils): Pad 7 [unconnected-(J6-~{CLKREQ}-Pad7)] of J6 on F.Cu
+    @(5050.79 mils, 2834.25 mils): Pad 9 [GND] of J6 on F.Cu
+[solder_mask_bridge]: Front solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(5373.62 mils, 2818.50 mils): Pad 8 [unconnected-(J6-UIM_PWR-Pad8)] of J6 on F.Cu
+    @(5373.62 mils, 2850.00 mils): Pad 10 [unconnected-(J6-UIM_DATA-Pad10)] of J6 on F.Cu
+[solder_mask_bridge]: Front solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(5050.79 mils, 2834.25 mils): Pad 9 [GND] of J6 on F.Cu
+    @(5050.79 mils, 2865.75 mils): Pad 11 [unconnected-(J6-REFCLK--Pad11)] of J6 on F.Cu
+[solder_mask_bridge]: Front solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(5373.62 mils, 2850.00 mils): Pad 10 [unconnected-(J6-UIM_DATA-Pad10)] of J6 on F.Cu
+    @(5373.62 mils, 2881.50 mils): Pad 12 [unconnected-(J6-UIM_CLK-Pad12)] of J6 on F.Cu
+[solder_mask_bridge]: Front solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(5050.79 mils, 2865.75 mils): Pad 11 [unconnected-(J6-REFCLK--Pad11)] of J6 on F.Cu
+    @(5050.79 mils, 2897.24 mils): Pad 13 [unconnected-(J6-REFCLK+-Pad13)] of J6 on F.Cu
+[solder_mask_bridge]: Front solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(5373.62 mils, 2881.50 mils): Pad 12 [unconnected-(J6-UIM_CLK-Pad12)] of J6 on F.Cu
+    @(5373.62 mils, 2912.99 mils): Pad 14 [unconnected-(J6-~{UIM_RESET}-Pad14)] of J6 on F.Cu
+[solder_mask_bridge]: Front solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(5050.79 mils, 2897.24 mils): Pad 13 [unconnected-(J6-REFCLK+-Pad13)] of J6 on F.Cu
+    @(5050.79 mils, 2928.74 mils): Pad 15 [GND] of J6 on F.Cu
+[solder_mask_bridge]: Front solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(5373.62 mils, 2912.99 mils): Pad 14 [unconnected-(J6-~{UIM_RESET}-Pad14)] of J6 on F.Cu
+    @(5373.62 mils, 2944.49 mils): Pad 16 [unconnected-(J6-UIM_VPP-Pad16)] of J6 on F.Cu
+[solder_mask_bridge]: Front solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(5050.79 mils, 3086.22 mils): Pad 17 [unconnected-(J6-UIM_C8-Pad17)] of J6 on F.Cu
+    @(5050.79 mils, 3117.72 mils): Pad 19 [unconnected-(J6-UIM_C4-Pad19)] of J6 on F.Cu
+[solder_mask_bridge]: Front solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(5373.62 mils, 3101.97 mils): Pad 18 [GND] of J6 on F.Cu
+    @(5373.62 mils, 3133.46 mils): Pad 20 [unconnected-(J6-~{W_DISABLE}-Pad20)] of J6 on F.Cu
+[solder_mask_bridge]: Front solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(5050.79 mils, 3117.72 mils): Pad 19 [unconnected-(J6-UIM_C4-Pad19)] of J6 on F.Cu
+    @(5050.79 mils, 3149.21 mils): Pad 21 [GND] of J6 on F.Cu
+[solder_mask_bridge]: Front solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(5373.62 mils, 3133.46 mils): Pad 20 [unconnected-(J6-~{W_DISABLE}-Pad20)] of J6 on F.Cu
+    @(5373.62 mils, 3164.96 mils): Pad 22 [/MCU_PE7_LR] of J6 on F.Cu
+[solder_mask_bridge]: Front solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(5050.79 mils, 3149.21 mils): Pad 21 [GND] of J6 on F.Cu
+    @(5050.79 mils, 3180.71 mils): Pad 23 [unconnected-(J6-PERn0-Pad23)] of J6 on F.Cu
+[solder_mask_bridge]: Front solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(5373.62 mils, 3164.96 mils): Pad 22 [/MCU_PE7_LR] of J6 on F.Cu
+    @(5373.62 mils, 3196.46 mils): Pad 24 [/3V3-VBUS-2] of J6 on F.Cu
+[solder_mask_bridge]: Front solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(5050.79 mils, 3180.71 mils): Pad 23 [unconnected-(J6-PERn0-Pad23)] of J6 on F.Cu
+    @(5050.79 mils, 3212.20 mils): Pad 25 [unconnected-(J6-PERp0-Pad25)] of J6 on F.Cu
+[solder_mask_bridge]: Front solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(5373.62 mils, 3196.46 mils): Pad 24 [/3V3-VBUS-2] of J6 on F.Cu
+    @(5373.62 mils, 3227.95 mils): Pad 26 [GND] of J6 on F.Cu
+[solder_mask_bridge]: Front solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(5050.79 mils, 3212.20 mils): Pad 25 [unconnected-(J6-PERp0-Pad25)] of J6 on F.Cu
+    @(5050.79 mils, 3243.70 mils): Pad 27 [GND] of J6 on F.Cu
+[solder_mask_bridge]: Front solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(5373.62 mils, 3227.95 mils): Pad 26 [GND] of J6 on F.Cu
+    @(5373.62 mils, 3259.45 mils): Pad 28 [unconnected-(J6-+1V5-Pad28)] of J6 on F.Cu
+[solder_mask_bridge]: Front solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(5373.62 mils, 3259.45 mils): Pad 28 [unconnected-(J6-+1V5-Pad28)] of J6 on F.Cu
+    @(5373.62 mils, 3290.94 mils): Pad 30 [unconnected-(J6-SMB_CLK-Pad30)] of J6 on F.Cu
+[solder_mask_bridge]: Front solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(5050.79 mils, 3275.20 mils): Pad 29 [GND] of J6 on F.Cu
+    @(5050.79 mils, 3306.69 mils): Pad 31 [unconnected-(J6-PETn0-Pad31)] of J6 on F.Cu
+[solder_mask_bridge]: Front solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(5373.62 mils, 3290.94 mils): Pad 30 [unconnected-(J6-SMB_CLK-Pad30)] of J6 on F.Cu
+    @(5373.62 mils, 3322.44 mils): Pad 32 [unconnected-(J6-SMB_DATA-Pad32)] of J6 on F.Cu
+[solder_mask_bridge]: Front solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(5050.79 mils, 3306.69 mils): Pad 31 [unconnected-(J6-PETn0-Pad31)] of J6 on F.Cu
+    @(5050.79 mils, 3338.19 mils): Pad 33 [unconnected-(J6-PETp0-Pad33)] of J6 on F.Cu
+[solder_mask_bridge]: Front solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(5373.62 mils, 3322.44 mils): Pad 32 [unconnected-(J6-SMB_DATA-Pad32)] of J6 on F.Cu
+    @(5373.62 mils, 3353.94 mils): Pad 34 [GND] of J6 on F.Cu
+[solder_mask_bridge]: Front solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(5050.79 mils, 3338.19 mils): Pad 33 [unconnected-(J6-PETp0-Pad33)] of J6 on F.Cu
+    @(5050.79 mils, 3369.69 mils): Pad 35 [GND] of J6 on F.Cu
+[solder_mask_bridge]: Front solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(5373.62 mils, 3353.94 mils): Pad 34 [GND] of J6 on F.Cu
+    @(5373.62 mils, 3385.43 mils): Pad 36 [unconnected-(J6-USB_D--Pad36)] of J6 on F.Cu
+[solder_mask_bridge]: Front solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(5373.62 mils, 3385.43 mils): Pad 36 [unconnected-(J6-USB_D--Pad36)] of J6 on F.Cu
+    @(5373.62 mils, 3416.93 mils): Pad 38 [unconnected-(J6-USB_D+-Pad38)] of J6 on F.Cu
+[solder_mask_bridge]: Front solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(5050.79 mils, 3401.18 mils): Pad 37 [GND] of J6 on F.Cu
+    @(5050.79 mils, 3432.68 mils): Pad 39 [/3V3-VBUS-2] of J6 on F.Cu
+[solder_mask_bridge]: Front solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(5373.62 mils, 3416.93 mils): Pad 38 [unconnected-(J6-USB_D+-Pad38)] of J6 on F.Cu
+    @(5373.62 mils, 3448.43 mils): Pad 40 [GND] of J6 on F.Cu
+[solder_mask_bridge]: Front solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(5373.62 mils, 3448.43 mils): Pad 40 [GND] of J6 on F.Cu
+    @(5373.62 mils, 3479.92 mils): Pad 42 [unconnected-(J6-~{LED_WWAN}-Pad42)] of J6 on F.Cu
+[solder_mask_bridge]: Front solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(5050.79 mils, 3464.17 mils): Pad 41 [/3V3-VBUS-2] of J6 on F.Cu
+    @(5050.79 mils, 3495.67 mils): Pad 43 [GND] of J6 on F.Cu
+[solder_mask_bridge]: Front solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(5373.62 mils, 3479.92 mils): Pad 42 [unconnected-(J6-~{LED_WWAN}-Pad42)] of J6 on F.Cu
+    @(5373.62 mils, 3511.42 mils): Pad 44 [unconnected-(J6-~{LED_WLAN}-Pad44)] of J6 on F.Cu
+[solder_mask_bridge]: Front solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(5050.79 mils, 3495.67 mils): Pad 43 [GND] of J6 on F.Cu
+    @(5050.79 mils, 3527.17 mils): Pad 45 [/LR_SCK] of J6 on F.Cu
+[solder_mask_bridge]: Front solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(5373.62 mils, 3511.42 mils): Pad 44 [unconnected-(J6-~{LED_WLAN}-Pad44)] of J6 on F.Cu
+    @(5373.62 mils, 3542.91 mils): Pad 46 [unconnected-(J6-~{LED_WPAN}-Pad46)] of J6 on F.Cu
+[solder_mask_bridge]: Front solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(5050.79 mils, 3527.17 mils): Pad 45 [/LR_SCK] of J6 on F.Cu
+    @(5050.79 mils, 3558.66 mils): Pad 47 [/LR_MISO] of J6 on F.Cu
+[solder_mask_bridge]: Front solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(5373.62 mils, 3542.91 mils): Pad 46 [unconnected-(J6-~{LED_WPAN}-Pad46)] of J6 on F.Cu
+    @(5373.62 mils, 3574.41 mils): Pad 48 [unconnected-(J6-+1V5-Pad48)] of J6 on F.Cu
+[solder_mask_bridge]: Front solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(5050.79 mils, 3558.66 mils): Pad 47 [/LR_MISO] of J6 on F.Cu
+    @(5050.79 mils, 3590.16 mils): Pad 49 [/LR_MOSI] of J6 on F.Cu
+[solder_mask_bridge]: Front solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(5373.62 mils, 3574.41 mils): Pad 48 [unconnected-(J6-+1V5-Pad48)] of J6 on F.Cu
+    @(5373.62 mils, 3605.91 mils): Pad 50 [GND] of J6 on F.Cu
+[solder_mask_bridge]: Front solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(5050.79 mils, 3590.16 mils): Pad 49 [/LR_MOSI] of J6 on F.Cu
+    @(5050.79 mils, 3621.65 mils): Pad 51 [GND] of J6 on F.Cu
+[solder_mask_bridge]: Front solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(5373.62 mils, 3605.91 mils): Pad 50 [GND] of J6 on F.Cu
+    @(5373.62 mils, 3637.40 mils): Pad 52 [/3V3-VBUS-2] of J6 on F.Cu
+[solder_mask_bridge]: Front solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(3984.49 mils, 3046.81 mils): Rectangle of J2 on F.Mask
+    @(3927.56 mils, 3063.39 mils): Track [<no net>] on F.Cu, length 120.08 mils
+[solder_mask_bridge]: Front solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(3102.33 mils, 4491.93 mils): Pad 1 [/LTE_D+] of U2 on F.Cu
+    @(3102.33 mils, 4507.68 mils): Pad 2 [/LTE_D-] of U2 on F.Cu
+[solder_mask_bridge]: Front solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(3102.33 mils, 4507.68 mils): Pad 2 [/LTE_D-] of U2 on F.Cu
+    @(3102.33 mils, 4523.43 mils): Pad 3 [unconnected-(U2-USB3DN_TXDP1-Pad3)] of U2 on F.Cu
+[solder_mask_bridge]: Front solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(3102.33 mils, 4523.43 mils): Pad 3 [unconnected-(U2-USB3DN_TXDP1-Pad3)] of U2 on F.Cu
+    @(3102.33 mils, 4539.17 mils): Pad 4 [unconnected-(U2-USB3DN_TXDM1-Pad4)] of U2 on F.Cu
+[solder_mask_bridge]: Front solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(3102.33 mils, 4539.17 mils): Pad 4 [unconnected-(U2-USB3DN_TXDM1-Pad4)] of U2 on F.Cu
+    @(3102.33 mils, 4554.92 mils): Pad 5 [VDD12] of U2 on F.Cu
+[solder_mask_bridge]: Front solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(3102.33 mils, 4554.92 mils): Pad 5 [VDD12] of U2 on F.Cu
+    @(3102.33 mils, 4570.67 mils): Pad 6 [unconnected-(U2-USB3DN_RXDP1-Pad6)] of U2 on F.Cu
+[solder_mask_bridge]: Front solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(3102.33 mils, 4570.67 mils): Pad 6 [unconnected-(U2-USB3DN_RXDP1-Pad6)] of U2 on F.Cu
+    @(3102.33 mils, 4586.42 mils): Pad 7 [unconnected-(U2-USB3DN_RXDM1-Pad7)] of U2 on F.Cu
+[solder_mask_bridge]: Front solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(3102.33 mils, 4586.42 mils): Pad 7 [unconnected-(U2-USB3DN_RXDM1-Pad7)] of U2 on F.Cu
+    @(3102.33 mils, 4602.17 mils): Pad 8 [/DN2_D+] of U2 on F.Cu
+[solder_mask_bridge]: Front solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(3102.33 mils, 4602.17 mils): Pad 8 [/DN2_D+] of U2 on F.Cu
+    @(3102.33 mils, 4617.91 mils): Pad 9 [/DN2_D-] of U2 on F.Cu
+[solder_mask_bridge]: Front solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(3102.33 mils, 4617.91 mils): Pad 9 [/DN2_D-] of U2 on F.Cu
+    @(3102.33 mils, 4633.66 mils): Pad 10 [/DN2_TX+] of U2 on F.Cu
+[solder_mask_bridge]: Front solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(3102.33 mils, 4633.66 mils): Pad 10 [/DN2_TX+] of U2 on F.Cu
+    @(3102.33 mils, 4649.41 mils): Pad 11 [/DN2_TX-] of U2 on F.Cu
+[solder_mask_bridge]: Front solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(3102.33 mils, 4649.41 mils): Pad 11 [/DN2_TX-] of U2 on F.Cu
+    @(3102.33 mils, 4665.16 mils): Pad 12 [VDD12] of U2 on F.Cu
+[solder_mask_bridge]: Front solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(3102.33 mils, 4665.16 mils): Pad 12 [VDD12] of U2 on F.Cu
+    @(3102.33 mils, 4680.91 mils): Pad 13 [/DN2_RX+] of U2 on F.Cu
+[solder_mask_bridge]: Front solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(3102.33 mils, 4680.91 mils): Pad 13 [/DN2_RX+] of U2 on F.Cu
+    @(3102.33 mils, 4696.65 mils): Pad 14 [/DN2_RX-] of U2 on F.Cu
+[solder_mask_bridge]: Front solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(3135.21 mils, 4729.53 mils): Pad 15 [VDD12] of U2 on F.Cu
+    @(3150.95 mils, 4729.53 mils): Pad 16 [VDD33] of U2 on F.Cu
+[solder_mask_bridge]: Front solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(3150.95 mils, 4729.53 mils): Pad 16 [VDD33] of U2 on F.Cu
+    @(3166.70 mils, 4729.53 mils): Pad 17 [/DN3_D+] of U2 on F.Cu
+[solder_mask_bridge]: Front solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(3166.70 mils, 4729.53 mils): Pad 17 [/DN3_D+] of U2 on F.Cu
+    @(3182.45 mils, 4729.53 mils): Pad 18 [/DN3_D-] of U2 on F.Cu
+[solder_mask_bridge]: Front solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(3182.45 mils, 4729.53 mils): Pad 18 [/DN3_D-] of U2 on F.Cu
+    @(3198.20 mils, 4729.53 mils): Pad 19 [/DN3_TX+] of U2 on F.Cu
+[solder_mask_bridge]: Front solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(3198.20 mils, 4729.53 mils): Pad 19 [/DN3_TX+] of U2 on F.Cu
+    @(3213.95 mils, 4729.53 mils): Pad 20 [/DN3_TX-] of U2 on F.Cu
+[solder_mask_bridge]: Front solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(3213.95 mils, 4729.53 mils): Pad 20 [/DN3_TX-] of U2 on F.Cu
+    @(3229.70 mils, 4729.53 mils): Pad 21 [VDD12] of U2 on F.Cu
+[solder_mask_bridge]: Front solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(3229.70 mils, 4729.53 mils): Pad 21 [VDD12] of U2 on F.Cu
+    @(3245.44 mils, 4729.53 mils): Pad 22 [/DN3_RX+] of U2 on F.Cu
+[solder_mask_bridge]: Front solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(3245.44 mils, 4729.53 mils): Pad 22 [/DN3_RX+] of U2 on F.Cu
+    @(3261.19 mils, 4729.53 mils): Pad 23 [/DN3_RX-] of U2 on F.Cu
+[solder_mask_bridge]: Front solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(3261.19 mils, 4729.53 mils): Pad 23 [/DN3_RX-] of U2 on F.Cu
+    @(3276.94 mils, 4729.53 mils): Pad 24 [/DN4_D+] of U2 on F.Cu
+[solder_mask_bridge]: Front solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(3276.94 mils, 4729.53 mils): Pad 24 [/DN4_D+] of U2 on F.Cu
+    @(3292.69 mils, 4729.53 mils): Pad 25 [/DN4_D-] of U2 on F.Cu
+[solder_mask_bridge]: Front solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(3292.69 mils, 4729.53 mils): Pad 25 [/DN4_D-] of U2 on F.Cu
+    @(3308.44 mils, 4729.53 mils): Pad 26 [unconnected-(U2-USB3DN_TXDP4-Pad26)] of U2 on F.Cu
+[solder_mask_bridge]: Front solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(3308.44 mils, 4729.53 mils): Pad 26 [unconnected-(U2-USB3DN_TXDP4-Pad26)] of U2 on F.Cu
+    @(3324.18 mils, 4729.53 mils): Pad 27 [unconnected-(U2-USB3DN_TXDM4-Pad27)] of U2 on F.Cu
+[solder_mask_bridge]: Front solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(3324.18 mils, 4729.53 mils): Pad 27 [unconnected-(U2-USB3DN_TXDM4-Pad27)] of U2 on F.Cu
+    @(3339.93 mils, 4729.53 mils): Pad 28 [VDD12] of U2 on F.Cu
+[solder_mask_bridge]: Front solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(3372.81 mils, 4696.65 mils): Pad 29 [unconnected-(U2-USB3DN_RXDP4-Pad29)] of U2 on F.Cu
+    @(3372.81 mils, 4680.91 mils): Pad 30 [unconnected-(U2-USB3DN_RXDM4-Pad30)] of U2 on F.Cu
+[solder_mask_bridge]: Front solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(3372.81 mils, 4680.91 mils): Pad 30 [unconnected-(U2-USB3DN_RXDM4-Pad30)] of U2 on F.Cu
+    @(3372.81 mils, 4665.16 mils): Pad 31 [VDD33] of U2 on F.Cu
+[solder_mask_bridge]: Front solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(3372.81 mils, 4665.16 mils): Pad 31 [VDD33] of U2 on F.Cu
+    @(3372.81 mils, 4649.41 mils): Pad 32 [/PRT_CTL4] of U2 on F.Cu
+[solder_mask_bridge]: Front solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(3372.81 mils, 4649.41 mils): Pad 32 [/PRT_CTL4] of U2 on F.Cu
+    @(3372.81 mils, 4633.66 mils): Pad 33 [VDD12] of U2 on F.Cu
+[solder_mask_bridge]: Front solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(3372.81 mils, 4633.66 mils): Pad 33 [VDD12] of U2 on F.Cu
+    @(3372.81 mils, 4617.91 mils): Pad 34 [/PRT_CTL3] of U2 on F.Cu
+[solder_mask_bridge]: Front solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(3372.81 mils, 4617.91 mils): Pad 34 [/PRT_CTL3] of U2 on F.Cu
+    @(3372.81 mils, 4602.17 mils): Pad 35 [/PRT_CTL2] of U2 on F.Cu
+[solder_mask_bridge]: Front solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(3372.81 mils, 4602.17 mils): Pad 35 [/PRT_CTL2] of U2 on F.Cu
+    @(3372.81 mils, 4586.42 mils): Pad 36 [unconnected-(U2-PRT_CTL1-Pad36)] of U2 on F.Cu
+[solder_mask_bridge]: Front solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(3372.81 mils, 4586.42 mils): Pad 36 [unconnected-(U2-PRT_CTL1-Pad36)] of U2 on F.Cu
+    @(3372.81 mils, 4570.67 mils): Pad 37 [/UP_VBUS] of U2 on F.Cu
+[solder_mask_bridge]: Front solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(3372.81 mils, 4570.67 mils): Pad 37 [/UP_VBUS] of U2 on F.Cu
+    @(3372.81 mils, 4554.92 mils): Pad 38 [unconnected-(U2-SPI_CLK/SMCLK/GPIO4-Pad38)] of U2 on F.Cu
+[solder_mask_bridge]: Front solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(3372.81 mils, 4554.92 mils): Pad 38 [unconnected-(U2-SPI_CLK/SMCLK/GPIO4-Pad38)] of U2 on F.Cu
+    @(3372.81 mils, 4539.17 mils): Pad 39 [unconnected-(U2-SPI_DO/SMDAT/GPIO5-Pad39)] of U2 on F.Cu
+[solder_mask_bridge]: Front solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(3372.81 mils, 4539.17 mils): Pad 39 [unconnected-(U2-SPI_DO/SMDAT/GPIO5-Pad39)] of U2 on F.Cu
+    @(3372.81 mils, 4523.43 mils): Pad 40 [Net-(U2-SPI_DI/CFG_BC_EN/GPIO9)] of U2 on F.Cu
+[solder_mask_bridge]: Front solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(3372.81 mils, 4523.43 mils): Pad 40 [Net-(U2-SPI_DI/CFG_BC_EN/GPIO9)] of U2 on F.Cu
+    @(3372.81 mils, 4507.68 mils): Pad 41 [Net-(U2-SPI_CE_N/CFG_NON_REM/GPIO7)] of U2 on F.Cu
+[solder_mask_bridge]: Front solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(3372.81 mils, 4507.68 mils): Pad 41 [Net-(U2-SPI_CE_N/CFG_NON_REM/GPIO7)] of U2 on F.Cu
+    @(3372.81 mils, 4491.93 mils): Pad 42 [/RST] of U2 on F.Cu
+[solder_mask_bridge]: Front solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(3339.93 mils, 4459.06 mils): Pad 43 [VDD12] of U2 on F.Cu
+    @(3324.18 mils, 4459.06 mils): Pad 44 [VDD33] of U2 on F.Cu
+[solder_mask_bridge]: Front solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(3324.18 mils, 4459.06 mils): Pad 44 [VDD33] of U2 on F.Cu
+    @(3308.44 mils, 4459.06 mils): Pad 45 [/UP_D-] of U2 on F.Cu
+[solder_mask_bridge]: Front solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(3308.44 mils, 4459.06 mils): Pad 45 [/UP_D-] of U2 on F.Cu
+    @(3292.69 mils, 4459.06 mils): Pad 46 [/UP_D+] of U2 on F.Cu
+[solder_mask_bridge]: Front solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(3292.69 mils, 4459.06 mils): Pad 46 [/UP_D+] of U2 on F.Cu
+    @(3276.94 mils, 4459.06 mils): Pad 47 [/UP_TX+] of U2 on F.Cu
+[solder_mask_bridge]: Front solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(3276.94 mils, 4459.06 mils): Pad 47 [/UP_TX+] of U2 on F.Cu
+    @(3261.19 mils, 4459.06 mils): Pad 48 [/UP_TX-] of U2 on F.Cu
+[solder_mask_bridge]: Front solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(3261.19 mils, 4459.06 mils): Pad 48 [/UP_TX-] of U2 on F.Cu
+    @(3245.44 mils, 4459.06 mils): Pad 49 [VDD12] of U2 on F.Cu
+[solder_mask_bridge]: Front solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(3245.44 mils, 4459.06 mils): Pad 49 [VDD12] of U2 on F.Cu
+    @(3229.70 mils, 4459.06 mils): Pad 50 [/UP_RX+] of U2 on F.Cu
+[solder_mask_bridge]: Front solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(3229.70 mils, 4459.06 mils): Pad 50 [/UP_RX+] of U2 on F.Cu
+    @(3213.95 mils, 4459.06 mils): Pad 51 [/UP_RX-] of U2 on F.Cu
+[solder_mask_bridge]: Front solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(3213.95 mils, 4459.06 mils): Pad 51 [/UP_RX-] of U2 on F.Cu
+    @(3198.20 mils, 4459.06 mils): Pad 52 [unconnected-(U2-ATEST-Pad52)] of U2 on F.Cu
+[solder_mask_bridge]: Front solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(3198.20 mils, 4459.06 mils): Pad 52 [unconnected-(U2-ATEST-Pad52)] of U2 on F.Cu
+    @(3182.45 mils, 4459.06 mils): Pad 53 [Net-(U2-XTALO)] of U2 on F.Cu
+[solder_mask_bridge]: Front solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(3182.45 mils, 4459.06 mils): Pad 53 [Net-(U2-XTALO)] of U2 on F.Cu
+    @(3166.70 mils, 4459.06 mils): Pad 54 [Net-(U2-XTALI/CLK_IN)] of U2 on F.Cu
+[solder_mask_bridge]: Front solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(3166.70 mils, 4459.06 mils): Pad 54 [Net-(U2-XTALI/CLK_IN)] of U2 on F.Cu
+    @(3150.95 mils, 4459.06 mils): Pad 55 [VDD33] of U2 on F.Cu
+[solder_mask_bridge]: Front solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(3150.95 mils, 4459.06 mils): Pad 55 [VDD33] of U2 on F.Cu
+    @(3135.21 mils, 4459.06 mils): Pad 56 [Net-(U2-RBIAS)] of U2 on F.Cu
+[solder_mask_bridge]: Front solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(1500.00 mils, 3887.01 mils): Pad 1 [GND] of J3 on F.Cu
+    @(1500.00 mils, 3867.32 mils): Pad 2 [/CSI_D0-] of J3 on F.Cu
+[solder_mask_bridge]: Front solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(1500.00 mils, 3867.32 mils): Pad 2 [/CSI_D0-] of J3 on F.Cu
+    @(1500.00 mils, 3847.64 mils): Pad 3 [/CSI_D0+] of J3 on F.Cu
+[solder_mask_bridge]: Front solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(1500.00 mils, 3847.64 mils): Pad 3 [/CSI_D0+] of J3 on F.Cu
+    @(1500.00 mils, 3827.95 mils): Pad 4 [GND] of J3 on F.Cu
+[solder_mask_bridge]: Front solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(1500.00 mils, 3827.95 mils): Pad 4 [GND] of J3 on F.Cu
+    @(1500.00 mils, 3808.27 mils): Pad 5 [/CSI_D1-] of J3 on F.Cu
+[solder_mask_bridge]: Front solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(1500.00 mils, 3808.27 mils): Pad 5 [/CSI_D1-] of J3 on F.Cu
+    @(1500.00 mils, 3788.58 mils): Pad 6 [/CSI_D1+] of J3 on F.Cu
+[solder_mask_bridge]: Front solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(1500.00 mils, 3788.58 mils): Pad 6 [/CSI_D1+] of J3 on F.Cu
+    @(1500.00 mils, 3768.90 mils): Pad 7 [GND] of J3 on F.Cu
+[solder_mask_bridge]: Front solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(1500.00 mils, 3768.90 mils): Pad 7 [GND] of J3 on F.Cu
+    @(1500.00 mils, 3749.21 mils): Pad 8 [/CSI_CK-] of J3 on F.Cu
+[solder_mask_bridge]: Front solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(1500.00 mils, 3749.21 mils): Pad 8 [/CSI_CK-] of J3 on F.Cu
+    @(1500.00 mils, 3729.53 mils): Pad 9 [/CSI_CK+] of J3 on F.Cu
+[solder_mask_bridge]: Front solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(1500.00 mils, 3729.53 mils): Pad 9 [/CSI_CK+] of J3 on F.Cu
+    @(1500.00 mils, 3709.84 mils): Pad 10 [GND] of J3 on F.Cu
+[solder_mask_bridge]: Front solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(1500.00 mils, 3709.84 mils): Pad 10 [GND] of J3 on F.Cu
+    @(1500.00 mils, 3690.16 mils): Pad 11 [/CSI_D2-] of J3 on F.Cu
+[solder_mask_bridge]: Front solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(1500.00 mils, 3690.16 mils): Pad 11 [/CSI_D2-] of J3 on F.Cu
+    @(1500.00 mils, 3670.47 mils): Pad 12 [/CSI_D2+] of J3 on F.Cu
+[solder_mask_bridge]: Front solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(1500.00 mils, 3670.47 mils): Pad 12 [/CSI_D2+] of J3 on F.Cu
+    @(1500.00 mils, 3650.79 mils): Pad 13 [GND] of J3 on F.Cu
+[solder_mask_bridge]: Front solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(1500.00 mils, 3650.79 mils): Pad 13 [GND] of J3 on F.Cu
+    @(1500.00 mils, 3631.10 mils): Pad 14 [/CSI_D3-] of J3 on F.Cu
+[solder_mask_bridge]: Front solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(1500.00 mils, 3631.10 mils): Pad 14 [/CSI_D3-] of J3 on F.Cu
+    @(1500.00 mils, 3611.42 mils): Pad 15 [/CSI_D3+] of J3 on F.Cu
+[solder_mask_bridge]: Front solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(1500.00 mils, 3611.42 mils): Pad 15 [/CSI_D3+] of J3 on F.Cu
+    @(1500.00 mils, 3591.73 mils): Pad 16 [GND] of J3 on F.Cu
+[solder_mask_bridge]: Front solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(1500.00 mils, 3591.73 mils): Pad 16 [GND] of J3 on F.Cu
+    @(1500.00 mils, 3572.05 mils): Pad 17 [/CAM_EN] of J3 on F.Cu
+[solder_mask_bridge]: Front solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(1500.00 mils, 3572.05 mils): Pad 17 [/CAM_EN] of J3 on F.Cu
+    @(1500.00 mils, 3552.36 mils): Pad 18 [unconnected-(J3-Pad18)] of J3 on F.Cu
+[solder_mask_bridge]: Front solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(1500.00 mils, 3552.36 mils): Pad 18 [unconnected-(J3-Pad18)] of J3 on F.Cu
+    @(1500.00 mils, 3532.68 mils): Pad 19 [GND] of J3 on F.Cu
+[solder_mask_bridge]: Front solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(1500.00 mils, 3532.68 mils): Pad 19 [GND] of J3 on F.Cu
+    @(1500.00 mils, 3512.99 mils): Pad 20 [/SCL1] of J3 on F.Cu
+[solder_mask_bridge]: Front solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(1500.00 mils, 3512.99 mils): Pad 20 [/SCL1] of J3 on F.Cu
+    @(1500.00 mils, 3493.31 mils): Pad 21 [/SDA1] of J3 on F.Cu
+[solder_mask_bridge]: Front solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(1500.00 mils, 3493.31 mils): Pad 21 [/SDA1] of J3 on F.Cu
+    @(1500.00 mils, 3473.62 mils): Pad 22 [/3V3] of J3 on F.Cu
+[solder_mask_bridge]: Front solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(4907.53 mils, 5054.58 mils): Pad 1 [unconnected-(J8-~{WAKE}-Pad1)] of J8 on F.Cu
+    @(4907.53 mils, 5086.08 mils): Pad 3 [unconnected-(J8-COEX1-Pad3)] of J8 on F.Cu
+[solder_mask_bridge]: Front solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(5230.37 mils, 5070.33 mils): Pad 2 [/VBUCK] of J8 on F.Cu
+    @(5230.37 mils, 5101.83 mils): Pad 4 [GND] of J8 on F.Cu
+[solder_mask_bridge]: Front solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(4907.53 mils, 5086.08 mils): Pad 3 [unconnected-(J8-COEX1-Pad3)] of J8 on F.Cu
+    @(4907.53 mils, 5117.58 mils): Pad 5 [unconnected-(J8-COEX2-Pad5)] of J8 on F.Cu
+[solder_mask_bridge]: Front solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(5230.37 mils, 5101.83 mils): Pad 4 [GND] of J8 on F.Cu
+    @(5230.37 mils, 5133.32 mils): Pad 6 [unconnected-(J8-+1V5-Pad6)] of J8 on F.Cu
+[solder_mask_bridge]: Front solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(4907.53 mils, 5117.58 mils): Pad 5 [unconnected-(J8-COEX2-Pad5)] of J8 on F.Cu
+    @(4907.53 mils, 5149.07 mils): Pad 7 [unconnected-(J8-~{CLKREQ}-Pad7)] of J8 on F.Cu
+[solder_mask_bridge]: Front solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(5230.37 mils, 5133.32 mils): Pad 6 [unconnected-(J8-+1V5-Pad6)] of J8 on F.Cu
+    @(5230.37 mils, 5164.82 mils): Pad 8 [/SIM_VCC] of J8 on F.Cu
+[solder_mask_bridge]: Front solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(4907.53 mils, 5149.07 mils): Pad 7 [unconnected-(J8-~{CLKREQ}-Pad7)] of J8 on F.Cu
+    @(4907.53 mils, 5180.57 mils): Pad 9 [GND] of J8 on F.Cu
+[solder_mask_bridge]: Front solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(5230.37 mils, 5164.82 mils): Pad 8 [/SIM_VCC] of J8 on F.Cu
+    @(5230.37 mils, 5196.32 mils): Pad 10 [/SIM_DT] of J8 on F.Cu
+[solder_mask_bridge]: Front solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(4907.53 mils, 5180.57 mils): Pad 9 [GND] of J8 on F.Cu
+    @(4907.53 mils, 5212.06 mils): Pad 11 [/SOC_GPIO_101_PPS] of J8 on F.Cu
+[solder_mask_bridge]: Front solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(5230.37 mils, 5196.32 mils): Pad 10 [/SIM_DT] of J8 on F.Cu
+    @(5230.37 mils, 5227.81 mils): Pad 12 [/SIM_CLK] of J8 on F.Cu
+[solder_mask_bridge]: Front solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(4907.53 mils, 5212.06 mils): Pad 11 [/SOC_GPIO_101_PPS] of J8 on F.Cu
+    @(4907.53 mils, 5243.56 mils): Pad 13 [unconnected-(J8-REFCLK+-Pad13)] of J8 on F.Cu
+[solder_mask_bridge]: Front solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(5230.37 mils, 5227.81 mils): Pad 12 [/SIM_CLK] of J8 on F.Cu
+    @(5230.37 mils, 5259.31 mils): Pad 14 [/SIM_RST] of J8 on F.Cu
+[solder_mask_bridge]: Front solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(4907.53 mils, 5243.56 mils): Pad 13 [unconnected-(J8-REFCLK+-Pad13)] of J8 on F.Cu
+    @(4907.53 mils, 5275.06 mils): Pad 15 [GND] of J8 on F.Cu
+[solder_mask_bridge]: Front solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(5230.37 mils, 5259.31 mils): Pad 14 [/SIM_RST] of J8 on F.Cu
+    @(5230.37 mils, 5290.80 mils): Pad 16 [/SIM_VPP] of J8 on F.Cu
+[solder_mask_bridge]: Front solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(4907.53 mils, 5432.54 mils): Pad 17 [unconnected-(J8-UIM_C8-Pad17)] of J8 on F.Cu
+    @(4907.53 mils, 5464.03 mils): Pad 19 [unconnected-(J8-UIM_C4-Pad19)] of J8 on F.Cu
+[solder_mask_bridge]: Front solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(5230.37 mils, 5448.28 mils): Pad 18 [GND] of J8 on F.Cu
+    @(5230.37 mils, 5479.78 mils): Pad 20 [Net-(J8-~{W_DISABLE})] of J8 on F.Cu
+[solder_mask_bridge]: Front solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(4907.53 mils, 5464.03 mils): Pad 19 [unconnected-(J8-UIM_C4-Pad19)] of J8 on F.Cu
+    @(4907.53 mils, 5495.53 mils): Pad 21 [GND] of J8 on F.Cu
+[solder_mask_bridge]: Front solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(5230.37 mils, 5479.78 mils): Pad 20 [Net-(J8-~{W_DISABLE})] of J8 on F.Cu
+    @(5230.37 mils, 5511.28 mils): Pad 22 [/VBUCK] of J8 on F.Cu
+[solder_mask_bridge]: Front solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(4907.53 mils, 5495.53 mils): Pad 21 [GND] of J8 on F.Cu
+    @(4907.53 mils, 5527.02 mils): Pad 23 [unconnected-(J8-PERn0-Pad23)] of J8 on F.Cu
+[solder_mask_bridge]: Front solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(4907.53 mils, 5527.02 mils): Pad 23 [unconnected-(J8-PERn0-Pad23)] of J8 on F.Cu
+    @(4907.53 mils, 5558.52 mils): Pad 25 [unconnected-(J8-PERp0-Pad25)] of J8 on F.Cu
+[solder_mask_bridge]: Front solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(5230.37 mils, 5542.77 mils): Pad 24 [/VBUCK] of J8 on F.Cu
+    @(5230.37 mils, 5574.27 mils): Pad 26 [GND] of J8 on F.Cu
+[solder_mask_bridge]: Front solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(4907.53 mils, 5558.52 mils): Pad 25 [unconnected-(J8-PERp0-Pad25)] of J8 on F.Cu
+    @(4907.53 mils, 5590.02 mils): Pad 27 [GND] of J8 on F.Cu
+[solder_mask_bridge]: Front solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(5230.37 mils, 5574.27 mils): Pad 26 [GND] of J8 on F.Cu
+    @(5230.37 mils, 5605.76 mils): Pad 28 [unconnected-(J8-+1V5-Pad28)] of J8 on F.Cu
+[solder_mask_bridge]: Front solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(5230.37 mils, 5605.76 mils): Pad 28 [unconnected-(J8-+1V5-Pad28)] of J8 on F.Cu
+    @(5230.37 mils, 5637.26 mils): Pad 30 [unconnected-(J8-SMB_CLK-Pad30)] of J8 on F.Cu
+[solder_mask_bridge]: Front solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(4907.53 mils, 5621.51 mils): Pad 29 [GND] of J8 on F.Cu
+    @(4907.53 mils, 5653.01 mils): Pad 31 [unconnected-(J8-PETn0-Pad31)] of J8 on F.Cu
+[solder_mask_bridge]: Front solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(5230.37 mils, 5637.26 mils): Pad 30 [unconnected-(J8-SMB_CLK-Pad30)] of J8 on F.Cu
+    @(5230.37 mils, 5668.76 mils): Pad 32 [unconnected-(J8-SMB_DATA-Pad32)] of J8 on F.Cu
+[solder_mask_bridge]: Front solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(4907.53 mils, 5653.01 mils): Pad 31 [unconnected-(J8-PETn0-Pad31)] of J8 on F.Cu
+    @(4907.53 mils, 5684.50 mils): Pad 33 [unconnected-(J8-PETp0-Pad33)] of J8 on F.Cu
+[solder_mask_bridge]: Front solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(5230.37 mils, 5668.76 mils): Pad 32 [unconnected-(J8-SMB_DATA-Pad32)] of J8 on F.Cu
+    @(5230.37 mils, 5700.25 mils): Pad 34 [GND] of J8 on F.Cu
+[solder_mask_bridge]: Front solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(4907.53 mils, 5684.50 mils): Pad 33 [unconnected-(J8-PETp0-Pad33)] of J8 on F.Cu
+    @(4907.53 mils, 5716.00 mils): Pad 35 [GND] of J8 on F.Cu
+[solder_mask_bridge]: Front solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(5230.37 mils, 5700.25 mils): Pad 34 [GND] of J8 on F.Cu
+    @(5230.37 mils, 5731.75 mils): Pad 36 [/LTE_D-] of J8 on F.Cu
+[solder_mask_bridge]: Front solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(5230.37 mils, 5731.75 mils): Pad 36 [/LTE_D-] of J8 on F.Cu
+    @(5230.37 mils, 5763.24 mils): Pad 38 [/LTE_D+] of J8 on F.Cu
+[solder_mask_bridge]: Front solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(4907.53 mils, 5747.50 mils): Pad 37 [GND] of J8 on F.Cu
+    @(4907.53 mils, 5778.99 mils): Pad 39 [/VBUCK] of J8 on F.Cu
+[solder_mask_bridge]: Front solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(5230.37 mils, 5763.24 mils): Pad 38 [/LTE_D+] of J8 on F.Cu
+    @(5230.37 mils, 5794.74 mils): Pad 40 [GND] of J8 on F.Cu
+[solder_mask_bridge]: Front solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(5230.37 mils, 5794.74 mils): Pad 40 [GND] of J8 on F.Cu
+    @(5230.37 mils, 5826.24 mils): Pad 42 [unconnected-(J8-~{LED_WWAN}-Pad42)] of J8 on F.Cu
+[solder_mask_bridge]: Front solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(4907.53 mils, 5810.49 mils): Pad 41 [/VBUCK] of J8 on F.Cu
+    @(4907.53 mils, 5841.98 mils): Pad 43 [GND] of J8 on F.Cu
+[solder_mask_bridge]: Front solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(5230.37 mils, 5826.24 mils): Pad 42 [unconnected-(J8-~{LED_WWAN}-Pad42)] of J8 on F.Cu
+    @(5230.37 mils, 5857.73 mils): Pad 44 [unconnected-(J8-~{LED_WLAN}-Pad44)] of J8 on F.Cu
+[solder_mask_bridge]: Front solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(4907.53 mils, 5841.98 mils): Pad 43 [GND] of J8 on F.Cu
+    @(4907.53 mils, 5873.48 mils): Pad 45 [unconnected-(J8-Reserved-Pad45)] of J8 on F.Cu
+[solder_mask_bridge]: Front solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(5230.37 mils, 5857.73 mils): Pad 44 [unconnected-(J8-~{LED_WLAN}-Pad44)] of J8 on F.Cu
+    @(5230.37 mils, 5889.23 mils): Pad 46 [unconnected-(J8-~{LED_WPAN}-Pad46)] of J8 on F.Cu
+[solder_mask_bridge]: Front solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(4907.53 mils, 5873.48 mils): Pad 45 [unconnected-(J8-Reserved-Pad45)] of J8 on F.Cu
+    @(4907.53 mils, 5904.98 mils): Pad 47 [unconnected-(J8-Reserved-Pad47)] of J8 on F.Cu
+[solder_mask_bridge]: Front solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(5230.37 mils, 5889.23 mils): Pad 46 [unconnected-(J8-~{LED_WPAN}-Pad46)] of J8 on F.Cu
+    @(5230.37 mils, 5920.72 mils): Pad 48 [unconnected-(J8-+1V5-Pad48)] of J8 on F.Cu
+[solder_mask_bridge]: Front solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(4907.53 mils, 5904.98 mils): Pad 47 [unconnected-(J8-Reserved-Pad47)] of J8 on F.Cu
+    @(4907.53 mils, 5936.47 mils): Pad 49 [unconnected-(J8-Reserved-Pad49)] of J8 on F.Cu
+[solder_mask_bridge]: Front solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(5230.37 mils, 5920.72 mils): Pad 48 [unconnected-(J8-+1V5-Pad48)] of J8 on F.Cu
+    @(5230.37 mils, 5952.22 mils): Pad 50 [GND] of J8 on F.Cu
+[solder_mask_bridge]: Front solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(4907.53 mils, 5936.47 mils): Pad 49 [unconnected-(J8-Reserved-Pad49)] of J8 on F.Cu
+    @(4907.53 mils, 5967.97 mils): Pad 51 [GND] of J8 on F.Cu
+[solder_mask_bridge]: Front solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(5230.37 mils, 5952.22 mils): Pad 50 [GND] of J8 on F.Cu
+    @(5230.37 mils, 5983.72 mils): Pad 52 [/VBUCK] of J8 on F.Cu
+[solder_mask_bridge]: Rear solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(1500.39 mils, 2706.30 mils): Pad 1 [GND] of J4 on B.Cu
+    @(1500.39 mils, 2725.98 mils): Pad 2 [/DSI_D0-] of J4 on B.Cu
+[solder_mask_bridge]: Rear solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(1500.39 mils, 2725.98 mils): Pad 2 [/DSI_D0-] of J4 on B.Cu
+    @(1500.39 mils, 2745.67 mils): Pad 3 [/DSI_D0+] of J4 on B.Cu
+[solder_mask_bridge]: Rear solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(1500.39 mils, 2745.67 mils): Pad 3 [/DSI_D0+] of J4 on B.Cu
+    @(1500.39 mils, 2765.35 mils): Pad 4 [GND] of J4 on B.Cu
+[solder_mask_bridge]: Rear solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(1500.39 mils, 2765.35 mils): Pad 4 [GND] of J4 on B.Cu
+    @(1500.39 mils, 2785.04 mils): Pad 5 [/DSI_D1-] of J4 on B.Cu
+[solder_mask_bridge]: Rear solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(1500.39 mils, 2785.04 mils): Pad 5 [/DSI_D1-] of J4 on B.Cu
+    @(1500.39 mils, 2804.72 mils): Pad 6 [/DSI_D1+] of J4 on B.Cu
+[solder_mask_bridge]: Rear solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(1500.39 mils, 2804.72 mils): Pad 6 [/DSI_D1+] of J4 on B.Cu
+    @(1500.39 mils, 2824.41 mils): Pad 7 [GND] of J4 on B.Cu
+[solder_mask_bridge]: Rear solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(1500.39 mils, 2824.41 mils): Pad 7 [GND] of J4 on B.Cu
+    @(1500.39 mils, 2844.09 mils): Pad 8 [/DSI_CK-] of J4 on B.Cu
+[solder_mask_bridge]: Rear solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(1500.39 mils, 2844.09 mils): Pad 8 [/DSI_CK-] of J4 on B.Cu
+    @(1500.39 mils, 2863.78 mils): Pad 9 [/DSI_CK+] of J4 on B.Cu
+[solder_mask_bridge]: Rear solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(1500.39 mils, 2863.78 mils): Pad 9 [/DSI_CK+] of J4 on B.Cu
+    @(1500.39 mils, 2883.46 mils): Pad 10 [GND] of J4 on B.Cu
+[solder_mask_bridge]: Rear solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(1500.39 mils, 2883.46 mils): Pad 10 [GND] of J4 on B.Cu
+    @(1500.39 mils, 2903.15 mils): Pad 11 [/DSI_D2-] of J4 on B.Cu
+[solder_mask_bridge]: Rear solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(1500.39 mils, 2903.15 mils): Pad 11 [/DSI_D2-] of J4 on B.Cu
+    @(1500.39 mils, 2922.83 mils): Pad 12 [/DSI_D2+] of J4 on B.Cu
+[solder_mask_bridge]: Rear solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(1500.39 mils, 2922.83 mils): Pad 12 [/DSI_D2+] of J4 on B.Cu
+    @(1500.39 mils, 2942.52 mils): Pad 13 [GND] of J4 on B.Cu
+[solder_mask_bridge]: Rear solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(1500.39 mils, 2942.52 mils): Pad 13 [GND] of J4 on B.Cu
+    @(1500.39 mils, 2962.20 mils): Pad 14 [/DSI_D3-] of J4 on B.Cu
+[solder_mask_bridge]: Rear solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(1500.39 mils, 2962.20 mils): Pad 14 [/DSI_D3-] of J4 on B.Cu
+    @(1500.39 mils, 2981.89 mils): Pad 15 [/DSI_D3+] of J4 on B.Cu
+[solder_mask_bridge]: Rear solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(1500.39 mils, 2981.89 mils): Pad 15 [/DSI_D3+] of J4 on B.Cu
+    @(1500.39 mils, 3001.57 mils): Pad 16 [GND] of J4 on B.Cu
+[solder_mask_bridge]: Rear solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(1500.39 mils, 3001.57 mils): Pad 16 [GND] of J4 on B.Cu
+    @(1500.39 mils, 3021.26 mils): Pad 17 [unconnected-(J4-Pad17)] of J4 on B.Cu
+[solder_mask_bridge]: Rear solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(1500.39 mils, 3021.26 mils): Pad 17 [unconnected-(J4-Pad17)] of J4 on B.Cu
+    @(1500.39 mils, 3040.94 mils): Pad 18 [unconnected-(J4-Pad18)] of J4 on B.Cu
+[solder_mask_bridge]: Rear solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(1500.39 mils, 3040.94 mils): Pad 18 [unconnected-(J4-Pad18)] of J4 on B.Cu
+    @(1500.39 mils, 3060.63 mils): Pad 19 [unconnected-(J4-Pad19)] of J4 on B.Cu
+[solder_mask_bridge]: Rear solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(1500.39 mils, 3060.63 mils): Pad 19 [unconnected-(J4-Pad19)] of J4 on B.Cu
+    @(1500.39 mils, 3080.31 mils): Pad 20 [/SCL1] of J4 on B.Cu
+[solder_mask_bridge]: Rear solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(1500.39 mils, 3080.31 mils): Pad 20 [/SCL1] of J4 on B.Cu
+    @(1500.39 mils, 3100.00 mils): Pad 21 [/SDA1] of J4 on B.Cu
+[solder_mask_bridge]: Rear solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(1500.39 mils, 3100.00 mils): Pad 21 [/SDA1] of J4 on B.Cu
+    @(1500.39 mils, 3119.69 mils): Pad 22 [/3V3] of J4 on B.Cu
+
+** Found 188 unconnected pads **
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(1337.40 mils, 4704.33 mils): Pad 1 [GND] of C36 on F.Cu
+    @(1581.50 mils, 4705.91 mils): Pad 1 [GND] of C33 on F.Cu
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(1371.65 mils, 4092.13 mils): Pad 1 [GND] of C2 on F.Cu
+    @(1462.60 mils, 4093.31 mils): Pad 1 [GND] of C1 on F.Cu
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(1371.65 mils, 4092.13 mils): Pad 1 [GND] of C2 on F.Cu
+    @(1393.70 mils, 3977.56 mils): Pad P1 [GND] of J3 on F.Cu
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(1393.70 mils, 3383.07 mils): Pad P2 [GND] of J3 on F.Cu
+    @(1500.00 mils, 3532.68 mils): Pad 19 [GND] of J3 on F.Cu
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(1394.09 mils, 3210.24 mils): Pad P2 [GND] of J4 on B.Cu
+    @(1393.70 mils, 3383.07 mils): Pad P2 [GND] of J3 on F.Cu
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(1394.09 mils, 3210.24 mils): Pad P2 [GND] of J4 on B.Cu
+    @(1500.39 mils, 3001.57 mils): Pad 16 [GND] of J4 on B.Cu
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(1409.25 mils, 5735.83 mils): PTH pad 10 [GND] of J9
+    @(1409.25 mils, 5979.92 mils): Pad 10 [GND] of J9 on F.Cu
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(1409.25 mils, 5735.83 mils): PTH pad 10 [GND] of J9
+    @(1661.22 mils, 5690.55 mils): Pad 7 [GND] of J9 on F.Cu
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(1500.00 mils, 3532.68 mils): Pad 19 [GND] of J3 on F.Cu
+    @(1500.00 mils, 3591.73 mils): Pad 16 [GND] of J3 on F.Cu
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(1500.00 mils, 3591.73 mils): Pad 16 [GND] of J3 on F.Cu
+    @(1500.00 mils, 3650.79 mils): Pad 13 [GND] of J3 on F.Cu
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(1500.00 mils, 3709.84 mils): Pad 10 [GND] of J3 on F.Cu
+    @(1500.00 mils, 3650.79 mils): Pad 13 [GND] of J3 on F.Cu
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(1500.00 mils, 3768.90 mils): Pad 7 [GND] of J3 on F.Cu
+    @(1500.00 mils, 3709.84 mils): Pad 10 [GND] of J3 on F.Cu
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(1500.00 mils, 3827.95 mils): Pad 4 [GND] of J3 on F.Cu
+    @(1500.00 mils, 3768.90 mils): Pad 7 [GND] of J3 on F.Cu
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(1500.00 mils, 3887.01 mils): Pad 1 [GND] of J3 on F.Cu
+    @(1500.00 mils, 3827.95 mils): Pad 4 [GND] of J3 on F.Cu
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(1500.00 mils, 3887.01 mils): Pad 1 [GND] of J3 on F.Cu
+    @(1393.70 mils, 3977.56 mils): Pad P1 [GND] of J3 on F.Cu
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(1500.39 mils, 2706.30 mils): Pad 1 [GND] of J4 on B.Cu
+    @(1500.39 mils, 2765.35 mils): Pad 4 [GND] of J4 on B.Cu
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(1500.39 mils, 2706.30 mils): Pad 1 [GND] of J4 on B.Cu
+    @(1394.09 mils, 2615.75 mils): Pad P1 [GND] of J4 on B.Cu
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(1500.39 mils, 2824.41 mils): Pad 7 [GND] of J4 on B.Cu
+    @(1500.39 mils, 2765.35 mils): Pad 4 [GND] of J4 on B.Cu
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(1500.39 mils, 2824.41 mils): Pad 7 [GND] of J4 on B.Cu
+    @(1500.39 mils, 2883.46 mils): Pad 10 [GND] of J4 on B.Cu
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(1500.39 mils, 2942.52 mils): Pad 13 [GND] of J4 on B.Cu
+    @(1500.39 mils, 3001.57 mils): Pad 16 [GND] of J4 on B.Cu
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(1500.39 mils, 2942.52 mils): Pad 13 [GND] of J4 on B.Cu
+    @(1500.39 mils, 2883.46 mils): Pad 10 [GND] of J4 on B.Cu
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(1581.50 mils, 4705.91 mils): Pad 1 [GND] of C33 on F.Cu
+    @(1512.60 mils, 5148.03 mils): Pad 3-GND [GND] of LED2 on F.Cu
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(1661.22 mils, 5690.55 mils): Pad 7 [GND] of J9 on F.Cu
+    @(1779.33 mils, 5690.55 mils): Pad 4 [GND] of J9 on F.Cu
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(1706.92 mils, 4164.64 mils): Pad 2 [GND] of U1 on F.Cu
+    @(1462.60 mils, 4093.31 mils): Pad 1 [GND] of C1 on F.Cu
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(1779.33 mils, 5690.55 mils): Pad 4 [GND] of J9 on F.Cu
+    @(1913.19 mils, 5735.83 mils): PTH pad 10 [GND] of J9
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(1812.20 mils, 4492.91 mils): Pad 1 [GND] of C5 on F.Cu
+    @(1581.50 mils, 4705.91 mils): Pad 1 [GND] of C33 on F.Cu
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(1812.60 mils, 4397.24 mils): Pad 1 [GND] of C4 on F.Cu
+    @(1812.20 mils, 4492.91 mils): Pad 1 [GND] of C5 on F.Cu
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(1812.60 mils, 4397.24 mils): Pad 1 [GND] of C4 on F.Cu
+    @(1706.92 mils, 4164.64 mils): Pad 2 [GND] of U1 on F.Cu
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(1913.19 mils, 5979.92 mils): Pad 10 [GND] of J9 on F.Cu
+    @(1913.19 mils, 5735.83 mils): PTH pad 10 [GND] of J9
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(1913.19 mils, 5979.92 mils): Pad 10 [GND] of J9 on F.Cu
+    @(2169.98 mils, 5872.93 mils): Pad 1 [GND] of R2 on F.Cu
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(2106.30 mils, 2913.39 mils): Pad 8 [GND] of J1 on F.Cu
+    @(2106.30 mils, 2763.39 mils): Pad 2 [GND] of J1 on F.Cu
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(2106.30 mils, 3063.39 mils): Pad 14 [GND] of J1 on F.Cu
+    @(2106.30 mils, 2913.39 mils): Pad 8 [GND] of J1 on F.Cu
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(2106.30 mils, 3213.39 mils): Pad 20 [GND] of J1 on F.Cu
+    @(2106.30 mils, 3363.39 mils): Pad 26 [GND] of J1 on F.Cu
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(2106.30 mils, 3213.39 mils): Pad 20 [GND] of J1 on F.Cu
+    @(2106.30 mils, 3063.39 mils): Pad 14 [GND] of J1 on F.Cu
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(2106.30 mils, 3513.39 mils): Pad 32 [GND] of J1 on F.Cu
+    @(2106.30 mils, 3363.39 mils): Pad 26 [GND] of J1 on F.Cu
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(2106.30 mils, 3663.39 mils): Pad 38 [GND] of J1 on F.Cu
+    @(2106.30 mils, 3513.39 mils): Pad 32 [GND] of J1 on F.Cu
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(2106.30 mils, 3663.39 mils): Pad 38 [GND] of J1 on F.Cu
+    @(2106.30 mils, 3813.39 mils): Pad 44 [GND] of J1 on F.Cu
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(2106.30 mils, 3813.39 mils): Pad 44 [GND] of J1 on F.Cu
+    @(2106.30 mils, 3963.39 mils): Pad 50 [GND] of J1 on F.Cu
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(2106.30 mils, 3963.39 mils): Pad 50 [GND] of J1 on F.Cu
+    @(2106.30 mils, 4113.39 mils): Pad 56 [GND] of J1 on F.Cu
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(2106.30 mils, 4113.39 mils): Pad 56 [GND] of J1 on F.Cu
+    @(1706.92 mils, 4164.64 mils): Pad 2 [GND] of U1 on F.Cu
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(2234.65 mils, 5133.86 mils): Pad 1 [GND] of C15 on F.Cu
+    @(2422.71 mils, 5132.60 mils): Pad 1 [GND] of C17 on F.Cu
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(2266.30 mils, 2763.39 mils): Pad 1 [GND] of J1 on F.Cu
+    @(2266.30 mils, 2913.39 mils): Pad 7 [GND] of J1 on F.Cu
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(2266.30 mils, 3063.39 mils): Pad 13 [GND] of J1 on F.Cu
+    @(2266.30 mils, 2913.39 mils): Pad 7 [GND] of J1 on F.Cu
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(2266.30 mils, 3213.39 mils): Pad 19 [GND] of J1 on F.Cu
+    @(2266.30 mils, 3363.39 mils): Pad 25 [GND] of J1 on F.Cu
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(2266.30 mils, 3213.39 mils): Pad 19 [GND] of J1 on F.Cu
+    @(2266.30 mils, 3063.39 mils): Pad 13 [GND] of J1 on F.Cu
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(2266.30 mils, 3213.39 mils): Pad 19 [GND] of J1 on F.Cu
+    @(2106.30 mils, 3213.39 mils): Pad 20 [GND] of J1 on F.Cu
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(2266.30 mils, 3513.39 mils): Pad 31 [GND] of J1 on F.Cu
+    @(2266.30 mils, 3363.39 mils): Pad 25 [GND] of J1 on F.Cu
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(2266.30 mils, 3513.39 mils): Pad 31 [GND] of J1 on F.Cu
+    @(2266.30 mils, 3663.39 mils): Pad 37 [GND] of J1 on F.Cu
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(2266.30 mils, 3813.39 mils): Pad 43 [GND] of J1 on F.Cu
+    @(2266.30 mils, 3663.39 mils): Pad 37 [GND] of J1 on F.Cu
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(2266.30 mils, 3813.39 mils): Pad 43 [GND] of J1 on F.Cu
+    @(2626.77 mils, 3790.55 mils): Pad 1 [GND] of C8 on F.Cu
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(2266.30 mils, 3963.39 mils): Pad 49 [GND] of J1 on F.Cu
+    @(2266.30 mils, 3813.39 mils): Pad 43 [GND] of J1 on F.Cu
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(2266.30 mils, 4113.39 mils): Pad 55 [GND] of J1 on F.Cu
+    @(2266.30 mils, 3963.39 mils): Pad 49 [GND] of J1 on F.Cu
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(2408.66 mils, 5522.05 mils): Pad 2 [GND] of U7 on F.Cu
+    @(2466.93 mils, 5740.55 mils): PTH pad 10 [GND] of J14
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(2426.65 mils, 5268.43 mils): Pad 1 [GND] of C16 on F.Cu
+    @(2422.71 mils, 5132.60 mils): Pad 1 [GND] of C17 on F.Cu
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(2426.65 mils, 5268.43 mils): Pad 1 [GND] of C16 on F.Cu
+    @(2408.66 mils, 5522.05 mils): Pad 2 [GND] of U7 on F.Cu
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(2466.93 mils, 5740.55 mils): PTH pad 10 [GND] of J14
+    @(2466.93 mils, 5984.65 mils): Pad 10 [GND] of J14 on F.Cu
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(2466.93 mils, 5740.55 mils): PTH pad 10 [GND] of J14
+    @(2718.90 mils, 5695.28 mils): Pad 7 [GND] of J14 on F.Cu
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(2466.93 mils, 5984.65 mils): Pad 10 [GND] of J14 on F.Cu
+    @(2169.98 mils, 5872.93 mils): Pad 1 [GND] of R2 on F.Cu
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(2625.59 mils, 3883.07 mils): Pad 1 [GND] of C7 on F.Cu
+    @(2626.77 mils, 3790.55 mils): Pad 1 [GND] of C8 on F.Cu
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(2626.77 mils, 3790.55 mils): Pad 1 [GND] of C8 on F.Cu
+    @(2862.60 mils, 3700.00 mils): Pad 1 [GND] of U6 on F.Cu
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(2781.89 mils, 5457.48 mils): Pad 8 [GND] of D5 on F.Cu
+    @(2781.89 mils, 5490.35 mils): Pad 3 [GND] of D5 on F.Cu
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(2837.01 mils, 5695.28 mils): Pad 4 [GND] of J14 on F.Cu
+    @(2718.90 mils, 5695.28 mils): Pad 7 [GND] of J14 on F.Cu
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(2837.01 mils, 5695.28 mils): Pad 4 [GND] of J14 on F.Cu
+    @(2781.89 mils, 5490.35 mils): Pad 3 [GND] of D5 on F.Cu
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(2862.60 mils, 3700.00 mils): Pad 1 [GND] of U6 on F.Cu
+    @(3098.82 mils, 3412.99 mils): Pad 1 [GND] of D2 on F.Cu
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(2878.93 mils, 4150.86 mils): Pad 1 [GND] of C6 on F.Cu
+    @(2625.59 mils, 3883.07 mils): Pad 1 [GND] of C7 on F.Cu
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(2880.12 mils, 4257.28 mils): Pad 1 [GND] of C3 on F.Cu
+    @(2878.93 mils, 4150.86 mils): Pad 1 [GND] of C6 on F.Cu
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(2883.46 mils, 4380.71 mils): Pad 1 [GND] of R9 on F.Cu
+    @(2880.12 mils, 4257.28 mils): Pad 1 [GND] of C3 on F.Cu
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(2970.87 mils, 5740.55 mils): PTH pad 10 [GND] of J14
+    @(2837.01 mils, 5695.28 mils): Pad 4 [GND] of J14 on F.Cu
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(2970.87 mils, 5984.65 mils): Pad 10 [GND] of J14 on F.Cu
+    @(2970.87 mils, 5740.55 mils): PTH pad 10 [GND] of J14
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(3072.83 mils, 5396.46 mils): Pad 1 [GND] of C20 on F.Cu
+    @(3270.47 mils, 5492.91 mils): Pad 2 [GND] of U8 on F.Cu
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(3072.83 mils, 5396.46 mils): Pad 1 [GND] of C20 on F.Cu
+    @(2781.89 mils, 5457.48 mils): Pad 8 [GND] of D5 on F.Cu
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(3074.02 mils, 5272.83 mils): Pad 1 [GND] of C18 on F.Cu
+    @(3072.83 mils, 5396.46 mils): Pad 1 [GND] of C20 on F.Cu
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(3217.01 mils, 2825.91 mils): Pad 1 [GND] of R11 on F.Cu
+    @(3244.09 mils, 2602.58 mils): Pad B12 [GND] of J11 on F.Cu
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(3244.09 mils, 2602.58 mils): Pad B12 [GND] of J11 on F.Cu
+    @(3027.56 mils, 2602.58 mils): Pad A12 [GND] of J11 on F.Cu
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(3270.47 mils, 5492.91 mils): Pad 2 [GND] of U8 on F.Cu
+    @(3354.33 mils, 5738.19 mils): PTH pad 10 [GND] of J15
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(3276.77 mils, 3723.62 mils): Pad 1 [GND] of C11 on F.Cu
+    @(3098.82 mils, 3412.99 mils): Pad 1 [GND] of D2 on F.Cu
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(3319.69 mils, 3343.31 mils): Pad 1 [GND] of C14 on F.Cu
+    @(3098.82 mils, 3412.99 mils): Pad 1 [GND] of D2 on F.Cu
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(3349.98 mils, 2825.87 mils): Pad 1 [GND] of R12 on F.Cu
+    @(3217.01 mils, 2825.91 mils): Pad 1 [GND] of R11 on F.Cu
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(3349.98 mils, 2825.87 mils): Pad 1 [GND] of R12 on F.Cu
+    @(3319.69 mils, 3343.31 mils): Pad 1 [GND] of C14 on F.Cu
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(3350.00 mils, 5273.23 mils): Pad 1 [GND] of C19 on F.Cu
+    @(3270.47 mils, 5492.91 mils): Pad 2 [GND] of U8 on F.Cu
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(3354.33 mils, 5982.28 mils): Pad 10 [GND] of J15 on F.Cu
+    @(3354.33 mils, 5738.19 mils): PTH pad 10 [GND] of J15
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(3566.93 mils, 4360.24 mils): Pad 1 [GND] of C13 on F.Cu
+    @(3927.56 mils, 4163.39 mils): Pad 58 [GND] of J2 on F.Cu
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(3606.30 mils, 5692.91 mils): Pad 7 [GND] of J15 on F.Cu
+    @(3655.51 mils, 5488.58 mils): Pad 3 [GND] of D6 on F.Cu
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(3606.30 mils, 5692.91 mils): Pad 7 [GND] of J15 on F.Cu
+    @(3354.33 mils, 5738.19 mils): PTH pad 10 [GND] of J15
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(3640.16 mils, 3880.71 mils): Pad 1 [GND] of U3 on F.Cu
+    @(3276.77 mils, 3723.62 mils): Pad 1 [GND] of C11 on F.Cu
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(3655.51 mils, 5455.71 mils): Pad 8 [GND] of D6 on F.Cu
+    @(3655.51 mils, 5488.58 mils): Pad 3 [GND] of D6 on F.Cu
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(3658.27 mils, 3578.74 mils): Pad 1 [GND] of C9 on F.Cu
+    @(3640.16 mils, 3880.71 mils): Pad 1 [GND] of U3 on F.Cu
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(3703.25 mils, 4618.90 mils): Pad 1 [GND] of R5 on F.Cu
+    @(3566.93 mils, 4360.24 mils): Pad 1 [GND] of C13 on F.Cu
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(3724.41 mils, 5692.91 mils): Pad 4 [GND] of J15 on F.Cu
+    @(3606.30 mils, 5692.91 mils): Pad 7 [GND] of J15 on F.Cu
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(3858.27 mils, 5738.19 mils): PTH pad 10 [GND] of J15
+    @(3724.41 mils, 5692.91 mils): Pad 4 [GND] of J15 on F.Cu
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(3858.27 mils, 5982.28 mils): Pad 10 [GND] of J15 on F.Cu
+    @(3858.27 mils, 5738.19 mils): PTH pad 10 [GND] of J15
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(3927.56 mils, 3363.39 mils): Pad 26 [GND] of J2 on F.Cu
+    @(4087.56 mils, 3413.39 mils): Pad 27 [GND] of J2 on F.Cu
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(3927.56 mils, 3813.39 mils): Pad 44 [GND] of J2 on F.Cu
+    @(3640.16 mils, 3880.71 mils): Pad 1 [GND] of U3 on F.Cu
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(3927.56 mils, 3813.39 mils): Pad 44 [GND] of J2 on F.Cu
+    @(3927.56 mils, 4163.39 mils): Pad 58 [GND] of J2 on F.Cu
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(4024.31 mils, 4748.52 mils): Pad 1 [GND] of C28 on F.Cu
+    @(3703.25 mils, 4618.90 mils): Pad 1 [GND] of R5 on F.Cu
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(4025.10 mils, 4839.86 mils): Pad 1 [GND] of C10 on F.Cu
+    @(4024.31 mils, 4748.52 mils): Pad 1 [GND] of C28 on F.Cu
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(4025.10 mils, 4839.86 mils): Pad 1 [GND] of C10 on F.Cu
+    @(4218.41 mils, 4882.38 mils): Pad 3 [GND] of U10 on F.Cu
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(4087.56 mils, 3613.39 mils): Pad 35 [GND] of J2 on F.Cu
+    @(4087.56 mils, 3413.39 mils): Pad 27 [GND] of J2 on F.Cu
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(4087.56 mils, 3613.39 mils): Pad 35 [GND] of J2 on F.Cu
+    @(3927.56 mils, 3813.39 mils): Pad 44 [GND] of J2 on F.Cu
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(4272.05 mils, 5961.02 mils): PTH pad S1 [GND] of J7
+    @(4316.14 mils, 5938.39 mils): Pad B12 [GND] of J7 on F.Cu
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(4272.05 mils, 5961.02 mils): PTH pad S1 [GND] of J7
+    @(3858.27 mils, 5982.28 mils): Pad 10 [GND] of J15 on F.Cu
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(4272.05 mils, 6125.59 mils): PTH pad S1 [GND] of J7
+    @(4272.05 mils, 5961.02 mils): PTH pad S1 [GND] of J7
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(4316.14 mils, 5938.39 mils): Pad B12 [GND] of J7 on F.Cu
+    @(4568.11 mils, 5938.39 mils): Pad A12 [GND] of J7 on F.Cu
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(4352.36 mils, 5459.84 mils): Pad 1 [GND] of C22 on F.Cu
+    @(4351.18 mils, 5567.72 mils): Pad 1 [GND] of C23 on F.Cu
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(4438.58 mils, 4659.55 mils): Pad 1 [GND] of C31 on F.Cu
+    @(4575.98 mils, 4661.12 mils): Pad 1 [GND] of C30 on F.Cu
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(4438.58 mils, 4659.55 mils): Pad 1 [GND] of C31 on F.Cu
+    @(4451.57 mils, 4861.52 mils): Pad 1 [GND] of R15 on F.Cu
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(4451.57 mils, 4861.52 mils): Pad 1 [GND] of R15 on F.Cu
+    @(4218.41 mils, 4882.38 mils): Pad 3 [GND] of U10 on F.Cu
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(4520.47 mils, 5459.06 mils): Pad 1 [GND] of C21 on F.Cu
+    @(4352.36 mils, 5459.84 mils): Pad 1 [GND] of C22 on F.Cu
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(4520.47 mils, 5459.06 mils): Pad 1 [GND] of C21 on F.Cu
+    @(4539.76 mils, 5133.56 mils): Pad 1 [GND] of Q1 on F.Cu
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(4539.76 mils, 5133.56 mils): Pad 1 [GND] of Q1 on F.Cu
+    @(4451.57 mils, 4861.52 mils): Pad 1 [GND] of R15 on F.Cu
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(4557.87 mils, 5558.66 mils): Pad 2 [GND] of U9 on F.Cu
+    @(4520.47 mils, 5459.06 mils): Pad 1 [GND] of C21 on F.Cu
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(4568.11 mils, 5938.39 mils): Pad A12 [GND] of J7 on F.Cu
+    @(4612.20 mils, 5961.02 mils): PTH pad S1 [GND] of J7
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(4575.98 mils, 4661.12 mils): Pad 1 [GND] of C30 on F.Cu
+    @(4695.67 mils, 4414.57 mils): PTH pad 40 [GND] of J5
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(4612.20 mils, 5961.02 mils): PTH pad S1 [GND] of J7
+    @(4907.53 mils, 5967.97 mils): Pad 51 [GND] of J8 on F.Cu
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(4612.20 mils, 6125.59 mils): PTH pad S1 [GND] of J7
+    @(4612.20 mils, 5961.02 mils): PTH pad S1 [GND] of J7
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(4695.67 mils, 3114.57 mils): PTH pad 14 [GND] of J5
+    @(5050.79 mils, 3149.21 mils): Pad 21 [GND] of J6 on F.Cu
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(4907.53 mils, 5275.06 mils): Pad 15 [GND] of J8 on F.Cu
+    @(4907.53 mils, 5180.57 mils): Pad 9 [GND] of J8 on F.Cu
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(4907.53 mils, 5495.53 mils): Pad 21 [GND] of J8 on F.Cu
+    @(4907.53 mils, 5590.02 mils): Pad 27 [GND] of J8 on F.Cu
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(4907.53 mils, 5495.53 mils): Pad 21 [GND] of J8 on F.Cu
+    @(4907.53 mils, 5275.06 mils): Pad 15 [GND] of J8 on F.Cu
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(4907.53 mils, 5590.02 mils): Pad 27 [GND] of J8 on F.Cu
+    @(4907.53 mils, 5621.51 mils): Pad 29 [GND] of J8 on F.Cu
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(4907.53 mils, 5590.02 mils): Pad 27 [GND] of J8 on F.Cu
+    @(4557.87 mils, 5558.66 mils): Pad 2 [GND] of U9 on F.Cu
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(4907.53 mils, 5716.00 mils): Pad 35 [GND] of J8 on F.Cu
+    @(4907.53 mils, 5747.50 mils): Pad 37 [GND] of J8 on F.Cu
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(4907.53 mils, 5716.00 mils): Pad 35 [GND] of J8 on F.Cu
+    @(4907.53 mils, 5621.51 mils): Pad 29 [GND] of J8 on F.Cu
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(4907.53 mils, 5716.00 mils): Pad 35 [GND] of J8 on F.Cu
+    @(5230.37 mils, 5700.25 mils): Pad 34 [GND] of J8 on F.Cu
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(4907.53 mils, 5841.98 mils): Pad 43 [GND] of J8 on F.Cu
+    @(4907.53 mils, 5747.50 mils): Pad 37 [GND] of J8 on F.Cu
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(4907.53 mils, 5841.98 mils): Pad 43 [GND] of J8 on F.Cu
+    @(4907.53 mils, 5967.97 mils): Pad 51 [GND] of J8 on F.Cu
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(5050.79 mils, 2928.74 mils): Pad 15 [GND] of J6 on F.Cu
+    @(5050.79 mils, 2834.25 mils): Pad 9 [GND] of J6 on F.Cu
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(5050.79 mils, 2928.74 mils): Pad 15 [GND] of J6 on F.Cu
+    @(5050.79 mils, 3149.21 mils): Pad 21 [GND] of J6 on F.Cu
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(5050.79 mils, 3149.21 mils): Pad 21 [GND] of J6 on F.Cu
+    @(5050.79 mils, 3243.70 mils): Pad 27 [GND] of J6 on F.Cu
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(5050.79 mils, 3243.70 mils): Pad 27 [GND] of J6 on F.Cu
+    @(5050.79 mils, 3275.20 mils): Pad 29 [GND] of J6 on F.Cu
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(5050.79 mils, 3275.20 mils): Pad 29 [GND] of J6 on F.Cu
+    @(5050.79 mils, 3369.69 mils): Pad 35 [GND] of J6 on F.Cu
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(5050.79 mils, 3369.69 mils): Pad 35 [GND] of J6 on F.Cu
+    @(5050.79 mils, 3401.18 mils): Pad 37 [GND] of J6 on F.Cu
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(5050.79 mils, 3495.67 mils): Pad 43 [GND] of J6 on F.Cu
+    @(5050.79 mils, 3401.18 mils): Pad 37 [GND] of J6 on F.Cu
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(5050.79 mils, 3621.65 mils): Pad 51 [GND] of J6 on F.Cu
+    @(5050.79 mils, 3495.67 mils): Pad 43 [GND] of J6 on F.Cu
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(5050.79 mils, 3621.65 mils): Pad 51 [GND] of J6 on F.Cu
+    @(5373.62 mils, 3605.91 mils): Pad 50 [GND] of J6 on F.Cu
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(5230.37 mils, 5101.83 mils): Pad 4 [GND] of J8 on F.Cu
+    @(4907.53 mils, 5180.57 mils): Pad 9 [GND] of J8 on F.Cu
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(5230.37 mils, 5574.27 mils): Pad 26 [GND] of J8 on F.Cu
+    @(5230.37 mils, 5448.28 mils): Pad 18 [GND] of J8 on F.Cu
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(5230.37 mils, 5700.25 mils): Pad 34 [GND] of J8 on F.Cu
+    @(5230.37 mils, 5574.27 mils): Pad 26 [GND] of J8 on F.Cu
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(5230.37 mils, 5794.74 mils): Pad 40 [GND] of J8 on F.Cu
+    @(5230.37 mils, 5700.25 mils): Pad 34 [GND] of J8 on F.Cu
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(5230.37 mils, 5794.74 mils): Pad 40 [GND] of J8 on F.Cu
+    @(5230.37 mils, 5952.22 mils): Pad 50 [GND] of J8 on F.Cu
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(5255.91 mils, 4650.98 mils): Pad 5 [GND] of J12 on F.Cu
+    @(5417.32 mils, 4345.67 mils): Pad SH [GND] of J12 on F.Cu
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(5373.62 mils, 2755.51 mils): Pad 4 [GND] of J6 on F.Cu
+    @(5050.79 mils, 2834.25 mils): Pad 9 [GND] of J6 on F.Cu
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(5373.62 mils, 3101.97 mils): Pad 18 [GND] of J6 on F.Cu
+    @(5373.62 mils, 3227.95 mils): Pad 26 [GND] of J6 on F.Cu
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(5373.62 mils, 3353.94 mils): Pad 34 [GND] of J6 on F.Cu
+    @(5373.62 mils, 3448.43 mils): Pad 40 [GND] of J6 on F.Cu
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(5373.62 mils, 3353.94 mils): Pad 34 [GND] of J6 on F.Cu
+    @(5373.62 mils, 3227.95 mils): Pad 26 [GND] of J6 on F.Cu
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(5373.62 mils, 3605.91 mils): Pad 50 [GND] of J6 on F.Cu
+    @(5373.62 mils, 3448.43 mils): Pad 40 [GND] of J6 on F.Cu
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(5388.19 mils, 3966.14 mils): Pad 1 [GND] of U4 on F.Cu
+    @(5198.43 mils, 3996.06 mils): PTH pad 6 [GND] of J13
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(5388.19 mils, 3966.14 mils): Pad 1 [GND] of U4 on F.Cu
+    @(5373.62 mils, 3605.91 mils): Pad 50 [GND] of J6 on F.Cu
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(5388.19 mils, 3966.14 mils): Pad 1 [GND] of U4 on F.Cu
+    @(5417.32 mils, 4345.67 mils): Pad SH [GND] of J12 on F.Cu
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(5417.32 mils, 4345.67 mils): Pad SH [GND] of J12 on F.Cu
+    @(5763.78 mils, 4345.67 mils): Pad SH [GND] of J12 on F.Cu
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(5417.32 mils, 4806.30 mils): Pad SH [GND] of J12 on F.Cu
+    @(5255.91 mils, 4650.98 mils): Pad 5 [GND] of J12 on F.Cu
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(5417.32 mils, 4806.30 mils): Pad SH [GND] of J12 on F.Cu
+    @(5230.37 mils, 5101.83 mils): Pad 4 [GND] of J8 on F.Cu
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(5763.78 mils, 4345.67 mils): Pad SH [GND] of J12 on F.Cu
+    @(6189.76 mils, 4311.02 mils): Pad 1 [GND] of C35 on F.Cu
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(5764.17 mils, 4098.03 mils): Pad 1 [GND] of C12 on F.Cu
+    @(5763.78 mils, 4345.67 mils): Pad SH [GND] of J12 on F.Cu
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(6379.92 mils, 4035.04 mils): Pad 1 [GND] of C34 on F.Cu
+    @(6189.76 mils, 4311.02 mils): Pad 1 [GND] of C35 on F.Cu
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(6766.14 mils, 4398.82 mils): Pad 1 [GND] of C32 on F.Cu
+    @(6379.92 mils, 4035.04 mils): Pad 1 [GND] of C34 on F.Cu
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(1500.39 mils, 3119.69 mils): Pad 22 [/3V3] of J4 on B.Cu
+    @(1500.00 mils, 3473.62 mils): Track [/3V3] on F.Cu, length 34.48 mils
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(1319.69 mils, 5018.11 mils): Pad 1-VDD [/5V-VBUS] of LED2 on F.Cu
+    @(1409.65 mils, 4808.27 mils): Pad 2 [/5V-VBUS] of R20 on F.Cu
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(1409.65 mils, 4808.27 mils): Pad 2 [/5V-VBUS] of R20 on F.Cu
+    @(1412.20 mils, 4704.33 mils): Pad 2 [/5V-VBUS] of C36 on F.Cu
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(2309.45 mils, 5133.86 mils): Track [/5V-VBUS] on F.Cu, length 735.43 mils
+    @(1412.20 mils, 4704.33 mils): Pad 2 [/5V-VBUS] of C36 on F.Cu
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(6204.72 mils, 4438.58 mils): Pad 1-VDD [/5V-VBUS] of LED1 on F.Cu
+    @(6264.57 mils, 4311.02 mils): Pad 2 [/5V-VBUS] of C35 on F.Cu
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(6204.72 mils, 4438.58 mils): Pad 1-VDD [/5V-VBUS] of LED1 on F.Cu
+    @(5332.68 mils, 4147.24 mils): Track [/5V-VBUS] on F.Cu, length 55.51 mils
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(6346.75 mils, 4311.81 mils): Pad 1 [/5V-VBUS] of R18 on F.Cu
+    @(6264.57 mils, 4311.02 mils): Pad 2 [/5V-VBUS] of C35 on F.Cu
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(6305.12 mils, 4035.04 mils): Pad 2 [/3V3-VBUS-2] of C34 on F.Cu
+    @(5730.71 mils, 4056.69 mils): Track [/3V3-VBUS-2] on F.Cu, length 47.33 mils
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(6305.12 mils, 4138.19 mils): Pad 1 [/3V3-VBUS-2] of R19 on F.Cu
+    @(6305.12 mils, 4035.04 mils): Pad 2 [/3V3-VBUS-2] of C34 on F.Cu
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(5230.37 mils, 5542.77 mils): Pad 24 [/VBUCK] of J8 on F.Cu
+    @(5230.37 mils, 5511.28 mils): Track [/VBUCK] on F.Cu, length 47.24 mils
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(6763.39 mils, 4612.50 mils): Pad 1 [/MIC2_BIAS] of R17 on F.Cu
+    @(6766.14 mils, 4473.62 mils): Pad 2 [/MIC2_BIAS] of C32 on F.Cu
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(6766.14 mils, 4473.62 mils): Pad 2 [/MIC2_BIAS] of C32 on F.Cu
+    @(4087.56 mils, 3563.39 mils): Pad 33 [/MIC2_BIAS] of J2 on F.Cu
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(4087.56 mils, 3513.39 mils): Pad 31 [/HPH_REF] of J2 on F.Cu
+    @(3927.56 mils, 3713.39 mils): Pad 40 [/HPH_REF] of J2 on F.Cu
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(7365.75 mils, 4669.29 mils): Pad 2 [/HPH_REF] of J16 on F.Cu
+    @(4087.56 mils, 3513.39 mils): Pad 31 [/HPH_REF] of J2 on F.Cu
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(3927.56 mils, 3613.39 mils): Pad 36 [/HPH_L] of J2 on F.Cu
+    @(7102.36 mils, 4669.29 mils): Pad 4 [/HPH_L] of J16 on F.Cu
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(3927.56 mils, 2763.39 mils): Pad 2 [/MCU_SDMMC1_CMD / PD2] of J2 on F.Cu
+    @(4695.67 mils, 2514.57 mils): PTH pad 02 [/MCU_SDMMC1_CMD / PD2] of J5
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(3927.56 mils, 3663.39 mils): Pad 38 [/HPH_R] of J2 on F.Cu
+    @(7265.75 mils, 4287.40 mils): Pad 3 [/HPH_R] of J16 on F.Cu
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(4087.56 mils, 3463.39 mils): Pad 29 [/MIC2_INP] of J2 on F.Cu
+    @(6763.39 mils, 4684.35 mils): Pad 2 [/MIC2_INP] of R17 on F.Cu
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(6763.39 mils, 4684.35 mils): Pad 2 [/MIC2_INP] of R17 on F.Cu
+    @(7366.14 mils, 4287.40 mils): Pad 1 [/MIC2_INP] of J16 on F.Cu
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(1500.39 mils, 3080.31 mils): Pad 20 [/SCL1] of J4 on B.Cu
+    @(1535.43 mils, 3512.99 mils): Track [/SCL1] on F.Cu, length 35.43 mils
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(1468.11 mils, 3493.31 mils): Track [/SDA1] on F.Cu, length 31.89 mils
+    @(1500.39 mils, 3100.00 mils): Pad 21 [/SDA1] of J4 on B.Cu
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(2266.30 mils, 4213.39 mils): Pad 59 [/VIN] of J1 on F.Cu
+    @(4695.67 mils, 4314.57 mils): PTH pad 38 [/VIN] of J5
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(1414.57 mils, 4509.06 mils): Track [/1V8] on F.Cu, length 248.03 mils
+    @(1506.69 mils, 4705.91 mils): Pad 2 [/1V8] of C33 on F.Cu
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(1508.86 mils, 4804.72 mils): Pad 2 [/1V8] of R21 on F.Cu
+    @(1506.69 mils, 4705.91 mils): Pad 2 [/1V8] of C33 on F.Cu
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(3927.56 mils, 3063.39 mils): Pad 14 [/MCU_PE8_LED] of J2 on F.Cu
+    @(6483.76 mils, 4210.24 mils): Pad 2 [/MCU_PE8_LED] of Q2 on F.Cu
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(1693.11 mils, 4837.01 mils): Pad 2 [/SOC_GPIO_18_PWM_LED] of Q3 on F.Cu
+    @(4087.56 mils, 3963.39 mils): Pad 49 [/SOC_GPIO_18_PWM_LED] of J2 on F.Cu
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(6418.60 mils, 4311.81 mils): Pad 2 [Net-(LED1-DI)] of R18 on F.Cu
+    @(6397.64 mils, 4438.58 mils): Pad 4-DIN [Net-(LED1-DI)] of LED1 on F.Cu
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(6557.58 mils, 4172.83 mils): Pad 3 [Net-(LED1-DI)] of Q2 on F.Cu
+    @(6418.60 mils, 4311.81 mils): Pad 2 [Net-(LED1-DI)] of R18 on F.Cu
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(1337.80 mils, 4808.27 mils): Pad 1 [Net-(LED2-DI)] of R20 on F.Cu
+    @(1512.60 mils, 5018.11 mils): Pad 4-DIN [Net-(LED2-DI)] of LED2 on F.Cu
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(1512.60 mils, 5018.11 mils): Pad 4-DIN [Net-(LED2-DI)] of LED2 on F.Cu
+    @(1766.93 mils, 4799.61 mils): Pad 3 [Net-(LED2-DI)] of Q3 on F.Cu
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(6376.97 mils, 4138.19 mils): Pad 2 [Net-(Q2-B)] of R19 on F.Cu
+    @(6483.76 mils, 4135.43 mils): Pad 1 [Net-(Q2-B)] of Q2 on F.Cu
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(1580.71 mils, 4804.72 mils): Pad 1 [Net-(Q3-B)] of R21 on F.Cu
+    @(1693.11 mils, 4762.20 mils): Pad 1 [Net-(Q3-B)] of Q3 on F.Cu
+
+** Found 0 Footprint errors **
+
+** End of Report **
