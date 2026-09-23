@@ -1,4 +1,4 @@
-27357556591201561
+27361142639263614
 77313-118-40LF
 AMPHENOL_77313-118-40LF
 
@@ -24,13 +24,6 @@ AP62300Z6-7
 SOT563-Z6_1_DIO-M
 
 AP62300Z6-7 
-0
-6
-6
-AUDIO-SMD_PJ-342C-1_PJ-3543-X_C319101
-AUDIO-SMD_PJ-342C-1_PJ-3543-X_C319101
-
-
 0
 6
 6
@@ -100869,6 +100862,27 @@ TPS2051BDBVR
 0
 5
 5
+TXB0102DCUR
+DCU0008A_L
+
+TXB0102DCUR 
+0
+8
+8
+TXB0102DCUR
+DCU0008A_M
+
+TXB0102DCUR 
+0
+8
+8
+TXB0102DCUR
+DCU0008A_N
+
+TXB0102DCUR 
+0
+8
+8
 TerminalBlock
 TerminalBlock_MaiXu_MX126-5.0-02P_1x02_P5.00mm
 terminal block MaiXu MX126-5.0-02P, 2 pins, pitch 5mm, size 10.5x7.8mm, drill diameter 1.3mm, pad diameter 2.8mm, https://www.lcsc.com/datasheet/lcsc_datasheet_2309150913_MAX-MX126-5-0-03P-GN01-Cu-S-A_C5188435.pdf, script-generated using https://gitlab.com/kicad/libraries/kicad-footprint-generator/-/tree/master/scripts/TerminalBlock_MaiXu
@@ -107225,7 +107239,7 @@ igbt diode module
 0
 25
 25
-U262-061N-4BVC10
+Type C 6 pin_ul_U262-061N-4BVC10
 U262-061N-4BVC10_XKB
 
 U262-061N-4BVC10 
