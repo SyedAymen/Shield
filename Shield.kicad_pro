@@ -37,9 +37,9 @@
         "other_text_thickness": 0.15,
         "other_text_upright": false,
         "pads": {
-          "drill": 0.0,
-          "height": 1.6,
-          "width": 0.7
+          "drill": 2.7,
+          "height": 2.7,
+          "width": 2.7
         },
         "silk_line_width": 0.1,
         "silk_text_italic": false,
@@ -128,7 +128,7 @@
         "min_copper_edge_clearance": 0.5,
         "min_groove_width": 0.0,
         "min_hole_clearance": 0.25,
-        "min_hole_to_hole": 0.25,
+        "min_hole_to_hole": 0.2,
         "min_microvia_diameter": 0.2,
         "min_microvia_drill": 0.1,
         "min_resolved_spokes": 2,
@@ -485,7 +485,7 @@
       {
         "bus_width": 12,
         "clearance": 0.2,
-        "diff_pair_gap": 0.25,
+        "diff_pair_gap": 0.2,
         "diff_pair_via_gap": 0.25,
         "diff_pair_width": 0.2,
         "line_style": 0,
@@ -502,13 +502,27 @@
       },
       {
         "clearance": 0.2,
-        "diff_pair_gap": 0.127,
-        "diff_pair_width": 0.2,
-        "name": "Diff_90",
+        "diff_pair_gap": 0.4,
+        "diff_pair_width": 0.16,
+        "name": "100_ohms",
         "pcb_color": "rgba(0, 0, 0, 0.000)",
         "priority": 0,
         "schematic_color": "rgba(0, 0, 0, 0.000)",
-        "track_width": 0.2
+        "track_width": 0.16,
+        "via_diameter": 0.6,
+        "via_drill": 0.3
+      },
+      {
+        "clearance": 0.2,
+        "diff_pair_gap": 0.2,
+        "diff_pair_width": 0.18,
+        "name": "90_ohms",
+        "pcb_color": "rgba(0, 0, 0, 0.000)",
+        "priority": 1,
+        "schematic_color": "rgba(0, 0, 0, 0.000)",
+        "track_width": 0.18,
+        "via_diameter": 0.6,
+        "via_drill": 0.3
       }
     ],
     "meta": {
@@ -518,12 +532,32 @@
     "netclass_assignments": null,
     "netclass_patterns": [
       {
-        "netclass": "Diff_90",
-        "pattern": "CSI_*"
+        "netclass": "100_ohms",
+        "pattern": "/CSI_*"
       },
       {
-        "netclass": "Diff_90",
-        "pattern": "D*"
+        "netclass": "90_ohms",
+        "pattern": "/UP_TX*"
+      },
+      {
+        "netclass": "90_ohms",
+        "pattern": "/DN*"
+      },
+      {
+        "netclass": "90_ohms",
+        "pattern": "/UP_RX*"
+      },
+      {
+        "netclass": "90_ohms",
+        "pattern": "/UP_D*"
+      },
+      {
+        "netclass": "100_ohms",
+        "pattern": "/DSI_*"
+      },
+      {
+        "netclass": "90_ohms",
+        "pattern": "/LTE_D*"
       }
     ]
   },
@@ -532,7 +566,7 @@
       "gencad": "",
       "idf": "",
       "netlist": "",
-      "plot": "Hardware/Gerber/",
+      "plot": "Hardware/Gerber/03/",
       "pos_files": "",
       "specctra_dsn": "",
       "step": "",
